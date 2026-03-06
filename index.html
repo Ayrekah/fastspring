@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Ready to Roll | TTRPG Store</title>
+    <title>Ready to Roll | FastSpring SBL Integration</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
@@ -17,9 +17,12 @@
 
     <style>
         .product-card { border: 1px solid #eee; padding: 25px; transition: 0.3s; background: #fff; text-align: center; }
-        #fsc-embedded-checkout-container { display: none; min-height: 600px; margin-top: 20px; border-top: 2px solid #000; padding-top: 20px; }
+        #fsc-embedded-checkout-container { display: none; min-height: 600px; margin-top: 20px; border-top: 2px solid #000; }
         #cart-summary { display: none; border: 1px solid #000; padding: 20px; margin-top: 40px; background: #fafafa; }
         .cart-row { display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid #ddd; }
+        
+        /* Modal styling for the 'Full Description' Directive */
+        #modalDescription { white-space: pre-wrap; text-align: left; }
     </style>
 </head>
 
@@ -27,19 +30,22 @@
     <header class="p-3 border-bottom sticky-top bg-white">
         <div class="container d-flex justify-content-between align-items-center">
             <strong>READY TO ROLL</strong>
-            <div>Total: <span class="fw-bold" data-fsc-order-total></span></div>
+            <div>Order Total: <span class="fw-bold" data-fsc-order-total></span></div>
         </div>
     </header>
 
     <section class="container py-5">
         <div class="row g-4">
+            
             <div class="col-md-4">
                 <div class="product-card">
                     <img data-fsc-item-path="the-tavern" data-fsc-item-image src="" class="img-fluid mb-2">
                     <h4 data-fsc-item-path="the-tavern" data-fsc-item-display></h4>
                     <div class="h5 text-primary" data-fsc-item-path="the-tavern" data-fsc-item-price></div>
-                    <button class="btn btn-dark w-100" data-fsc-item-path-value="the-tavern" data-fsc-action="Add">Add to Cart</button>
-                    <button class="btn btn-link btn-sm text-dark mt-2" onclick="showDetails('the-tavern')">View Full Details</button>
+                    
+                    <button class="btn btn-dark w-100" onclick="fastspring.builder.add('the-tavern')">Add to Cart</button>
+                    
+                    <button class="btn btn-link btn-sm text-dark mt-2" data-bs-toggle="modal" data-bs-target="#tavernModal">View Full Details</button>
                 </div>
             </div>
 
@@ -48,8 +54,8 @@
                     <img data-fsc-item-path="the-campfire" data-fsc-item-image src="" class="img-fluid mb-2">
                     <h4 data-fsc-item-path="the-campfire" data-fsc-item-display></h4>
                     <div class="h5 text-primary" data-fsc-item-path="the-campfire" data-fsc-item-price></div>
-                    <button class="btn btn-dark w-100" data-fsc-item-path-value="the-campfire" data-fsc-action="Add">Add to Cart</button>
-                    <button class="btn btn-link btn-sm text-dark mt-2" onclick="showDetails('the-campfire')">View Full Details</button>
+                    <button class="btn btn-dark w-100" onclick="fastspring.builder.add('the-campfire')">Add to Cart</button>
+                    <button class="btn btn-link btn-sm text-dark mt-2" data-bs-toggle="modal" data-bs-target="#campfireModal">View Full Details</button>
                 </div>
             </div>
 
@@ -58,15 +64,16 @@
                     <img data-fsc-item-path="the-guild-hall" data-fsc-item-image src="" class="img-fluid mb-2">
                     <h4 data-fsc-item-path="the-guild-hall" data-fsc-item-display></h4>
                     <div class="h5 text-primary" data-fsc-item-path="the-guild-hall" data-fsc-item-price></div>
-                    <button class="btn btn-dark w-100" data-fsc-item-path-value="the-guild-hall" data-fsc-action="Add">Add to Cart</button>
-                    <button class="btn btn-link btn-sm text-dark mt-2" onclick="showDetails('the-guild-hall')">View Full Details</button>
+                    <button class="btn btn-dark w-100" onclick="fastspring.builder.add('the-guild-hall')">Add to Cart</button>
+                    <button class="btn btn-link btn-sm text-dark mt-2" data-bs-toggle="modal" data-bs-target="#guildModal">View Full Details</button>
                 </div>
             </div>
+
         </div>
     </section>
 
     <div id="cart-summary" class="container">
-        <h3 class="text-uppercase mb-3">Your Party</h3>
+        <h3 class="text-uppercase mb-3">Your Selection</h3>
         <div data-fsc-items-container>
             <div class="cart-row">
                 <div>
@@ -85,18 +92,21 @@
         <div id="fsc-embedded-checkout-container"></div>
     </div>
 
-    <div class="modal fade" id="detailsModal" tabindex="-1">
-        <div class="modal-dialog modal-lg">
+    <div class="modal fade" id="tavernModal" tabindex="-1">
+        <div class="modal-dialog">
             <div class="modal-content">
-                <div class="modal-header"><h5 class="modal-title" id="m-title"></h5><button type="button" class="btn-close" data-bs-dismiss="modal"></button></div>
-                <div class="modal-body" id="m-desc"></div>
+                <div class="modal-header"><h5 data-fsc-item-path="the-tavern" data-fsc-item-display></h5><button type="button" class="btn-close" data-bs-dismiss="modal"></button></div>
+                <div class="modal-body">
+                    <img data-fsc-item-path="the-tavern" data-fsc-item-image src="" class="img-fluid mb-3">
+                    <div data-fsc-item-path="the-tavern" data-fsc-item-description-full></div>
+                </div>
             </div>
         </div>
     </div>
 
     <script type="text/javascript">
         /**
-         * CART HANDLER
+         * The only Method required to sync the UI with the Session
          */
         function onFscOrderItemsChanged(data) {
             const summary = document.getElementById('cart-summary');
@@ -105,6 +115,7 @@
             if (data && data.items && data.items.length > 0) {
                 summary.style.display = 'block';
                 checkout.style.display = 'block';
+                // Method: Opens the checkout window/iframe
                 fastspring.builder.checkout();
             } else {
                 summary.style.display = 'none';
@@ -115,25 +126,6 @@
         window.fastspring = {
             builder: { "onOrderItemsChanged": onFscOrderItemsChanged }
         };
-
-        /**
-         * MODAL HANDLER: Fixing the 'item is not a function' error
-         * We use getAttribute to pull the data directly from the DOM-linked SBL state
-         */
-        function showDetails(productPath) {
-            // FastSpring recommended way to get data for a specific path
-            fastspring.builder.getItem(productPath, function(item) {
-                if (item) {
-                    document.getElementById('m-title').innerText = item.display;
-                    document.getElementById('m-desc').innerHTML = item.descriptionFull || "No detailed description provided.";
-                    
-                    const myModal = new bootstrap.Modal(document.getElementById('detailsModal'));
-                    myModal.show();
-                } else {
-                    console.error("SBL Error: Could not retrieve item for " + productPath);
-                }
-            });
-        }
     </script>
 
     <script src="js/jquery-1.11.0.min.js"></script>
