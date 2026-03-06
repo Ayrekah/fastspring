@@ -14,22 +14,27 @@
     <script id="fsc-api"
         src="https://sbl.onfastspring.com/sbl/1.0.6/fastspring-builder.min.js"
         type="text/javascript"
-        data-storefront="ericateststore.test.onfastspring.com/embedded-readytoroll">
+        data-storefront="ericateststore.test.onfastspring.com/embedded-readytoroll"
+        data-before-requests-callback="onFscReady">
     </script>
 
     <style>
-        /* Ensures the checkout container looks integrated and prevents 'pulsing' lines before load */
         #fsc-embedded-checkout-container {
             display: none;
             margin: 50px auto;
             max-width: 1000px;
             border-radius: 15px;
             box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            min-height: 400px; /* Gives the container space to breathe */
         }
-        /* Static Hero Fix */
         .static-hero {
             background-color: #f3f5f7;
             padding: 100px 0;
+        }
+        /* Fix to make sure buttons are clickable over the card hover effects */
+        .cart-button {
+            z-index: 10;
+            position: relative;
         }
     </style>
 </head>
@@ -76,13 +81,13 @@
                     <div class="col-md-4">
                         <div class="product-card position-relative">
                             <div class="image-holder">
-                                <img data-fsc-item-path="the-tavern" data-fsc-item-image src="" alt="product-item" class="img-fluid">
+                                <img data-fsc-item-path="the-tavern" data-fsc-item-image src="" alt="The Tavern" class="img-fluid">
                             </div>
                             <div class="cart-concern position-absolute">
                                 <div class="cart-button d-flex">
-                                   <button data-fsc-item-path-value="the-tavern" data-fsc-action="Add" class="btn btn-medium btn-black border-0">
-    Add to Cart <svg class="cart-outline"><use xlink:href="#cart-outline"></use></svg>
-</button>
+                                    <button data-fsc-item-path-value="the-tavern" data-fsc-action="Add" class="btn btn-medium btn-black border-0">
+                                        Add to Cart <svg class="cart-outline"><use xlink:href="#cart-outline"></use></svg>
+                                    </button>
                                 </div>
                             </div>
                             <div class="card-detail d-flex justify-content-between align-items-baseline pt-3">
@@ -97,13 +102,13 @@
                     <div class="col-md-4">
                         <div class="product-card position-relative">
                             <div class="image-holder">
-                                <img data-fsc-item-path="hall-of-legends" data-fsc-item-image src="" alt="product-item" class="img-fluid">
+                                <img data-fsc-item-path="hall-of-legends" data-fsc-item-image src="" alt="Hall of Legends" class="img-fluid">
                             </div>
                             <div class="cart-concern position-absolute">
                                 <div class="cart-button d-flex">
-                                    <button data-fsc-item-path-value="the-tavern" data-fsc-action="Add" class="btn btn-medium btn-black border-0">
-    Add to Cart <svg class="cart-outline"><use xlink:href="#cart-outline"></use></svg>
-</button>
+                                    <button data-fsc-item-path-value="hall-of-legends" data-fsc-action="Add" class="btn btn-medium btn-black border-0">
+                                        Add to Cart <svg class="cart-outline"><use xlink:href="#cart-outline"></use></svg>
+                                    </button>
                                 </div>
                             </div>
                             <div class="card-detail d-flex justify-content-between align-items-baseline pt-3">
@@ -118,13 +123,13 @@
                     <div class="col-md-4">
                         <div class="product-card position-relative">
                             <div class="image-holder">
-                                <img data-fsc-item-path="great-architect" data-fsc-item-image src="" alt="product-item" class="img-fluid">
+                                <img data-fsc-item-path="great-architect" data-fsc-item-image src="" alt="Great Architect" class="img-fluid">
                             </div>
                             <div class="cart-concern position-absolute">
                                 <div class="cart-button d-flex">
-                                   <button data-fsc-item-path-value="the-tavern" data-fsc-action="Add" class="btn btn-medium btn-black border-0">
-    Add to Cart <svg class="cart-outline"><use xlink:href="#cart-outline"></use></svg>
-</button>
+                                    <button data-fsc-item-path-value="great-architect" data-fsc-action="Add" class="btn btn-medium btn-black border-0">
+                                        Add to Cart <svg class="cart-outline"><use xlink:href="#cart-outline"></use></svg>
+                                    </button>
                                 </div>
                             </div>
                             <div class="card-detail d-flex justify-content-between align-items-baseline pt-3">
@@ -150,23 +155,15 @@
     </footer>
 
     <script>
-        // Smooth scroll and reveal checkout when item is added
+        // Callback function when SBL is ready
+        function onFscReady() {
+            console.log("FastSpring Library Loaded and Ready");
+        }
+
         function onFscOrderItemsChanged(data) {
+            console.log("Order items changed:", data);
             if (data.items.length > 0) {
                 const checkout = document.getElementById('fsc-embedded-checkout-container');
                 checkout.style.display = 'block';
-                checkout.scrollIntoView({ behavior: 'smooth' });
-            }
-        }
-
-        window.fastspring = {
-            builder: {
-                "onOrderItemsChanged": onFscOrderItemsChanged
-            }
-        };
-    </script>
-
-    <script src="js/jquery-1.11.0.min.js"></script>
-    <script type="text/javascript" src="js/bootstrap.bundle.min.js"></script>
-</body>
-</html>
+                // Wait a tiny bit for the container to render before scrolling
+                setTimeout(()
