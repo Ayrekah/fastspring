@@ -1,28 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Ready to Roll | TTRPG Shop</title>
+    <title>Ready to Roll | TTRPG Store</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="style.css">
 
-<script
-    id="fsc-api"
-    src="https://sbl.onfastspring.com/sbl/1.0.6/fastspring-builder.min.js"
-    type="text/javascript"
-    data-storefront="ericateststore.test.onfastspring.com/embedded-readytoroll">
-</script>
-    
+    <script id="fsc-api"
+        src="https://sbl.onfastspring.com/sbl/1.0.6/fastspring-builder.min.js"
+        type="text/javascript"
+        data-storefront="ericateststore.test.onfastspring.com/embedded-readytoroll"
+        data-debug="true">
+    </script>
 
     <style>
-        .product-card { border: 1px solid #eee; padding: 20px; transition: 0.3s; background: #fff; }
-        #fsc-embedded-checkout-container { display: none; min-height: 600px; margin-top: 30px; }
-        
-        /* The Cart Summary List */
-        #cart-list-wrapper { display: none; border: 2px solid #000; padding: 20px; margin-top: 40px; }
-        .cart-row { display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid #eee; }
+        .product-card { border: 1px solid #eee; padding: 25px; transition: 0.3s; background: #fff; text-align: center; }
+        #fsc-embedded-checkout-container { display: none; min-height: 600px; margin-top: 20px; border-top: 2px solid #000; padding-top: 20px; }
+        #cart-summary { display: none; border: 1px solid #000; padding: 20px; margin-top: 40px; background: #fafafa; }
+        .cart-row { display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid #ddd; }
     </style>
 </head>
 
@@ -35,15 +32,14 @@
     </header>
 
     <section class="container py-5">
-        <div class="row g-4 text-center">
-            
+        <div class="row g-4">
             <div class="col-md-4">
                 <div class="product-card">
                     <img data-fsc-item-path="the-tavern" data-fsc-item-image src="" class="img-fluid mb-2">
                     <h4 data-fsc-item-path="the-tavern" data-fsc-item-display></h4>
                     <div class="h5 text-primary" data-fsc-item-path="the-tavern" data-fsc-item-price></div>
-                    <button class="btn btn-dark btn-sm w-100 mt-2" data-fsc-item-path-value="the-tavern" data-fsc-action="Add">Add to Cart</button>
-                    <button class="btn btn-link btn-sm text-dark" onclick="showDetails('the-tavern')">View Full Details</button>
+                    <button class="btn btn-dark w-100" data-fsc-item-path-value="the-tavern" data-fsc-action="Add">Add to Cart</button>
+                    <button class="btn btn-link btn-sm text-dark mt-2" onclick="showDetails('the-tavern')">View Full Details</button>
                 </div>
             </div>
 
@@ -52,8 +48,8 @@
                     <img data-fsc-item-path="the-campfire" data-fsc-item-image src="" class="img-fluid mb-2">
                     <h4 data-fsc-item-path="the-campfire" data-fsc-item-display></h4>
                     <div class="h5 text-primary" data-fsc-item-path="the-campfire" data-fsc-item-price></div>
-                    <button class="btn btn-dark btn-sm w-100 mt-2" data-fsc-item-path-value="the-campfire" data-fsc-action="Add">Add to Cart</button>
-                    <button class="btn btn-link btn-sm text-dark" onclick="showDetails('the-campfire')">View Full Details</button>
+                    <button class="btn btn-dark w-100" data-fsc-item-path-value="the-campfire" data-fsc-action="Add">Add to Cart</button>
+                    <button class="btn btn-link btn-sm text-dark mt-2" onclick="showDetails('the-campfire')">View Full Details</button>
                 </div>
             </div>
 
@@ -62,21 +58,20 @@
                     <img data-fsc-item-path="the-guild-hall" data-fsc-item-image src="" class="img-fluid mb-2">
                     <h4 data-fsc-item-path="the-guild-hall" data-fsc-item-display></h4>
                     <div class="h5 text-primary" data-fsc-item-path="the-guild-hall" data-fsc-item-price></div>
-                    <button class="btn btn-dark btn-sm w-100 mt-2" data-fsc-item-path-value="the-guild-hall" data-fsc-action="Add">Add to Cart</button>
-                    <button class="btn btn-link btn-sm text-dark" onclick="showDetails('the-guild-hall')">View Full Details</button>
+                    <button class="btn btn-dark w-100" data-fsc-item-path-value="the-guild-hall" data-fsc-action="Add">Add to Cart</button>
+                    <button class="btn btn-link btn-sm text-dark mt-2" onclick="showDetails('the-guild-hall')">View Full Details</button>
                 </div>
             </div>
-
         </div>
     </section>
 
-    <div id="cart-list-wrapper" class="container">
-        <h3 class="text-uppercase mb-4">Your Selection</h3>
+    <div id="cart-summary" class="container">
+        <h3 class="text-uppercase mb-3">Your Party</h3>
         <div data-fsc-items-container>
             <div class="cart-row">
                 <div>
-                    <span data-fsc-item-display class="fw-bold"></span> 
-                    <span class="text-muted ms-2">x <span data-fsc-item-quantity></span></span>
+                    <span data-fsc-item-display class="fw-bold"></span>
+                    <span class="text-muted ms-2">(x <span data-fsc-item-quantity></span>)</span>
                 </div>
                 <div>
                     <span data-fsc-item-total class="me-3"></span>
@@ -86,12 +81,12 @@
         </div>
     </div>
 
-    <div class="container pb-5">
+    <div class="container">
         <div id="fsc-embedded-checkout-container"></div>
     </div>
 
     <div class="modal fade" id="detailsModal" tabindex="-1">
-        <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header"><h5 class="modal-title" id="m-title"></h5><button type="button" class="btn-close" data-bs-dismiss="modal"></button></div>
                 <div class="modal-body" id="m-desc"></div>
@@ -101,19 +96,18 @@
 
     <script type="text/javascript">
         /**
-         * CART LOGIC
+         * CART HANDLER
          */
         function onFscOrderItemsChanged(data) {
-            const cartList = document.getElementById('cart-list-wrapper');
+            const summary = document.getElementById('cart-summary');
             const checkout = document.getElementById('fsc-embedded-checkout-container');
 
-            if (data.items && data.items.length > 0) {
-                cartList.style.display = 'block';
+            if (data && data.items && data.items.length > 0) {
+                summary.style.display = 'block';
                 checkout.style.display = 'block';
-                // Force checkout refresh
                 fastspring.builder.checkout();
             } else {
-                cartList.style.display = 'none';
+                summary.style.display = 'none';
                 checkout.style.display = 'none';
             }
         }
@@ -123,22 +117,22 @@
         };
 
         /**
-         * MODAL LOGIC
-         * We use the global 'fastspring' object to pull the 'descriptionFull'
+         * MODAL HANDLER: Fixing the 'item is not a function' error
+         * We use getAttribute to pull the data directly from the DOM-linked SBL state
          */
-        function showDetails(path) {
-            // Using the SBL item method
-            const item = fastspring.builder.item(path);
-            
-            if (item) {
-                document.getElementById('m-title').innerText = item.display;
-                document.getElementById('m-desc').innerHTML = item.descriptionFull || "No description provided.";
-                
-                const myModal = new bootstrap.Modal(document.getElementById('detailsModal'));
-                myModal.show();
-            } else {
-                console.warn("Product data not yet cached for: " + path);
-            }
+        function showDetails(productPath) {
+            // FastSpring recommended way to get data for a specific path
+            fastspring.builder.getItem(productPath, function(item) {
+                if (item) {
+                    document.getElementById('m-title').innerText = item.display;
+                    document.getElementById('m-desc').innerHTML = item.descriptionFull || "No detailed description provided.";
+                    
+                    const myModal = new bootstrap.Modal(document.getElementById('detailsModal'));
+                    myModal.show();
+                } else {
+                    console.error("SBL Error: Could not retrieve item for " + productPath);
+                }
+            });
         }
     </script>
 
