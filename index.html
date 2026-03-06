@@ -15,20 +15,6 @@
         data-debug="true">
     </script>
 
-    <style>
-        /* CSS to handle the 'pulsing' (Skeleton) effect professionally */
-        [data-fsc-item-path] { min-height: 20px; }
-        
-        #fsc-embedded-checkout-container {
-            display: none; /* Controlled by onOrderItemsChanged */
-            margin: 40px auto;
-            min-height: 600px;
-            border-top: 1px solid #ddd;
-        }
-
-        .product-card { padding: 20px; border: 1px solid #eee; height: 100%; }
-        .product-card img { width: 100%; cursor: pointer; }
-    </style>
 </head>
 
 <body>
@@ -44,8 +30,15 @@
             
             <div class="col-md-4">
                 <div class="product-card">
-               <img data-fsc-item-path="the-campfire" data-fsc-item-image src="" onclick="openFullDetails('the-campfire')">
-                    <h3 class="mt-3" data-fsc-item-description-summary</h3>
+               <img data-fsc-item-path="the-tavern" data-fsc-item-image src="" onclick="openFullDetails('the-tavern')">
+                    <h3 class="mt-3" data-fsc-item-path="the-tavern" data-fsc-item-display></h3>
+                    <p class="text-muted" data-fsc-item-path="the-tavern" data-fsc-item-description-summary></p>
+                    <div class="h4 text-primary" data-fsc-item-path="the-tavern" data-fsc-item-price></div>
+                    <button class="btn btn-dark w-100 mt-2" 
+                            data-fsc-item-path-value="the-tavern" 
+                            data-fsc-action="Add"
+                        Add to Cart
+                    </button>
                 </div>
             </div>
 
