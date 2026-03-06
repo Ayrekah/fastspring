@@ -1,6 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <script id="fsc-api"
+    src="https://sbl.onfastspring.com/sbl/1.0.6/fastspring-builder.min.js"
+    type="text/javascript"
+    data-storefront="ericateststore.test.onfastspring.com/embedded-readytoroll"
+    data-continuous="true"
+    data-debug="true">
+</script>
+
+<script type="text/javascript">
+    // This function tells us if the library actually talked to the server
+    function onFscOrderItemsChanged(data) {
+        console.log("READY TO ROLL: Handshake confirmed.");
+        
+        // Only show checkout if there's something in it
+        if (data.items && data.items.length > 0) {
+            const checkout = document.getElementById('fsc-embedded-checkout-container');
+            checkout.style.display = 'block';
+            
+            setTimeout(() => {
+                checkout.scrollIntoView({ behavior: 'smooth' });
+            }, 200);
+        }
+    }
+
+    // This is the CRITICAL part for GitHub Pages
+    window.fastspring = {
+        builder: {
+            "onOrderItemsChanged": onFscOrderItemsChanged
+        }
+    };
+</script>
     <title>Ready to Roll | TTRPG Character Creator</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
