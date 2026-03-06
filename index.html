@@ -16,65 +16,107 @@
     </script>
 
     <style>
-        /* CRITICAL: The landing strip must have height for the API to see it */
         #fsc-embedded-checkout-container {
             min-height: 650px !important;
             margin: 40px auto;
-            border: 1px solid #eee;
+            border: 1px solid #ddd;
             border-radius: 12px;
-            display: none; /* We show this via JS below */
+            display: none; 
+            background: #fff;
         }
-        .static-hero { background-color: #f3f5f7; padding: 80px 0; }
-        .product-card { border: 1px solid #ddd; padding: 20px; text-align: center; }
+        .static-hero { background-color: #f3f5f7; padding: 60px 0; text-align: center; }
+        .product-card { border: 1px solid #eee; padding: 30px; border-radius: 10px; transition: 0.3s; }
+        .product-card:hover { border-color: #000; }
     </style>
 </head>
 
 <body>
-    <header class="navbar navbar-light bg-light p-3">
-        <a class="navbar-brand" href="#">READY TO ROLL</a>
-        <div class="cart-total">Total: <span data-fsc-order-total>$0.00</span></div>
+    <header class="p-3 border-bottom bg-white sticky-top">
+        <div class="container d-flex justify-content-between align-items-center">
+            <h4 class="m-0">READY TO ROLL</h4>
+            <div>Cart: <strong data-fsc-order-total>$0.00</strong></div>
+        </div>
     </header>
 
     <section class="static-hero">
-        <div class="container text-center">
-            <h1>Craft Your Legend.</h1>
+        <div class="container">
+            <h1 class="display-4 text-uppercase">Level Up Your Lore.</h1>
+            <p>Select a character tier to begin your journey.</p>
         </div>
     </section>
 
     <section class="container py-5">
-        <div class="row">
-            <div class="col-md-4" data-fsc-item-path="the-tavern">
-                <div class="product-card">
-                    <img data-fsc-item-image src="" class="img-fluid mb-2">
+        <div class="row g-4">
+            <div class="col-md-4">
+                <div class="product-card h-100" data-fsc-item-path="the-tavern">
+                    <img data-fsc-item-image src="https://googleusercontent.com/image_generation_content/4" class="img-fluid mb-3">
                     <h3 data-fsc-item-display>The Tavern</h3>
-                    <p data-fsc-item-price>$10.00</p>
-                    <button data-fsc-item-path-value="the-tavern" data-fsc-action="Add" class="btn btn-dark">Add to Cart</button>
+                    <p class="text-muted" data-fsc-item-description-summary>Randomized Starter</p>
+                    <div class="h4 mb-3" data-fsc-item-price>$10.00</div>
+                    <button type="button" onclick="addToCart('the-tavern')" class="btn btn-dark w-100 py-2 text-uppercase">
+                        Add to Cart
+                    </button>
                 </div>
             </div>
+
+            <div class="col-md-4">
+                <div class="product-card h-100" data-fsc-item-path="hall-of-legends">
+                    <img data-fsc-item-image src="https://googleusercontent.com/image_generation_content/6" class="img-fluid mb-3">
+                    <h3 data-fsc-item-display>Hall of Legends</h3>
+                    <p class="text-muted" data-fsc-item-description-summary>Vault of Heroes</p>
+                    <div class="h4 mb-3" data-fsc-item-price>$25.00</div>
+                    <button type="button" onclick="addToCart('hall-of-legends')" class="btn btn-dark w-100 py-2 text-uppercase">
+                        Add to Cart
+                    </button>
+                </div>
             </div>
+
+            <div class="col-md-4">
+                <div class="product-card h-100" data-fsc-item-path="great-architect">
+                    <img data-fsc-item-image src="https://googleusercontent.com/image_generation_content/9" class="img-fluid mb-3">
+                    <h3 data-fsc-item-display>The Architect</h3>
+                    <p class="text-muted" data-fsc-item-description-summary>Bespoke Commission</p>
+                    <div class="h4 mb-3" data-fsc-item-price>$50.00</div>
+                    <button type="button" onclick="addToCart('great-architect')" class="btn btn-dark w-100 py-2 text-uppercase">
+                        Add to Cart
+                    </button>
+                </div>
+            </div>
+        </div>
     </section>
 
     <div class="container">
         <div id="fsc-embedded-checkout-container"></div>
     </div>
 
+    <footer class="py-5 text-center text-muted border-top mt-5">
+        <p>Ready to Roll | FastSpring Demo</p>
+    </footer>
+
     <script type="text/javascript">
-        function onFscOrderItemsChanged(data) {
-            console.log("Ready to Roll: Cart Updated", data);
+        // Manual Function to Bypass Template Conflicts
+        function addToCart(path) {
+            console.log("Ready to Roll: Manually adding " + path);
             
-            if (data.items.length > 0) {
-                // 1. Force the container to show
-                const container = document.getElementById('fsc-embedded-checkout-container');
-                container.style.display = 'block';
-                
-                // 2. Force SBL to render the checkout inside it
-                fastspring.builder.checkout(); 
-                
-                // 3. Scroll to it
-                setTimeout(() => {
-                    container.scrollIntoView({ behavior: 'smooth' });
-                }, 300);
-            }
+            // 1. Add the product
+            fastspring.builder.add(path);
+            
+            // 2. Explicitly tell the container to show
+            const container = document.getElementById('fsc-embedded-checkout-container');
+            container.style.display = 'block';
+            
+            // 3. Command the checkout to render inside it
+            fastspring.builder.checkout();
+            
+            // 4. Scroll down
+            setTimeout(() => {
+                container.scrollIntoView({ behavior: 'smooth' });
+            }, 300);
+        }
+
+        // FastSpring Callback for Data Sync
+        function onFscOrderItemsChanged(data) {
+            console.log("Cart Data Sync:", data);
         }
 
         window.fastspring = {
