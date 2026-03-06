@@ -12,30 +12,45 @@
         src="https://sbl.onfastspring.com/sbl/1.0.6/fastspring-builder.min.js"
         type="text/javascript"
         data-storefront="ericateststore.test.onfastspring.com/embedded-readytoroll"
+        data-after-markup-callback="onFscReady"
         data-debug="true">
     </script>
 
     <style>
-        /* CSS to handle the 'pulsing' (Skeleton) effect professionally */
-        [data-fsc-item-path] { min-height: 20px; }
+        .product-card { padding: 25px; border: 1px solid #eee; height: 100%; transition: 0.3s; background: #fff; }
+        .product-card:hover { border-color: #000; transform: translateY(-5px); }
+        .product-card img { width: 100%; height: auto; cursor: pointer; background: #f9f9f9; border-radius: 8px; }
         
+        /* Quantity Box Styling */
+        .quantity-controls {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin: 15px 0;
+            padding: 10px;
+            background: #f8f9fa;
+            border-radius: 5px;
+        }
+        .qty-input { width: 60px; text-align: center; border: 1px solid #ddd; border-radius: 4px; }
+
         #fsc-embedded-checkout-container {
-            display: none; /* Controlled by onOrderItemsChanged */
+            display: none; 
             margin: 40px auto;
             min-height: 600px;
             border-top: 1px solid #ddd;
         }
-
-        .product-card { padding: 20px; border: 1px solid #eee; height: 100%; }
-        .product-card img { width: 100%; cursor: pointer; }
     </style>
 </head>
 
 <body>
     <header class="p-3 border-bottom sticky-top bg-white">
-        <div class="container d-flex justify-content-between">
-            <strong>READY TO ROLL</strong>
-            <div>Total: <span data-fsc-order-total></span></div>
+        <div class="container d-flex justify-content-between align-items-center">
+            <strong class="text-uppercase">Ready to Roll</strong>
+            <div class="text-end">
+                <div class="small text-muted text-uppercase">Subtotal</div>
+                <div class="h5 m-0 fw-bold" data-fsc-order-total></div>
+            </div>
         </div>
     </header>
 
@@ -44,110 +59,83 @@
             
             <div class="col-md-4">
                 <div class="product-card">
-                    <img data-fsc-item-path="the-tavern" data-fsc-item-image src="" onclick="openFullDetails('the-tavern')">
+                    <img data-fsc-item-path="the-tavern" data-fsc-item-image src="" onclick="openFullDetails('the-tavern')" class="mb-3">
                     
-                    <h3 class="mt-3" data-fsc-item-path="the-tavern" data-fsc-item-display></h3>
-                    
-                    <p class="text-muted" data-fsc-item-path="the-tavern" data-fsc-item-description-summary></p>
-                    
+                    <h3 data-fsc-item-path="the-tavern" data-fsc-item-display></h3>
+                    <p class="text-muted small" data-fsc-item-path="the-tavern" data-fsc-item-description-summary></p>
                     <div class="h4 text-primary" data-fsc-item-path="the-tavern" data-fsc-item-price></div>
                     
+                    <div class="quantity-controls" data-fsc-item-path="the-tavern" data-fsc-item-selection-smartdisplay>
+                        <label class="small text-uppercase fw-bold">Qty:</label>
+                        <input type="number" 
+                               class="qty-input" 
+                               min="1" 
+                               value="1" 
+                               data-fsc-item-path="the-tavern" 
+                               data-fsc-item-quantity-value 
+                               data-fsc-autoapply>
+                    </div>
+
                     <button class="btn btn-dark w-100 mt-2" 
                             data-fsc-item-path-value="the-tavern" 
-                            data-fsc-action="Add">
+                            data-fsc-action="Add"
+                            data-fsc-item-path="the-tavern"
+                            data-fsc-item-selection-smartdisplay-inverse>
                         Add to Cart
                     </button>
+
+                    <button class="btn btn-outline-danger w-100 mt-2" 
+                            data-fsc-item-path-value="the-tavern" 
+                            data-fsc-action="Remove"
+                            data-fsc-item-path="the-tavern"
+                            data-fsc-item-selection-smartdisplay>
+                        Remove from Cart
+                    </button>
+                    
+                    <button class="btn btn-link btn-sm w-100 mt-2 text-dark" onclick="openFullDetails('the-tavern')">View Full Specs</button>
                 </div>
             </div>
 
-            <div class="col-md-4">
-                <div class="product-card">
-                    <img data-fsc-item-path="hall-of-legends" data-fsc-item-image src="" onclick="openFullDetails('hall-of-legends')">
-                    <h3 class="mt-3" data-fsc-item-path="hall-of-legends" data-fsc-item-display></h3>
-                    <p class="text-muted" data-fsc-item-path="hall-of-legends" data-fsc-item-description-summary></p>
-                    <div class="h4 text-primary" data-fsc-item-path="hall-of-legends" data-fsc-item-price></div>
-                    <button class="btn btn-dark w-100 mt-2" 
-                            data-fsc-item-path-value="hall-of-legends" 
-                            data-fsc-action="Add">
-                        Add to Cart
-                    </button>
-                </div>
             </div>
-
-            <div class="col-md-4">
-                <div class="product-card">
-                    <img data-fsc-item-path="great-architect" data-fsc-item-image src="" onclick="openFullDetails('great-architect')">
-                    <h3 class="mt-3" data-fsc-item-path="great-architect" data-fsc-item-display></h3>
-                    <p class="text-muted" data-fsc-item-path="great-architect" data-fsc-item-description-summary></p>
-                    <div class="h4 text-primary" data-fsc-item-path="great-architect" data-fsc-item-price></div>
-                    <button class="btn btn-dark w-100 mt-2" 
-                            data-fsc-item-path-value="great-architect" 
-                            data-fsc-action="Add">
-                        Add to Cart
-                    </button>
-                </div>
-            </div>
-
-        </div>
     </section>
+
+    <div class="container">
+        <div id="fsc-embedded-checkout-container"></div>
+    </div>
 
     <div class="modal fade" id="detailModal" tabindex="-1">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="modalTitle"></h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-                </div>
+                <div class="modal-header"><h5 class="modal-title" id="modalTitle"></h5><button type="button" class="btn-close" data-bs-dismiss="modal"></button></div>
                 <div class="modal-body">
+                    <div class="text-center mb-4"><img id="modalImage" src="" class="img-fluid rounded" style="max-height: 300px;"></div>
                     <div id="modalDescription"></div>
                 </div>
             </div>
         </div>
     </div>
 
-    <div class="container">
-        <div id="fsc-embedded-checkout-container"></div>
-    </div>
-
     <script type="text/javascript">
-        /**
-         * FASTSPRING SBL CALLBACKS
-         */
+        function onFscReady() { console.log("SBL Ready."); }
+
         function onFscOrderItemsChanged(data) {
-            console.log("SBL: Order Items Changed", data);
-            
+            const checkout = document.getElementById('fsc-embedded-checkout-container');
             if (data.items.length > 0) {
-                // Display the embedded checkout container
-                const checkout = document.getElementById('fsc-embedded-checkout-container');
                 checkout.style.display = 'block';
-                
-                // UX: Ensure the checkout is rendered and visible
                 fastspring.builder.checkout();
-                
-                setTimeout(() => {
-                    checkout.scrollIntoView({ behavior: 'smooth' });
-                }, 300);
+            } else {
+                checkout.style.display = 'none';
             }
         }
 
-        // REQUIRED GLOBAL OBJECT
-        window.fastspring = {
-            builder: {
-                "onOrderItemsChanged": onFscOrderItemsChanged
-            }
-        };
+        window.fastspring = { builder: { "onOrderItemsChanged": onFscOrderItemsChanged } };
 
-        /**
-         * INTERFACE FUNCTIONS
-         */
         function openFullDetails(path) {
             const modal = new bootstrap.Modal(document.getElementById('detailModal'));
-            
-            // Accessing product data directly via the SBL object
             const item = fastspring.builder.item(path);
-            
             if (item) {
                 document.getElementById('modalTitle').innerText = item.display;
+                document.getElementById('modalImage').src = item.image;
                 document.getElementById('modalDescription').innerHTML = item.descriptionFull;
                 modal.show();
             }
