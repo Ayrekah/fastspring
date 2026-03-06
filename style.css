@@ -1035,3 +1035,16 @@ figure.instagram-item img.insta-image {
     height: 100% !important;
     border: none !important;
 }
+.product-card{
+background:#fff;
+transition:all .2s;
+}
+
+.product-card:hover{
+transform:translateY(-4px);
+box-shadow:0 8px 20px rgba(0,0,0,.1);
+}
+
+[data-fsc-item-image]{
+cursor:pointer;
+}
