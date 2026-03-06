@@ -2,24 +2,30 @@
 <html lang="en">
 
 <head>
-<title>Ready to Roll | FastSpring Demo</title>
+
+<title>Ready to Roll</title>
 
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <link rel="stylesheet" href="css/bootstrap.min.css">
-<link rel="stylesheet" href="style.css">
 
 <script
 id="fsc-api"
 src="https://sbl.onfastspring.com/sbl/1.0.6/fastspring-builder.min.js"
-type="text/javascript"
 data-storefront="ericateststore.test.onfastspring.com/embedded-readytoroll"
 data-continuous="true"
 data-debug="true">
 </script>
 
 <style>
+
+.product-card{
+padding:20px;
+border:1px solid #ddd;
+border-radius:8px;
+text-align:center;
+}
 
 .cart-drawer{
 position:fixed;
@@ -28,11 +34,11 @@ right:-380px;
 width:380px;
 height:100%;
 background:white;
-box-shadow:-5px 0 20px rgba(0,0,0,.15);
-z-index:9999;
-transition:right .3s ease;
+box-shadow:-5px 0 20px rgba(0,0,0,.2);
 padding:25px;
+transition:right .3s;
 overflow-y:auto;
+z-index:9999;
 }
 
 .cart-drawer.open{
@@ -45,7 +51,7 @@ top:0;
 left:0;
 width:100%;
 height:100%;
-background:rgba(0,0,0,.35);
+background:rgba(0,0,0,.4);
 display:none;
 z-index:9998;
 }
@@ -54,37 +60,21 @@ z-index:9998;
 display:block;
 }
 
-#cart-count{
-font-weight:700;
-color:#0d6efd;
-cursor:pointer;
-}
-
-.product-card{
-background:white;
-transition:all .2s;
-}
-
-.product-card:hover{
-transform:translateY(-4px);
-box-shadow:0 8px 20px rgba(0,0,0,.1);
-}
-
 </style>
 
 </head>
 
 <body>
 
-<header class="p-3 border-bottom sticky-top bg-white">
+<header class="p-3 border-bottom">
 
-<div class="container d-flex justify-content-between align-items-center">
+<div class="container d-flex justify-content-between">
 
-<strong>READY TO ROLL</strong>
+<strong>READY TO ROLL-2</strong>
 
-<div onclick="toggleCart()">
+<div onclick="toggleCart()" style="cursor:pointer">
 Cart: <span id="cart-count">0</span> |
-Total: <strong data-fsc-order-total></strong>
+Total: <span data-fsc-order-total></span>
 </div>
 
 </div>
@@ -95,31 +85,23 @@ Total: <strong data-fsc-order-total></strong>
 
 <div class="row g-4">
 
+<!-- Tavern -->
+
 <div class="col-md-4">
-<div class="product-card border rounded p-3 text-center">
 
-<img
-data-fsc-item-path="the-tavern"
-data-fsc-item-image
-src=""
-class="img-fluid rounded">
+<div class="product-card" data-fsc-item-path="the-tavern">
 
-<h3 class="mt-3"
-data-fsc-item-path="the-tavern"
-data-fsc-item-display></h3>
+<img data-fsc-item-image class="img-fluid">
 
-<p
-data-fsc-item-path="the-tavern"
-data-fsc-item-description-summary></p>
+<h3 data-fsc-item-display></h3>
 
-<div class="h4 text-primary"
-data-fsc-item-path="the-tavern"
-data-fsc-item-price></div>
+<p data-fsc-item-description-summary></p>
+
+<div data-fsc-item-price class="h4"></div>
 
 <button
 class="btn btn-dark w-100"
-data-fsc-action="Add"
-data-fsc-item-path-value="the-tavern">
+data-fsc-action="Add">
 Add to Cart
 </button>
 
@@ -130,33 +112,26 @@ View Details
 </button>
 
 </div>
+
 </div>
 
+<!-- Campfire -->
+
 <div class="col-md-4">
-<div class="product-card border rounded p-3 text-center">
 
-<img
-data-fsc-item-path="the-campfire"
-data-fsc-item-image
-src=""
-class="img-fluid rounded">
+<div class="product-card" data-fsc-item-path="the-campfire">
 
-<h3 class="mt-3"
-data-fsc-item-path="the-campfire"
-data-fsc-item-display></h3>
+<img data-fsc-item-image class="img-fluid">
 
-<p
-data-fsc-item-path="the-campfire"
-data-fsc-item-description-summary></p>
+<h3 data-fsc-item-display></h3>
 
-<div class="h4 text-primary"
-data-fsc-item-path="the-campfire"
-data-fsc-item-price></div>
+<p data-fsc-item-description-summary></p>
+
+<div data-fsc-item-price class="h4"></div>
 
 <button
 class="btn btn-dark w-100"
-data-fsc-action="Add"
-data-fsc-item-path-value="the-campfire">
+data-fsc-action="Add">
 Add to Cart
 </button>
 
@@ -167,33 +142,26 @@ View Details
 </button>
 
 </div>
+
 </div>
 
+<!-- Guild Hall -->
+
 <div class="col-md-4">
-<div class="product-card border rounded p-3 text-center">
 
-<img
-data-fsc-item-path="the-guild-hall"
-data-fsc-item-image
-src=""
-class="img-fluid rounded">
+<div class="product-card" data-fsc-item-path="the-guild-hall">
 
-<h3 class="mt-3"
-data-fsc-item-path="the-guild-hall"
-data-fsc-item-display></h3>
+<img data-fsc-item-image class="img-fluid">
 
-<p
-data-fsc-item-path="the-guild-hall"
-data-fsc-item-description-summary></p>
+<h3 data-fsc-item-display></h3>
 
-<div class="h4 text-primary"
-data-fsc-item-path="the-guild-hall"
-data-fsc-item-price></div>
+<p data-fsc-item-description-summary></p>
+
+<div data-fsc-item-price class="h4"></div>
 
 <button
 class="btn btn-dark w-100"
-data-fsc-action="Add"
-data-fsc-item-path-value="the-guild-hall">
+data-fsc-action="Add">
 Add to Cart
 </button>
 
@@ -204,6 +172,7 @@ View Details
 </button>
 
 </div>
+
 </div>
 
 </div>
@@ -212,9 +181,11 @@ View Details
 
 <div class="cart-overlay" id="cartOverlay" onclick="toggleCart()"></div>
 
-<div class="cart-drawer" id="cartDrawer" data-fsc-order>
+<div class="cart-drawer" id="cartDrawer">
 
 <h4>Your Cart</h4>
+
+<div data-fsc-order>
 
 <div data-fsc-order-items>
 
@@ -230,8 +201,8 @@ class="d-flex justify-content-between border-bottom py-2">
 </div>
 
 <button
-class="btn btn-sm btn-outline-danger"
-data-fsc-action="Remove">
+data-fsc-action="Remove"
+class="btn btn-sm btn-outline-danger">
 Remove
 </button>
 
@@ -246,10 +217,12 @@ Total: <strong data-fsc-order-total></strong>
 </div>
 
 <button
-class="btn btn-success w-100 mt-3"
-data-fsc-action="Checkout">
+data-fsc-action="Checkout"
+class="btn btn-success w-100 mt-3">
 Checkout
 </button>
+
+</div>
 
 <div id="fsc-embedded-checkout-container" class="mt-4"></div>
 
@@ -263,17 +236,13 @@ Checkout
 
 <div class="modal-header">
 
-<h5 class="modal-title" id="modalTitle"></h5>
+<h5 id="modalTitle"></h5>
 
 <button class="btn-close" data-bs-dismiss="modal"></button>
 
 </div>
 
-<div class="modal-body">
-
-<div id="modalDescription"></div>
-
-</div>
+<div class="modal-body" id="modalDescription"></div>
 
 </div>
 
@@ -294,17 +263,15 @@ document.getElementById("cartOverlay").classList.toggle("show");
 
 function onFscOrderItemsChanged(data){
 
-let totalItems=0;
+let total=0;
 
-data.groups.forEach(group=>{
-group.items.forEach(item=>{
-totalItems+=item.quantity;
-});
+data.items.forEach(item=>{
+total+=item.quantity;
 });
 
-document.getElementById("cart-count").innerText=totalItems;
+document.getElementById("cart-count").innerText=total;
 
-if(totalItems>0){
+if(total>0){
 
 document.getElementById("cartDrawer").classList.add("open");
 document.getElementById("cartOverlay").classList.add("show");
@@ -331,9 +298,7 @@ document.getElementById("modalTitle").innerText=item.display;
 
 document.getElementById("modalDescription").innerHTML=item.description;
 
-const modal=new bootstrap.Modal(document.getElementById("detailModal"));
-
-modal.show();
+new bootstrap.Modal(document.getElementById("detailModal")).show();
 
 }
 
