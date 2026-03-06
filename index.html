@@ -14,11 +14,11 @@
     <script id="fsc-api"
         src="https://sbl.onfastspring.com/sbl/1.0.6/fastspring-builder.min.js"
         type="text/javascript"
-        data-storefront="ericateststore.test.onfastspring.com/embedded-readytoroll">
+        data-storefront="ericateststore.test.onfastspring.com/embedded-readytoroll"
+        data-after-markup-callback="onFscReady">
     </script>
 
     <style>
-        /* Hidden until an item is added to prevent 'pulsing' lines */
         #fsc-embedded-checkout-container {
             display: none; 
             margin: 50px auto;
@@ -28,17 +28,9 @@
             box-shadow: 0 20px 40px rgba(0,0,0,0.1);
             min-height: 600px;
         }
-        .static-hero {
-            background-color: #f3f5f7;
-            padding: 100px 0;
-        }
-        /* Ensures images look like professional product shots */
-        .image-holder img {
-            width: 100%;
-            height: auto;
-            background-color: #fff;
-            padding: 10px;
-        }
+        .static-hero { background-color: #f3f5f7; padding: 100px 0; }
+        .product-card { transition: all 0.3s ease; }
+        .product-card:hover { transform: translateY(-10px); box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
     </style>
 </head>
 
@@ -51,7 +43,7 @@
                     <h2 class="text-uppercase m-0">Ready to Roll</h2>
                 </a>
                 <div class="d-flex align-items-center">
-                    <span class="me-3 text-muted">Order Total: <strong class="text-dark" data-fsc-order-total>$0.00</strong></span>
+                    <span class="me-3 text-muted">Cart Total: <strong class="text-dark" data-fsc-order-total>$0.00</strong></span>
                 </div>
             </div>
         </nav>
@@ -68,7 +60,7 @@
                     </div>
                 </div>
                 <div class="col-md-5 offset-md-1 text-center">
-                    <img src="https://googleusercontent.com/image_generation_content/5" alt="Hero Cat" class="img-fluid rounded shadow-sm">
+                    <img src="https://googleusercontent.com/image_generation_content/5" alt="Hero" class="img-fluid rounded shadow-sm">
                 </div>
             </div>
         </div>
@@ -79,9 +71,33 @@
             <div class="row g-4">
                 
                 <div class="col-md-4" data-fsc-item-path="the-tavern">
-                    <div class="product-card border p-4 text-center h-100 shadow-sm">
+                    <div class="product-card border p-4 text-center h-100">
                         <div class="image-holder">
                             <img data-fsc-item-image src="https://googleusercontent.com/image_generation_content/4" class="img-fluid">
                         </div>
                         <h3 class="mt-3 text-uppercase" data-fsc-item-display>The Tavern</h3>
                         <p class="small text-muted" data-fsc-item-description-summary>Randomized Starter Character</p>
+                        <div class="mt-3">
+                            <span class="h4 d-block mb-3 text-primary" data-fsc-item-price>$10.00</span>
+                            <button type="button" data-fsc-item-path-value="the-tavern" data-fsc-action="Add" class="btn btn-dark w-100 text-uppercase">
+                                Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4" data-fsc-item-path="hall-of-legends">
+                    <div class="product-card border p-4 text-center h-100">
+                        <div class="image-holder">
+                            <img data-fsc-item-image src="https://googleusercontent.com/image_generation_content/6" class="img-fluid">
+                        </div>
+                        <h3 class="mt-3 text-uppercase" data-fsc-item-display>Hall of Legends</h3>
+                        <p class="small text-muted" data-fsc-item-description-summary>Choose a Pre-made Hero</p>
+                        <div class="mt-3">
+                            <span class="h4 d-block mb-3 text-primary" data-fsc-item-price>$25.00</span>
+                            <button type="button" data-fsc-item-path-value="hall-of-legends" data-fsc-action="Add" class="btn btn-dark w-100 text-uppercase">
+                                Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                </div>
