@@ -3,43 +3,46 @@
 
 <head>
 <meta charset="utf-8">
-<title>Ready to Roll2</title>
+<title>Ready to Roll</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <style>
 
 body{
-font-family: Arial;
+font-family:Arial;
+margin:0;
 background:#0f172a;
 color:white;
-margin:0;
 }
 
-header{
-display:flex;
-justify-content:space-between;
-align-items:center;
-padding:20px;
+.hero{
+padding:80px 20px;
+text-align:center;
 background:#020617;
+}
+
+.hero h1{
+font-size:42px;
+margin-bottom:10px;
 }
 
 .products{
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
 gap:30px;
-padding:40px;
+padding:50px;
 }
 
 .card{
 background:#1e293b;
-padding:20px;
+padding:25px;
 border-radius:10px;
 text-align:center;
 }
 
 .card img{
 width:100%;
-border-radius:8px;
+border-radius:6px;
 margin-bottom:10px;
 }
 
@@ -53,13 +56,7 @@ cursor:pointer;
 margin-top:10px;
 }
 
-.summary{
-font-size:14px;
-opacity:.85;
-margin-top:6px;
-}
-
-#checkout{
+.checkout{
 padding:40px;
 background:#020617;
 }
@@ -78,21 +75,15 @@ data-storefront="ericateststore.test.onfastspring.com/embedded-readytoroll">
 
 <body>
 
-<header>
-
-<h2>Ready to Roll</h2>
-
-<div>
-Cart (<span data-fsc-order-item-count></span>)
-</div>
-
-</header>
+<section class="hero">
+<h1>Ready to Roll</h1>
+<p>Adventure tools for your tabletop campaigns</p>
+</section>
 
 
-<div class="products">
+<section class="products">
 
 <!-- Tavern -->
-
 <div class="card">
 
 <img data-fsc-item-path="the-tavern" data-fsc-item-image>
@@ -101,16 +92,16 @@ Cart (<span data-fsc-order-item-count></span>)
 <span data-fsc-item-path="the-tavern" data-fsc-item-display></span>
 </h3>
 
-<div class="summary">
+<p>
 <span data-fsc-item-path="the-tavern" data-fsc-item-description-summary></span>
-</div>
+</p>
 
 <div>
 <span data-fsc-item-path="the-tavern" data-fsc-item-price></span>
 </div>
 
 <button
-data-fsc-item-path="the-tavern"
+data-fsc-item-path-value="the-tavern"
 data-fsc-action="Add">
 Add to Cart
 </button>
@@ -125,7 +116,6 @@ View Details
 
 
 <!-- Campfire -->
-
 <div class="card">
 
 <img data-fsc-item-path="the-campfire" data-fsc-item-image>
@@ -134,16 +124,16 @@ View Details
 <span data-fsc-item-path="the-campfire" data-fsc-item-display></span>
 </h3>
 
-<div class="summary">
+<p>
 <span data-fsc-item-path="the-campfire" data-fsc-item-description-summary></span>
-</div>
+</p>
 
 <div>
 <span data-fsc-item-path="the-campfire" data-fsc-item-price></span>
 </div>
 
 <button
-data-fsc-item-path="the-campfire"
+data-fsc-item-path-value="the-campfire"
 data-fsc-action="Add">
 Add to Cart
 </button>
@@ -158,7 +148,6 @@ View Details
 
 
 <!-- Guild Hall -->
-
 <div class="card">
 
 <img data-fsc-item-path="the-guild-hall" data-fsc-item-image>
@@ -167,16 +156,16 @@ View Details
 <span data-fsc-item-path="the-guild-hall" data-fsc-item-display></span>
 </h3>
 
-<div class="summary">
+<p>
 <span data-fsc-item-path="the-guild-hall" data-fsc-item-description-summary></span>
-</div>
+</p>
 
 <div>
 <span data-fsc-item-path="the-guild-hall" data-fsc-item-price></span>
 </div>
 
 <button
-data-fsc-item-path="the-guild-hall"
+data-fsc-item-path-value="the-guild-hall"
 data-fsc-action="Add">
 Add to Cart
 </button>
@@ -189,17 +178,16 @@ View Details
 
 </div>
 
-</div>
+</section>
 
 
-<div id="checkout">
+<section class="checkout">
 
 <h2>Checkout</h2>
 
-<!-- Embedded checkout container -->
 <div id="fsc-embedded-checkout-container"></div>
 
-</div>
+</section>
 
 </body>
 </html>
