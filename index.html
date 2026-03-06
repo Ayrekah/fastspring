@@ -1,49 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-<meta charset="utf-8">
-<title>Ready to Roll</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="UTF-8">
+<title>Fantasy Shop</title>
 
 <style>
 
 body{
 font-family:Arial;
-margin:0;
 background:#0f172a;
 color:white;
+margin:0;
 }
 
-.hero{
-padding:80px 20px;
-text-align:center;
+header{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:20px;
 background:#020617;
 }
 
-.hero h1{
-font-size:42px;
-margin-bottom:10px;
+.cart{
+background:#6366f1;
+padding:10px 18px;
+border-radius:8px;
+cursor:pointer;
 }
 
 .products{
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
 gap:30px;
-padding:50px;
+padding:40px;
 }
 
 .card{
 background:#1e293b;
-padding:25px;
-border-radius:10px;
+padding:20px;
+border-radius:12px;
 text-align:center;
 }
 
 .card img{
 width:100%;
-border-radius:6px;
-margin-bottom:10px;
+border-radius:10px;
+margin-bottom:12px;
+}
+
+.price{
+margin-top:8px;
+font-weight:bold;
 }
 
 button{
@@ -56,53 +63,61 @@ cursor:pointer;
 margin-top:10px;
 }
 
-.checkout{
-padding:40px;
-background:#020617;
+button:hover{
+background:#4f46e5;
+}
+
+.summary{
+font-size:14px;
+opacity:.85;
+margin-top:8px;
 }
 
 </style>
-
-<!-- FASTSPRING SCRIPT -->
-<script
+  <script
 id="fsc-api"
-src="https://sbl.onfastspring.com/sbl/1.0.6/fastspring-builder.min.js"
-type="text/javascript"
-data-storefront="ericateststore.test.onfastspring.com/embedded-readytoroll">
+src="https://sbl.onfastspring.com/sbl/1.0.3/fastspring-builder.min.js"
+data-storefront="ericateststore.test.onfastspring.com/embedded-readytoroll"
+type="text/javascript">
 </script>
-
 </head>
 
 <body>
 
-<section class="hero">
-<h1>Ready to Roll</h1>
-<p>Adventure tools for your tabletop campaigns</p>
-</section>
+<header>
+
+<h2>Fantasy Marketplace</h2>
+
+<div class="cart" data-fsc-action="ViewCart">
+Cart (<span data-fsc-order-item-count></span>)
+</div>
+
+</header>
 
 
-<section class="products">
+<div class="products">
 
 <!-- Tavern -->
+
 <div class="card">
 
-<img data-fsc-item-path="the-tavern" data-fsc-item-image>
+<img data-fsc-item-path="the-tavern" data-fsc-item-image />
 
 <h3>
 <span data-fsc-item-path="the-tavern" data-fsc-item-display></span>
 </h3>
 
-<p>
+<div class="summary">
 <span data-fsc-item-path="the-tavern" data-fsc-item-description-summary></span>
-</p>
+</div>
 
-<div>
+<div class="price">
 <span data-fsc-item-path="the-tavern" data-fsc-item-price></span>
 </div>
 
 <button
-data-fsc-item-path-value="the-tavern"
-data-fsc-action="Add">
+data-fsc-action="Add"
+data-fsc-item-path-value="the-tavern">
 Add to Cart
 </button>
 
@@ -116,25 +131,26 @@ View Details
 
 
 <!-- Campfire -->
+
 <div class="card">
 
-<img data-fsc-item-path="the-campfire" data-fsc-item-image>
+<img data-fsc-item-path="the-campfire" data-fsc-item-image />
 
 <h3>
 <span data-fsc-item-path="the-campfire" data-fsc-item-display></span>
 </h3>
 
-<p>
+<div class="summary">
 <span data-fsc-item-path="the-campfire" data-fsc-item-description-summary></span>
-</p>
+</div>
 
-<div>
+<div class="price">
 <span data-fsc-item-path="the-campfire" data-fsc-item-price></span>
 </div>
 
 <button
-data-fsc-item-path-value="the-campfire"
-data-fsc-action="Add">
+data-fsc-action="Add"
+data-fsc-item-path-value="the-campfire">
 Add to Cart
 </button>
 
@@ -148,25 +164,26 @@ View Details
 
 
 <!-- Guild Hall -->
+
 <div class="card">
 
-<img data-fsc-item-path="the-guild-hall" data-fsc-item-image>
+<img data-fsc-item-path="the-guild-hall" data-fsc-item-image />
 
 <h3>
 <span data-fsc-item-path="the-guild-hall" data-fsc-item-display></span>
 </h3>
 
-<p>
+<div class="summary">
 <span data-fsc-item-path="the-guild-hall" data-fsc-item-description-summary></span>
-</p>
+</div>
 
-<div>
+<div class="price">
 <span data-fsc-item-path="the-guild-hall" data-fsc-item-price></span>
 </div>
 
 <button
-data-fsc-item-path-value="the-guild-hall"
-data-fsc-action="Add">
+data-fsc-action="Add"
+data-fsc-item-path-value="the-guild-hall">
 Add to Cart
 </button>
 
@@ -178,16 +195,7 @@ View Details
 
 </div>
 
-</section>
-
-
-<section class="checkout">
-
-<h2>Checkout</h2>
-
-<div id="fsc-embedded-checkout-container"></div>
-
-</section>
+</div>
 
 </body>
 </html>
