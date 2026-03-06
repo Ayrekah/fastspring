@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Ready to Roll | TTRPG Character Creator</title>
+    <title>Ready to Roll | FastSpring SBL Integration</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
@@ -16,69 +16,91 @@
     </script>
 
     <style>
-        #fsc-embedded-checkout-container { 
-            min-height: 650px !important; 
-            margin: 40px auto; 
-            border: 1px solid #ddd; 
-            border-radius: 12px; 
-            display: none; 
-            background: #fff; 
+        /* CSS to handle the 'pulsing' (Skeleton) effect professionally */
+        [data-fsc-item-path] { min-height: 20px; }
+        
+        #fsc-embedded-checkout-container {
+            display: none; /* Controlled by onOrderItemsChanged */
+            margin: 40px auto;
+            min-height: 600px;
+            border-top: 1px solid #ddd;
         }
-        .product-card { border: 1px solid #eee; padding: 25px; border-radius: 10px; transition: 0.3s; background: #fff; cursor: pointer; }
-        .product-card:hover { border-color: #000; transform: translateY(-5px); }
-        .product-card img { width: 100%; height: auto; border-radius: 5px; margin-bottom: 15px; }
-        .modal-body img { max-width: 100%; border-radius: 8px; margin-bottom: 20px; }
+
+        .product-card { padding: 20px; border: 1px solid #eee; height: 100%; }
+        .product-card img { width: 100%; cursor: pointer; }
     </style>
 </head>
 
 <body>
-    <header class="p-3 border-bottom bg-white sticky-top">
-        <div class="container d-flex justify-content-between align-items-center">
-            <h4 class="m-0 text-uppercase">Ready to Roll</h4>
-            <div>Cart Total: <strong data-fsc-order-total>$0.00</strong></div>
+    <header class="p-3 border-bottom sticky-top bg-white">
+        <div class="container d-flex justify-content-between">
+            <strong>READY TO ROLL</strong>
+            <div>Total: <span data-fsc-order-total></span></div>
         </div>
     </header>
 
-    <section class="container py-5 text-center">
-        <h1 class="display-4 text-uppercase mb-5">Select Your Tier</h1>
+    <section class="container py-5">
         <div class="row g-4">
             
             <div class="col-md-4">
-                <div class="product-card h-100" onclick="openQuickView('the-tavern', 'The Tavern', 'A randomized level 1 character with a basic backstory and standard equipment. Perfect for a quick pick-up game.', 'https://googleusercontent.com/image_generation_content/4')">
-                    <img src="https://googleusercontent.com/image_generation_content/4" alt="The Tavern">
-                    <h3 class="text-uppercase" data-fsc-item-path="the-tavern" data-fsc-item-display>The Tavern</h3>
-                    <div class="h4 mb-3 text-primary" data-fsc-item-path="the-tavern" data-fsc-item-price>$10.00</div>
-                    <button type="button" onclick="event.stopPropagation(); addToCart('the-tavern')" class="btn btn-dark w-100">Add to Cart</button>
+                <div class="product-card">
+                    <img data-fsc-item-path="the-tavern" data-fsc-item-image src="" onclick="openFullDetails('the-tavern')">
+                    
+                    <h3 class="mt-3" data-fsc-item-path="the-tavern" data-fsc-item-display></h3>
+                    
+                    <p class="text-muted" data-fsc-item-path="the-tavern" data-fsc-item-description-summary></p>
+                    
+                    <div class="h4 text-primary" data-fsc-item-path="the-tavern" data-fsc-item-price></div>
+                    
+                    <button class="btn btn-dark w-100 mt-2" 
+                            data-fsc-item-path-value="the-tavern" 
+                            data-fsc-action="Add">
+                        Add to Cart
+                    </button>
                 </div>
             </div>
 
             <div class="col-md-4">
-                <div class="product-card h-100" onclick="openQuickView('hall-of-legends', 'Hall of Legends', 'Choose from our curated vault of high-level heroes. These characters come with complex backstories and magic items.', 'https://googleusercontent.com/image_generation_content/6')">
-                    <img src="https://googleusercontent.com/image_generation_content/6" alt="Hall of Legends">
-                    <h3 class="text-uppercase" data-fsc-item-path="hall-of-legends" data-fsc-item-display>Hall of Legends</h3>
-                    <div class="h4 mb-3 text-primary" data-fsc-item-path="hall-of-legends" data-fsc-item-price>$25.00</div>
-                    <button type="button" onclick="event.stopPropagation(); addToCart('hall-of-legends')" class="btn btn-dark w-100">Add to Cart</button>
+                <div class="product-card">
+                    <img data-fsc-item-path="hall-of-legends" data-fsc-item-image src="" onclick="openFullDetails('hall-of-legends')">
+                    <h3 class="mt-3" data-fsc-item-path="hall-of-legends" data-fsc-item-display></h3>
+                    <p class="text-muted" data-fsc-item-path="hall-of-legends" data-fsc-item-description-summary></p>
+                    <div class="h4 text-primary" data-fsc-item-path="hall-of-legends" data-fsc-item-price></div>
+                    <button class="btn btn-dark w-100 mt-2" 
+                            data-fsc-item-path-value="hall-of-legends" 
+                            data-fsc-action="Add">
+                        Add to Cart
+                    </button>
                 </div>
             </div>
 
             <div class="col-md-4">
-                <div class="product-card h-100" onclick="openQuickView('great-architect', 'The Architect', 'A completely bespoke character commission. We build the stats, the lore, and a custom character portrait from scratch.', 'https://googleusercontent.com/image_generation_content/9')">
-                    <img src="https://googleusercontent.com/image_generation_content/9" alt="Great Architect">
-                    <h3 class="text-uppercase" data-fsc-item-path="great-architect" data-fsc-item-display>The Architect</h3>
-                    <div class="h4 mb-3 text-primary" data-fsc-item-path="great-architect" data-fsc-item-price>$50.00</div>
-                    <button type="button" onclick="event.stopPropagation(); addToCart('great-architect')" class="btn btn-dark w-100">Add to Cart</button>
+                <div class="product-card">
+                    <img data-fsc-item-path="great-architect" data-fsc-item-image src="" onclick="openFullDetails('great-architect')">
+                    <h3 class="mt-3" data-fsc-item-path="great-architect" data-fsc-item-display></h3>
+                    <p class="text-muted" data-fsc-item-path="great-architect" data-fsc-item-description-summary></p>
+                    <div class="h4 text-primary" data-fsc-item-path="great-architect" data-fsc-item-price></div>
+                    <button class="btn btn-dark w-100 mt-2" 
+                            data-fsc-item-path-value="great-architect" 
+                            data-fsc-action="Add">
+                        Add to Cart
+                    </button>
                 </div>
             </div>
 
         </div>
     </section>
 
-    <div class="modal fade" id="quickViewModal" tabindex="-1">
-        <div class="modal-dialog modal-dialog-centered">
+    <div class="modal fade" id="detailModal" tabindex="-1">
+        <div class="modal-dialog modal-lg">
             <div class="modal-content">
-                <div class="modal-header"><h5 class="modal-title" id="modalTitle"></h5><button type="button" class="btn-close" data-bs-dismiss="modal"></button></div>
-                <div class="modal-body text-center"><img id="modalImage" src="" class="img-fluid"><p id="modalDescription" class="mt-3"></p></div>
-                <div class="modal-footer"><button id="modalBuyBtn" class="btn btn-dark w-100">Add to Cart</button></div>
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalTitle"></h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <div id="modalDescription"></div>
+                </div>
             </div>
         </div>
     </div>
@@ -88,31 +110,48 @@
     </div>
 
     <script type="text/javascript">
-        // 1. CLICK HANDLER
-        function addToCart(path) {
-            console.log("Ready to Roll: Adding " + path);
-            fastspring.builder.add(path);
-            const container = document.getElementById('fsc-embedded-checkout-container');
-            container.style.display = 'block';
-            fastspring.builder.checkout();
-            setTimeout(() => { container.scrollIntoView({ behavior: 'smooth' }); }, 300);
+        /**
+         * FASTSPRING SBL CALLBACKS
+         */
+        function onFscOrderItemsChanged(data) {
+            console.log("SBL: Order Items Changed", data);
+            
+            if (data.items.length > 0) {
+                // Display the embedded checkout container
+                const checkout = document.getElementById('fsc-embedded-checkout-container');
+                checkout.style.display = 'block';
+                
+                // UX: Ensure the checkout is rendered and visible
+                fastspring.builder.checkout();
+                
+                setTimeout(() => {
+                    checkout.scrollIntoView({ behavior: 'smooth' });
+                }, 300);
+            }
         }
 
-        // 2. QUICK VIEW MODAL (Using hardcoded fallbacks to be safe)
-        function openQuickView(path, name, desc, img) {
-            const modal = new bootstrap.Modal(document.getElementById('quickViewModal'));
-            document.getElementById('modalTitle').innerText = name;
-            document.getElementById('modalImage').src = img;
-            document.getElementById('modalDescription').innerText = desc;
-            document.getElementById('modalBuyBtn').onclick = function() {
-                modal.hide();
-                addToCart(path);
-            };
-            modal.show();
-        }
+        // REQUIRED GLOBAL OBJECT
+        window.fastspring = {
+            builder: {
+                "onOrderItemsChanged": onFscOrderItemsChanged
+            }
+        };
 
-        function onFscOrderItemsChanged(data) { console.log("Cart Sync:", data); }
-        window.fastspring = { builder: { "onOrderItemsChanged": onFscOrderItemsChanged } };
+        /**
+         * INTERFACE FUNCTIONS
+         */
+        function openFullDetails(path) {
+            const modal = new bootstrap.Modal(document.getElementById('detailModal'));
+            
+            // Accessing product data directly via the SBL object
+            const item = fastspring.builder.item(path);
+            
+            if (item) {
+                document.getElementById('modalTitle').innerText = item.display;
+                document.getElementById('modalDescription').innerHTML = item.descriptionFull;
+                modal.show();
+            }
+        }
     </script>
 
     <script src="js/jquery-1.11.0.min.js"></script>
