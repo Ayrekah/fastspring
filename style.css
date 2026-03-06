@@ -1019,3 +1019,19 @@ figure.instagram-item img.insta-image {
 .post-navigation:focus svg {
     fill: var(--primary-color);
 }
+
+/* FORCE THE LANDING STRIP TO EXIST */
+#fsc-embedded-checkout-container {
+    display: block !important; /* Force it to stay in the DOM */
+    min-height: 600px !important; /* Give the iframe a place to live */
+    width: 100%;
+    background-color: #ffffff;
+    margin-bottom: 50px;
+}
+
+/* Ensure the iframe inside the container fills the space */
+#fsc-embedded-checkout-container iframe {
+    width: 100% !important;
+    height: 100% !important;
+    border: none !important;
+}
