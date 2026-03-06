@@ -2,55 +2,42 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Ready to Roll</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Guild Marketplace</title>
 
 <style>
 
 body{
-margin:0;
-font-family:system-ui;
-background:#111;
+font-family: Arial, sans-serif;
+background:#0f172a;
 color:white;
+margin:0;
+padding:0;
 }
 
 header{
-text-align:center;
-padding:40px 20px 10px;
-}
-
-h1{
-font-size:42px;
-margin-bottom:20px;
-}
-
-.hero{
-width:100%;
-height:400px;
-background:url("https://images.unsplash.com/photo-1511512578047-dfb367046420") center/cover no-repeat;
 display:flex;
+justify-content:space-between;
 align-items:center;
-justify-content:center;
+padding:20px;
+background:#020617;
 }
 
-.hero h2{
-background:rgba(0,0,0,.6);
-padding:20px 30px;
+.cart-button{
+background:#6366f1;
+padding:10px 18px;
 border-radius:8px;
-font-size:32px;
+cursor:pointer;
 }
 
 .products{
-max-width:1200px;
-margin:60px auto;
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-gap:40px;
-padding:0 20px;
+gap:30px;
+padding:40px;
 }
 
 .card{
-background:#1a1a1a;
+background:#1e293b;
 border-radius:12px;
 padding:20px;
 text-align:center;
@@ -58,75 +45,28 @@ text-align:center;
 
 .card img{
 width:100%;
-border-radius:8px;
+border-radius:10px;
+margin-bottom:10px;
 }
 
-.card h3{
-margin:15px 0 5px;
-}
-
-.card button{
+button{
+background:#6366f1;
+border:none;
+color:white;
+padding:10px 16px;
+border-radius:6px;
+cursor:pointer;
 margin-top:10px;
-padding:10px 20px;
-background:#e63946;
-border:none;
-border-radius:6px;
-color:white;
-cursor:pointer;
-font-weight:bold;
 }
 
-.card button:hover{
-background:#ff4d5d;
+button:hover{
+background:#4f46e5;
 }
 
-.cart-button{
-position:fixed;
-top:20px;
-right:20px;
-background:#222;
-padding:10px 18px;
-border-radius:8px;
-cursor:pointer;
-}
-
-.cart-drawer{
-position:fixed;
-right:-400px;
-top:0;
-width:340px;
-height:100%;
-background:#181818;
-padding:25px;
-transition:.35s;
-overflow:auto;
-}
-
-.cart-drawer.open{
-right:0;
-}
-
-.cart-item{
-display:flex;
-justify-content:space-between;
-margin:10px 0;
-}
-
-.checkout{
-margin-top:20px;
-padding:12px;
-width:100%;
-background:#2a9d8f;
-border:none;
-border-radius:6px;
-color:white;
-font-weight:bold;
-cursor:pointer;
-}
-
-#fsc-embedded-checkout-container{
-max-width:1000px;
-margin:60px auto;
+.details{
+margin-top:10px;
+font-size:14px;
+opacity:.8;
 }
 
 </style>
@@ -135,104 +75,131 @@ margin:60px auto;
 <body>
 
 <header>
-<h1>Ready to Roll</h1>
+
+<h2>Guild Marketplace</h2>
+
+<div class="cart-button" data-fsc-action="ViewCart">
+Cart (<span data-fsc-order-item-count></span>)
+</div>
+
 </header>
 
-<section class="hero">
-<h2>Your Next Adventure Starts Here</h2>
-</section>
 
-<div class="cart-button" onclick="toggleCart()">
-Cart: $<span id="cartTotal">0.00</span>
-</div>
+<div class="products">
 
-<div class="cart-drawer" id="cartDrawer">
-<h2>Your Cart</h2>
 
-<div id="cartItems"></div>
-
-<button class="checkout" onclick="checkout()">Checkout</button>
-</div>
-
-<section class="products">
+<!-- Guild Hall -->
 
 <div class="card">
-<img data-fsc-item-path="the-tavern" data-fsc-item-image>
-<h3>The Tavern</h3>
-<button onclick="add('the-tavern')">Add to Cart</button>
+
+<img src="images/guildhall.jpg">
+
+<h3>
+<span data-fsc-item-path="guildhall" data-fsc-item-display></span>
+</h3>
+
+<div class="details">
+<span data-fsc-item-path="guildhall" data-fsc-item-description-summary></span>
 </div>
+
+<div>
+Price: <span data-fsc-item-path="guildhall" data-fsc-item-price></span>
+</div>
+
+<button
+data-fsc-action="Add"
+data-fsc-item-path-value="guildhall">
+Add to Cart
+</button>
+
+<button
+data-fsc-action="View"
+data-fsc-item-path-value="guildhall">
+View Details
+</button>
+
+</div>
+
+
+
+<!-- Magic Sword -->
 
 <div class="card">
-<img data-fsc-item-path="the-campfire" data-fsc-item-image>
-<h3>The Campfire</h3>
-<button onclick="add('the-campfire')">Add to Cart</button>
+
+<img src="images/sword.jpg">
+
+<h3>
+<span data-fsc-item-path="sword" data-fsc-item-display></span>
+</h3>
+
+<div class="details">
+<span data-fsc-item-path="sword" data-fsc-item-description-summary></span>
 </div>
+
+<div>
+Price: <span data-fsc-item-path="sword" data-fsc-item-price></span>
+</div>
+
+<button
+data-fsc-action="Add"
+data-fsc-item-path-value="sword">
+Add to Cart
+</button>
+
+<button
+data-fsc-action="View"
+data-fsc-item-path-value="sword">
+View Details
+</button>
+
+</div>
+
+
+
+<!-- Potion -->
 
 <div class="card">
-<img data-fsc-item-path="the-guild-hall" data-fsc-item-image>
-<h3>The Guild Hall</h3>
-<button onclick="add('the-guild-hall')">Add to Cart</button>
+
+<img src="images/potion.jpg">
+
+<h3>
+<span data-fsc-item-path="potion" data-fsc-item-display></span>
+</h3>
+
+<div class="details">
+<span data-fsc-item-path="potion" data-fsc-item-description-summary></span>
 </div>
 
-</section>
+<div>
+Price: <span data-fsc-item-path="potion" data-fsc-item-price></span>
+</div>
 
-<div id="fsc-embedded-checkout-container"></div>
+<button
+data-fsc-action="Add"
+data-fsc-item-path-value="potion">
+Add to Cart
+</button>
 
-<script>
+<button
+data-fsc-action="View"
+data-fsc-item-path-value="potion">
+View Details
+</button>
 
-function toggleCart(){
-document.getElementById("cartDrawer").classList.toggle("open")
-}
+</div>
 
-function add(product){
-fastspring.builder.add(product)
-toggleCart()
-}
 
-function checkout(){
-fastspring.builder.checkout()
-}
+</div>
 
-function updateCart(data){
 
-let container = document.getElementById("cartItems")
-container.innerHTML=""
-
-if(!data || !data.groups){return}
-
-let total=0
-
-data.groups.forEach(group=>{
-group.items.forEach(item=>{
-
-total+=item.priceTotalValue
-
-let row=document.createElement("div")
-row.className="cart-item"
-row.innerHTML=`
-<span>${item.display}</span>
-<span>$${item.priceTotal}</span>
-`
-container.appendChild(row)
-
-})
-})
-
-document.getElementById("cartTotal").innerText=total.toFixed(2)
-
-}
-
-</script>
 
 <script
 id="fsc-api"
-src="https://sbl.onfastspring.com/sbl/1.0.6/fastspring-builder.min.js"
-type="text/javascript"
-data-storefront="ericateststore.test.onfastspring.com/embedded-readytoroll"
-data-continuous="true"
-data-checkout-container="fsc-embedded-checkout-container"
-data-data-callback="updateCart">
+src="https://sbl.onfastspring.com/sbl/1.0.3/fastspring-builder.min.js"
+data-storefront="yourstore.onfastspring.com/popup-yourstore"
+type="text/javascript">
 </script>
+
 
 </body>
 </html>
