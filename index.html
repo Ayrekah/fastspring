@@ -1,8 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>Fantasy Shop</title>
+
+<meta charset="utf-8">
+<title>Ready to Roll Store</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
 
 <style>
 
@@ -19,13 +21,6 @@ justify-content:space-between;
 align-items:center;
 padding:20px;
 background:#020617;
-}
-
-.cart{
-background:#6366f1;
-padding:10px 18px;
-border-radius:8px;
-cursor:pointer;
 }
 
 .products{
@@ -45,12 +40,6 @@ text-align:center;
 .card img{
 width:100%;
 border-radius:10px;
-margin-bottom:12px;
-}
-
-.price{
-margin-top:8px;
-font-weight:bold;
 }
 
 button{
@@ -63,39 +52,73 @@ cursor:pointer;
 margin-top:10px;
 }
 
-button:hover{
-background:#4f46e5;
-}
-
 .summary{
 font-size:14px;
-opacity:.85;
-margin-top:8px;
+opacity:.8;
+margin-top:6px;
+}
+
+#checkout{
+padding:40px;
+background:#020617;
 }
 
 </style>
+
+
+<script>
+
+function onOrderItemsChanged(order){
+
+document.getElementById("cartCount").innerText = order.items.length
+
+if(order.items.length > 0){
+fastspring.builder.checkout()
+}
+
+}
+
+window.fastspring = {
+builder:{
+onOrderItemsChanged:onOrderItemsChanged
+}
+}
+
+</script>
+
+
+<script
+id="fsc-api"
+src="https://sbl.onfastspring.com/sbl/1.0.3/fastspring-builder.min.js"
+data-storefront="ericateststore.test.onfastspring.com/embedded-readytoroll"
+type="text/javascript">
+</script>
+
 </head>
+
 
 <body>
 
 <header>
 
-<h2>Fantasy Marketplace</h2>
+<h2>Ready to Roll</h2>
 
-<div class="cart" data-fsc-action="ViewCart">
-Cart (<span data-fsc-order-item-count></span>)
+<div>
+Cart (<span id="cartCount">0</span>)
 </div>
 
 </header>
 
 
+
 <div class="products">
+
 
 <!-- Tavern -->
 
 <div class="card">
 
-<img data-fsc-item-path="the-tavern" data-fsc-item-image />
+<img data-fsc-item-path="the-tavern" data-fsc-item-image>
 
 <h3>
 <span data-fsc-item-path="the-tavern" data-fsc-item-display></span>
@@ -105,30 +128,29 @@ Cart (<span data-fsc-order-item-count></span>)
 <span data-fsc-item-path="the-tavern" data-fsc-item-description-summary></span>
 </div>
 
-<div class="price">
+<div>
 <span data-fsc-item-path="the-tavern" data-fsc-item-price></span>
 </div>
 
 <button
-data-fsc-action="Add"
-data-fsc-item-path-value="the-tavern">
+data-fsc-item-path-value="the-tavern"
+data-fsc-action="Add">
 Add to Cart
 </button>
 
-<button
-data-fsc-action="View"
-data-fsc-item-path-value="the-tavern">
+<button onclick="showDetails('the-tavern')">
 View Details
 </button>
 
 </div>
 
 
+
 <!-- Campfire -->
 
 <div class="card">
 
-<img data-fsc-item-path="the-campfire" data-fsc-item-image />
+<img data-fsc-item-path="the-campfire" data-fsc-item-image>
 
 <h3>
 <span data-fsc-item-path="the-campfire" data-fsc-item-display></span>
@@ -138,30 +160,29 @@ View Details
 <span data-fsc-item-path="the-campfire" data-fsc-item-description-summary></span>
 </div>
 
-<div class="price">
+<div>
 <span data-fsc-item-path="the-campfire" data-fsc-item-price></span>
 </div>
 
 <button
-data-fsc-action="Add"
-data-fsc-item-path-value="the-campfire">
+data-fsc-item-path-value="the-campfire"
+data-fsc-action="Add">
 Add to Cart
 </button>
 
-<button
-data-fsc-action="View"
-data-fsc-item-path-value="the-campfire">
+<button onclick="showDetails('the-campfire')">
 View Details
 </button>
 
 </div>
 
 
+
 <!-- Guild Hall -->
 
 <div class="card">
 
-<img data-fsc-item-path="the-guild-hall" data-fsc-item-image />
+<img data-fsc-item-path="the-guild-hall" data-fsc-item-image>
 
 <h3>
 <span data-fsc-item-path="the-guild-hall" data-fsc-item-display></span>
@@ -171,34 +192,71 @@ View Details
 <span data-fsc-item-path="the-guild-hall" data-fsc-item-description-summary></span>
 </div>
 
-<div class="price">
+<div>
 <span data-fsc-item-path="the-guild-hall" data-fsc-item-price></span>
 </div>
 
 <button
-data-fsc-action="Add"
-data-fsc-item-path-value="the-guild-hall">
+data-fsc-item-path-value="the-guild-hall"
+data-fsc-action="Add">
 Add to Cart
 </button>
 
-<button
-data-fsc-action="View"
-data-fsc-item-path-value="the-guild-hall">
+<button onclick="showDetails('the-guild-hall')">
 View Details
 </button>
 
 </div>
 
+
 </div>
 
 
 
-<script
-id="fsc-api"
-src="https://sbl.onfastspring.com/sbl/1.0.3/fastspring-builder.min.js"
-data-storefront="ericateststore.test.onfastspring.com/embedded-readytoroll"
-type="text/javascript">
+<div id="checkout">
+
+<h2>Your Cart</h2>
+
+<div id="fsc-embedded-checkout-container"></div>
+
+</div>
+
+
+
+<div id="detailsModal" style="display:none;position:fixed;top:20%;left:50%;transform:translateX(-50%);background:white;color:black;padding:30px;border-radius:10px;width:400px">
+
+<h3 id="detailTitle"></h3>
+
+<div id="detailBody"></div>
+
+<br>
+
+<button onclick="closeDetails()">Close</button>
+
+</div>
+
+
+
+<script>
+
+function showDetails(path){
+
+const item = fastspring.builder.item(path)
+
+document.getElementById("detailTitle").innerText = item.display
+
+document.getElementById("detailBody").innerHTML = item.descriptionFull
+
+document.getElementById("detailsModal").style.display = "block"
+
+}
+
+function closeDetails(){
+document.getElementById("detailsModal").style.display="none"
+}
+
 </script>
+
 
 </body>
 </html>
