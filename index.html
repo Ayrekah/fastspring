@@ -16,8 +16,62 @@ id="fsc-api"
 src="https://sbl.onfastspring.com/sbl/1.0.6/fastspring-builder.min.js"
 type="text/javascript"
 data-storefront="ericateststore.test.onfastspring.com/embedded-readytoroll"
+data-continuous="true"
 data-debug="true">
 </script>
+
+<style>
+
+.cart-drawer{
+position:fixed;
+top:0;
+right:-400px;
+width:400px;
+height:100%;
+background:white;
+box-shadow:-5px 0 20px rgba(0,0,0,.15);
+z-index:9999;
+transition:right .3s ease;
+padding:25px;
+overflow-y:auto;
+}
+
+.cart-drawer.open{
+right:0;
+}
+
+.cart-overlay{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,.4);
+display:none;
+z-index:9998;
+}
+
+.cart-overlay.show{
+display:block;
+}
+
+#cart-count{
+font-weight:700;
+color:#0d6efd;
+cursor:pointer;
+}
+
+.product-card{
+background:white;
+transition:all .2s;
+}
+
+.product-card:hover{
+transform:translateY(-4px);
+box-shadow:0 8px 20px rgba(0,0,0,.1);
+}
+
+</style>
 
 </head>
 
@@ -25,11 +79,14 @@ data-debug="true">
 
 <header class="p-3 border-bottom sticky-top bg-white">
 <div class="container d-flex justify-content-between align-items-center">
+
 <strong>READY TO ROLL</strong>
-<div>
-Cart: <span id="cart-count">0</span> items | 
+
+<div onclick="toggleCart()">
+Cart: <span id="cart-count">0</span> |
 Total: <strong data-fsc-order-total></strong>
 </div>
+
 </div>
 </header>
 
@@ -37,43 +94,36 @@ Total: <strong data-fsc-order-total></strong>
 
 <div class="row g-4">
 
-<!-- PRODUCT 1 -->
+<!-- TAVERN -->
+
 <div class="col-md-4">
 <div class="product-card border rounded p-3 h-100 text-center">
 
-<img
-data-fsc-item-path="the-tavern"
+<img data-fsc-item-path="the-tavern"
 data-fsc-item-image
+src=""
 class="img-fluid rounded"
 onclick="openFullDetails('the-tavern')">
 
-<h3
-class="mt-3"
+<h3 class="mt-3"
 data-fsc-item-path="the-tavern"
-data-fsc-item-display>
-</h3>
+data-fsc-item-display></h3>
 
-<p
-class="text-muted"
+<p class="text-muted"
 data-fsc-item-path="the-tavern"
-data-fsc-item-description-summary>
-</p>
+data-fsc-item-description-summary></p>
 
-<div
-class="h4 text-primary"
+<div class="h4 text-primary"
 data-fsc-item-path="the-tavern"
-data-fsc-item-price>
-</div>
+data-fsc-item-price></div>
 
-<button
-class="btn btn-dark w-100 mt-2"
+<button class="btn btn-dark w-100 mt-2"
 data-fsc-action="Add"
 data-fsc-item-path-value="the-tavern">
 Add to Cart
 </button>
 
-<button
-class="btn btn-outline-secondary w-100 mt-2"
+<button class="btn btn-outline-secondary w-100 mt-2"
 onclick="openFullDetails('the-tavern')">
 View Details
 </button>
@@ -81,43 +131,36 @@ View Details
 </div>
 </div>
 
-<!-- PRODUCT 2 -->
+<!-- CAMPFIRE -->
+
 <div class="col-md-4">
 <div class="product-card border rounded p-3 h-100 text-center">
 
-<img
-data-fsc-item-path="the-campfire"
+<img data-fsc-item-path="the-campfire"
 data-fsc-item-image
+src=""
 class="img-fluid rounded"
 onclick="openFullDetails('the-campfire')">
 
-<h3
-class="mt-3"
+<h3 class="mt-3"
 data-fsc-item-path="the-campfire"
-data-fsc-item-display>
-</h3>
+data-fsc-item-display></h3>
 
-<p
-class="text-muted"
+<p class="text-muted"
 data-fsc-item-path="the-campfire"
-data-fsc-item-description-summary>
-</p>
+data-fsc-item-description-summary></p>
 
-<div
-class="h4 text-primary"
+<div class="h4 text-primary"
 data-fsc-item-path="the-campfire"
-data-fsc-item-price>
-</div>
+data-fsc-item-price></div>
 
-<button
-class="btn btn-dark w-100 mt-2"
+<button class="btn btn-dark w-100 mt-2"
 data-fsc-action="Add"
 data-fsc-item-path-value="the-campfire">
 Add to Cart
 </button>
 
-<button
-class="btn btn-outline-secondary w-100 mt-2"
+<button class="btn btn-outline-secondary w-100 mt-2"
 onclick="openFullDetails('the-campfire')">
 View Details
 </button>
@@ -125,43 +168,36 @@ View Details
 </div>
 </div>
 
-<!-- PRODUCT 3 -->
+<!-- GUILD HALL -->
+
 <div class="col-md-4">
 <div class="product-card border rounded p-3 h-100 text-center">
 
-<img
-data-fsc-item-path="the-guild-hall"
+<img data-fsc-item-path="the-guild-hall"
 data-fsc-item-image
+src=""
 class="img-fluid rounded"
 onclick="openFullDetails('the-guild-hall')">
 
-<h3
-class="mt-3"
+<h3 class="mt-3"
 data-fsc-item-path="the-guild-hall"
-data-fsc-item-display>
-</h3>
+data-fsc-item-display></h3>
 
-<p
-class="text-muted"
+<p class="text-muted"
 data-fsc-item-path="the-guild-hall"
-data-fsc-item-description-summary>
-</p>
+data-fsc-item-description-summary></p>
 
-<div
-class="h4 text-primary"
+<div class="h4 text-primary"
 data-fsc-item-path="the-guild-hall"
-data-fsc-item-price>
-</div>
+data-fsc-item-price></div>
 
-<button
-class="btn btn-dark w-100 mt-2"
+<button class="btn btn-dark w-100 mt-2"
 data-fsc-action="Add"
 data-fsc-item-path-value="the-guild-hall">
 Add to Cart
 </button>
 
-<button
-class="btn btn-outline-secondary w-100 mt-2"
+<button class="btn btn-outline-secondary w-100 mt-2"
 onclick="openFullDetails('the-guild-hall')">
 View Details
 </button>
@@ -170,20 +206,22 @@ View Details
 </div>
 
 </div>
-
 </section>
 
-<!-- CART -->
+<!-- CART OVERLAY -->
 
-<section class="container py-5">
+<div class="cart-overlay" id="cartOverlay" onclick="toggleCart()"></div>
 
-<h3>Your Cart</h3>
+<!-- CART DRAWER -->
+
+<div class="cart-drawer" id="cartDrawer" data-fsc-order>
+
+<h4>Your Cart</h4>
 
 <div data-fsc-order-items>
 
-<div
-class="d-flex justify-content-between align-items-center border-bottom py-2"
-data-fsc-item>
+<div data-fsc-item data-fsc-item-template
+class="d-flex justify-content-between align-items-center border-bottom py-2">
 
 <div>
 
@@ -193,8 +231,7 @@ data-fsc-item>
 
 </div>
 
-<button
-class="btn btn-sm btn-outline-danger"
+<button class="btn btn-sm btn-outline-danger"
 data-fsc-action="Remove">
 Remove
 </button>
@@ -204,34 +241,19 @@ Remove
 </div>
 
 <div class="mt-3">
-
-Total:
-<strong data-fsc-order-total></strong>
-
+Total: <strong data-fsc-order-total></strong>
 </div>
 
-<button
-class="btn btn-success mt-3"
+<button class="btn btn-success w-100 mt-3"
 data-fsc-action="Checkout">
 Checkout
 </button>
 
-</section>
+<div id="fsc-embedded-checkout-container" class="mt-4"></div>
 
-<!-- EMBEDDED CHECKOUT -->
-
-<section class="container py-5">
-
-<h3>Checkout</h3>
-
-<div
-id="fsc-embedded-checkout-container"
-style="display:none;">
 </div>
 
-</section>
-
-<!-- PRODUCT DETAIL MODAL -->
+<!-- PRODUCT MODAL -->
 
 <div class="modal fade" id="detailModal" tabindex="-1">
 
@@ -243,11 +265,9 @@ style="display:none;">
 
 <h5 class="modal-title" id="modalTitle"></h5>
 
-<button
-type="button"
+<button type="button"
 class="btn-close"
-data-bs-dismiss="modal">
-</button>
+data-bs-dismiss="modal"></button>
 
 </div>
 
@@ -263,21 +283,38 @@ data-bs-dismiss="modal">
 
 </div>
 
-<!-- JS -->
-
 <script src="js/bootstrap.bundle.min.js"></script>
 
 <script>
 
+function toggleCart(){
+
+const drawer=document.getElementById("cartDrawer");
+const overlay=document.getElementById("cartOverlay");
+
+drawer.classList.toggle("open");
+overlay.classList.toggle("show");
+
+}
+
 function onFscOrderItemsChanged(data){
 
-console.log("Order updated:", data);
+console.log("Order Updated:",data);
 
-const checkout = document.getElementById("fsc-embedded-checkout-container");
+const cartCount=document.getElementById("cart-count");
 
-if(data.items.length > 0){
+let totalItems=0;
 
-checkout.style.display = "block";
+data.items.forEach(item=>{
+totalItems+=item.quantity;
+});
+
+cartCount.innerText=totalItems;
+
+if(totalItems>0){
+
+document.getElementById("cartDrawer").classList.add("open");
+document.getElementById("cartOverlay").classList.add("show");
 
 fastspring.builder.checkout();
 
@@ -285,7 +322,7 @@ fastspring.builder.checkout();
 
 }
 
-window.fastspring = {
+window.fastspring={
 builder:{
 onOrderItemsChanged:onFscOrderItemsChanged
 }
@@ -293,21 +330,15 @@ onOrderItemsChanged:onFscOrderItemsChanged
 
 function openFullDetails(path){
 
-const item = fastspring.builder.item(path);
+const item=fastspring.builder.item(path);
 
-if(!item){
+if(!item)return;
 
-console.warn("Item not loaded yet");
+document.getElementById("modalTitle").innerText=item.display;
 
-return;
+document.getElementById("modalDescription").innerHTML=item.description;
 
-}
-
-document.getElementById("modalTitle").innerText = item.display;
-
-document.getElementById("modalDescription").innerHTML = item.descriptionFull;
-
-const modal = new bootstrap.Modal(document.getElementById("detailModal"));
+const modal=new bootstrap.Modal(document.getElementById("detailModal"));
 
 modal.show();
 
