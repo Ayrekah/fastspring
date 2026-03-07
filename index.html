@@ -20,7 +20,10 @@ data-debug="true">
 
 <hr>
 
-<h2>The Tavern</h2>
+<h2>Products</h2>
+
+<!-- Tavern -->
+<div>
 
 <img data-fsc-item-path="the-tavern" data-fsc-item-image width="200">
 
@@ -39,10 +42,12 @@ data-fsc-item-path-value="the-tavern">
 Add to Cart
 </button>
 
+</div>
+
 <hr>
 
-
-<h2>The Campfire</h2>
+<!-- Campfire -->
+<div>
 
 <img data-fsc-item-path="the-campfire" data-fsc-item-image width="200">
 
@@ -61,10 +66,12 @@ data-fsc-item-path-value="the-campfire">
 Add to Cart
 </button>
 
+</div>
+
 <hr>
 
-
-<h2>The Guild Hall</h2>
+<!-- Guild Hall -->
+<div>
 
 <img data-fsc-item-path="the-guild-hall" data-fsc-item-image width="200">
 
@@ -83,33 +90,110 @@ data-fsc-item-path-value="the-guild-hall">
 Add to Cart
 </button>
 
+</div>
+
 <hr>
 
 <h2>Cart</h2>
 
-<p>
+<!-- TAVERN CART LINE -->
+<div
+data-fsc-item-path="the-tavern"
+data-fsc-item-selection-smartdisplay>
+
+<strong data-fsc-item-display></strong>
+<br>
+
+Qty:
+<span data-fsc-item-quantity></span>
+
+×
+
+<span data-fsc-item-price></span>
+
+<button
+data-fsc-action="Remove"
+data-fsc-item-path-value="the-tavern">
+Remove
+</button>
+
+</div>
+
+<hr>
+
+<!-- CAMPFIRE CART LINE -->
+<div
+data-fsc-item-path="the-campfire"
+data-fsc-item-selection-smartdisplay>
+
+<strong data-fsc-item-display></strong>
+<br>
+
+Qty:
+<span data-fsc-item-quantity></span>
+
+×
+
+<span data-fsc-item-price></span>
+
+<button
+data-fsc-action="Remove"
+data-fsc-item-path-value="the-campfire">
+Remove
+</button>
+
+</div>
+
+<hr>
+
+<!-- GUILD HALL CART LINE -->
+<div
+data-fsc-item-path="the-guild-hall"
+data-fsc-item-selection-smartdisplay>
+
+<strong data-fsc-item-display></strong>
+<br>
+
+Qty:
+<span data-fsc-item-quantity></span>
+
+×
+
+<span data-fsc-item-price></span>
+
+<button
+data-fsc-action="Remove"
+data-fsc-item-path-value="the-guild-hall">
+Remove
+</button>
+
+</div>
+
+<hr>
+
+<h3>Order Summary</h3>
+
 Subtotal:
 <span data-fsc-order-total></span>
-</p>
-
-<p>
-Tax:
-<span data-fsc-order-tax></span>
-</p>
-
-<p>
-Total:
-<span data-fsc-order-total-with-tax></span>
-</p>
 
 <br>
 
-<button data-fsc-action="ViewCart">
-View Cart
-</button>
+Tax:
+<span data-fsc-order-tax></span>
+
+<br>
+
+Total:
+<span data-fsc-order-total-with-tax></span>
+
+<br><br>
 
 <button data-fsc-action="Checkout">
 Checkout
+</button>
+
+<button data-fsc-action="Reset">
+Clear Cart
 </button>
 
 </body>
