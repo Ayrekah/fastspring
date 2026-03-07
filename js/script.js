@@ -1,21 +1,38 @@
 (function($) {
     "use strict";
+    // 1. Template Search Popup Logic
+    var searchPopup = function() {
+        $('#header-nav').on('click', '.search-button', function(e) {
+            $('.search-popup').toggleClass('is-visible');
+        });
+        $('#header-nav').on('click', '.btn-close-search', function(e) {
+            $('.search-popup').toggleClass('is-visible');
+        });
+        $(".search-popup-trigger").on("click", function(b) {
+            b.preventDefault();
+            $(".search-popup").addClass("is-visible");
+            setTimeout(function() { $(".search-popup").find("#search-popup").focus(); }, 350);
+        });
+        $(".search-popup").on("click", function(b) {
+            ( $(b.target).is(".search-popup-close") || $(b.target).is(".search-popup-close svg") || $(b.target).is(".search-popup-close path") || $(b.target).is(".search-popup") ) && (b.preventDefault(), $(this).removeClass("is-visible"));
+        });
+        $(document).keyup(function(b) { if (b.which === 27) $(".search-popup").removeClass("is-visible"); });
+    };
+
     $(document).ready(function() {
-        console.log("Ready to Roll UI: Ready");
+        searchPopup();
     });
 })(jQuery);
 
-/* --- FASTSPRING GLOBAL SCOPE FUNCTIONS --- */
+/* --- FASTSPRING SBL GLOBAL FUNCTIONS --- */
+
 var fscCatalog = [];
 
 /**
- * 1. THE DATA CALLBACK
- * Fires automatically when FastSpring data syncs.
+ * DATA CALLBACK: Captured Lore from Dashboard
  */
 function onFscDataCallback(data) {
-    console.log("SBL Data Sync Success:", data);
-    
-    // Save items to local memory so 'View Details' modal works instantly
+    console.log("Ready to Roll: SBL Data Sync Success", data);
     if (data && data.groups) {
         fscCatalog = data.groups.reduce(function(acc, group) {
             return acc.concat(group.items || []);
@@ -23,24 +40,22 @@ function onFscDataCallback(data) {
     }
 }
 
-// Link callback to the Global FastSpring object
+// Link to the Global FastSpring Builder object
 window.fastspring = {
     builder: { "onOrderItemsChanged": onFscDataCallback }
 };
 
 /**
- * 2. ADD & SHOW POPUP
- * Chains .add() and .viewCart() as requested.
+ * ADD & SHOW: Prevents the 400 'empty-session' error
  */
 function addToCartAndShow(path) {
     console.log("SBL: Adding character -> " + path);
-    fastspring.builder.add(path);
-    fastspring.builder.viewCart();
+    fastspring.builder.add(path); // Method: .add()
+    fastspring.builder.viewCart(); // Method: .viewCart()
 }
 
 /**
- * 3. SHOW DETAILS MODAL
- * Populates lore from the saved fscCatalog.
+ * SHOW DETAILS: Pulls 'descriptionFull' Lore
  */
 function showDetails(path) {
     var product = fscCatalog.find(function(item) {
@@ -52,9 +67,10 @@ function showDetails(path) {
         document.getElementById('m-img').src = product.image;
         document.getElementById('m-desc').innerHTML = product.descriptionFull || "Lore loading...";
         
-        var modal = new bootstrap.Modal(document.getElementById('detailsModal'));
-        modal.show();
+        // Launch Bootstrap Modal
+        var myModal = new bootstrap.Modal(document.getElementById('detailsModal'));
+        myModal.show();
     } else {
-        console.warn("SBL: Item data for " + path + " not found.");
+        console.warn("SBL: Character data for " + path + " not found.");
     }
 }
