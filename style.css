@@ -1049,21 +1049,19 @@ box-shadow:0 8px 20px rgba(0,0,0,.1);
 cursor:pointer;
 }
 
-/* Force FastSpring directives to stay visible regardless of SmartDisplay logic */
-[data-fsc-item-path] { 
-    display: block !important; 
-    visibility: visible !important; 
-    opacity: 1 !important; 
+/* Ensure the FastSpring Popup Anchor has space to initialize */
+#fsc-embedded-checkout-container {
+    min-height: 1px !important;
+    width: 100%;
 }
 
-/* Ensure the total in the header remains visible */
-[data-fsc-order-total] {
-    display: inline-block !important;
+/* Hover effect for character cards */
+.product-card {
+    background: #fff;
+    transition: all .2s ease-in-out;
 }
 
-/* FORCES FastSpring directives to stay visible regardless of SmartDisplay logic */
-[data-fsc-item-path] { 
-    display: block !important; 
-    visibility: visible !important; 
-    opacity: 1 !important; 
+.product-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 20px rgba(0,0,0,.1);
 }
