@@ -18,25 +18,19 @@
             <div class="product-card">
                 <h3 data-fsc-item-path="the-tavern" data-fsc-item-display></h3>
                 <p data-fsc-item-path="the-tavern" data-fsc-item-price></p>
-                <button data-fsc-item-path-value="the-tavern" data-fsc-action="Add">
-                    Select Tavern
-                </button>
+                <button data-fsc-item-path-value="the-tavern" data-fsc-action="Add">Select Tavern</button>
             </div>
 
             <div class="product-card">
                 <h3 data-fsc-item-path="the-campfire" data-fsc-item-display></h3>
                 <p data-fsc-item-path="the-campfire" data-fsc-item-price></p>
-                <button data-fsc-item-path-value="the-campfire" data-fsc-action="Add">
-                    Select Campfire
-                </button>
+                <button data-fsc-item-path-value="the-campfire" data-fsc-action="Add">Select Campfire</button>
             </div>
 
             <div class="product-card">
                 <h3 data-fsc-item-path="the-guild-hall" data-fsc-item-display></h3>
                 <p data-fsc-item-path="the-guild-hall" data-fsc-item-price></p>
-                <button data-fsc-item-path-value="the-guild-hall" data-fsc-action="Add">
-                    Select Guild Hall
-                </button>
+                <button data-fsc-item-path-value="the-guild-hall" data-fsc-action="Add">Select Guild Hall</button>
             </div>
         </section>
 
@@ -46,16 +40,31 @@
             <div class="order-summary">
                 <h4>Your Selection:</h4>
                 
-                <ul class="item-list" data-fsc-items-container>
-                    <script type="text/fsc-template">
-                        <li data-fsc-item-path="${path}">
-                            <span data-fsc-item-display></span> 
-                            x <span data-fsc-item-quantity></span>
-                            — <span data-fsc-item-total></span>
+                <div data-fsc-items-container>
+                    <div data-fsc-item-path="the-tavern" data-fsc-item-selection-smartdisplay>
+                        <p>
+                            <span data-fsc-item-display></span> x <span data-fsc-item-quantity></span>
+                            <span> — </span><span data-fsc-item-total></span>
                             <button data-fsc-action="Remove" class="btn-remove">Remove</button>
-                        </li>
-                    </script>
-                </ul>
+                        </p>
+                    </div>
+
+                    <div data-fsc-item-path="the-campfire" data-fsc-item-selection-smartdisplay>
+                        <p>
+                            <span data-fsc-item-display></span> x <span data-fsc-item-quantity></span>
+                            <span> — </span><span data-fsc-item-total></span>
+                            <button data-fsc-action="Remove" class="btn-remove">Remove</button>
+                        </p>
+                    </div>
+
+                    <div data-fsc-item-path="the-guild-hall" data-fsc-item-selection-smartdisplay>
+                        <p>
+                            <span data-fsc-item-display></span> x <span data-fsc-item-quantity></span>
+                            <span> — </span><span data-fsc-item-total></span>
+                            <button data-fsc-action="Remove" class="btn-remove">Remove</button>
+                        </p>
+                    </div>
+                </div>
 
                 <hr>
                 <p>Subtotal: <span data-fsc-order-total></span></p>
