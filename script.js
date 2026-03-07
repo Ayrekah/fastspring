@@ -6,7 +6,6 @@ function orderUpdateCallback(data) {
     if (data) {
         console.log("FastSpring Session Updated:", data);
         
-        // Logs the number of items currently in the checkout session
         if (data.groups && data.groups.length > 0) {
             console.log("Items in cart:", data.groups[0].items.length);
         } else {
