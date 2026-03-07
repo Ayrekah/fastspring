@@ -1,21 +1,21 @@
-/* script.js */
 (function($) {
     "use strict";
     $(document).ready(function() {
-        // Initialize template UI
-        console.log("Ready to Roll: UI Initialized");
+        console.log("Ready to Roll UI: Ready");
     });
 })(jQuery);
 
-/* --- GLOBAL FASTSPRING LOGIC --- */
+/* --- FASTSPRING GLOBAL SCOPE FUNCTIONS --- */
 var fscCatalog = [];
 
 /**
  * 1. THE DATA CALLBACK
- * Saves dashboard lore (descriptionFull) into fscCatalog
+ * Fires automatically when FastSpring data syncs.
  */
 function onFscDataCallback(data) {
-    console.log("SBL Data Sync:", data);
+    console.log("SBL Data Sync Success:", data);
+    
+    // Save items to local memory so 'View Details' modal works instantly
     if (data && data.groups) {
         fscCatalog = data.groups.reduce(function(acc, group) {
             return acc.concat(group.items || []);
@@ -23,14 +23,14 @@ function onFscDataCallback(data) {
     }
 }
 
-// Attach to global FastSpring object
+// Link callback to the Global FastSpring object
 window.fastspring = {
     builder: { "onOrderItemsChanged": onFscDataCallback }
 };
 
 /**
- * 2. ADD & SHOW
- * Uses chained methods to prevent empty-session errors
+ * 2. ADD & SHOW POPUP
+ * Chains .add() and .viewCart() as requested.
  */
 function addToCartAndShow(path) {
     console.log("SBL: Adding character -> " + path);
@@ -39,8 +39,8 @@ function addToCartAndShow(path) {
 }
 
 /**
- * 3. SHOW MODAL
- * Pulls stored data for the lore popup
+ * 3. SHOW DETAILS MODAL
+ * Populates lore from the saved fscCatalog.
  */
 function showDetails(path) {
     var product = fscCatalog.find(function(item) {
@@ -55,6 +55,6 @@ function showDetails(path) {
         var modal = new bootstrap.Modal(document.getElementById('detailsModal'));
         modal.show();
     } else {
-        console.warn("SBL: Product lore not yet synced for " + path);
+        console.warn("SBL: Item data for " + path + " not found.");
     }
 }
