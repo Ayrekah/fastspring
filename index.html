@@ -8,7 +8,7 @@
         src="https://sbl.onfastspring.com/sbl/1.0.6/fastspring-builder.min.js"
         type="text/javascript"
         data-storefront="ericateststore.test.onfastspring.com/embedded-readytoroll"
-        data-data-callback="onFscDataCallback">
+        data-debug="true">
     </script>
 
     <style>
@@ -17,7 +17,7 @@
         .product { border: 1px solid #ccc; padding: 15px; width: 220px; text-align: center; }
         .cart { border-top: 2px solid #000; padding-top: 20px; }
         .cart-item { padding: 10px; border-bottom: 1px solid #eee; }
-        /* FORCES FastSpring directives to stay visible */
+        /* REQUIRED: Forces images and text to stay visible [Doc: Directives] */
         [data-fsc-item-path] { display: block !important; }
     </style>
 </head>
@@ -26,31 +26,42 @@
     <h1>Ready to Roll Store</h1>
 
     <div class="products">
-        
         <div class="product">
+            <img data-fsc-item-path="the-tavern" data-fsc-item-image width="200">
             <h3 data-fsc-item-path="the-tavern" data-fsc-item-display></h3>
             <p data-fsc-item-path="the-tavern" data-fsc-item-price></p>
+            <button data-fsc-action="Add" data-fsc-item-path-value="the-tavern">Add to Party</button>
             
-            <button data-fsc-item-path-value="the-tavern" data-fsc-action="Add">Add to Party</button>
-
-            <div data-fsc-item-path="the-tavern" data-fsc-item-selection-smartdisplay>
-                <button data-fsc-item-path-value="the-tavern" data-fsc-item-quantity-value="0" data-fsc-action="Update">-</button>
-                <span data-fsc-item-path="the-tavern" data-fsc-item-quantity></span>
-                <button data-fsc-item-path-value="the-tavern" data-fsc-item-quantity-value="2" data-fsc-action="Update">+</button>
+            <div class="qty-controls">
+                <button onclick="changeQty('the-tavern', -1)">-</button>
+                <span data-fsc-item-path="the-tavern" data-fsc-item-quantity>0</span>
+                <button onclick="changeQty('the-tavern', 1)">+</button>
             </div>
         </div>
 
         <div class="product">
+            <img data-fsc-item-path="the-campfire" data-fsc-item-image width="200">
             <h3 data-fsc-item-path="the-campfire" data-fsc-item-display></h3>
             <p data-fsc-item-path="the-campfire" data-fsc-item-price></p>
-            <button data-fsc-item-path-value="the-campfire" data-fsc-action="Add">Add to Party</button>
-            <div data-fsc-item-path="the-campfire" data-fsc-item-selection-smartdisplay>
-                <button data-fsc-item-path-value="the-campfire" data-fsc-item-quantity-value="0" data-fsc-action="Update">-</button>
-                <span data-fsc-item-path="the-campfire" data-fsc-item-quantity></span>
-                <button data-fsc-item-path-value="the-campfire" data-fsc-item-quantity-value="2" data-fsc-action="Update">+</button>
+            <button data-fsc-action="Add" data-fsc-item-path-value="the-campfire">Add to Party</button>
+            <div class="qty-controls">
+                <button onclick="changeQty('the-campfire', -1)">-</button>
+                <span data-fsc-item-path="the-campfire" data-fsc-item-quantity>0</span>
+                <button onclick="changeQty('the-campfire', 1)">+</button>
             </div>
         </div>
 
+        <div class="product">
+            <img data-fsc-item-path="the-guild-hall" data-fsc-item-image width="200">
+            <h3 data-fsc-item-path="the-guild-hall" data-fsc-item-display></h3>
+            <p data-fsc-item-path="the-guild-hall" data-fsc-item-price></p>
+            <button data-fsc-action="Add" data-fsc-item-path-value="the-guild-hall">Add to Party</button>
+            <div class="qty-controls">
+                <button onclick="changeQty('the-guild-hall', -1)">-</button>
+                <span data-fsc-item-path="the-guild-hall" data-fsc-item-quantity>0</span>
+                <button onclick="changeQty('the-guild-hall', 1)">+</button>
+            </div>
+        </div>
     </div>
 
     <div class="cart">
@@ -58,6 +69,7 @@
         
         <div data-fsc-items-container>
             <div class="cart-item" data-fsc-item-path-element>
+                <img data-fsc-item-image width="50" style="vertical-align:middle;">
                 <strong data-fsc-item-display></strong> 
                 | Qty: <span data-fsc-item-quantity></span> 
                 | Subtotal: <span data-fsc-item-total></span>
@@ -70,13 +82,12 @@
             Tax: <span data-fsc-order-tax></span><br>
             <strong>Total: <span data-fsc-order-totalWithTax></span></strong>
             <br><br>
-            <button data-fsc-action="Checkout">Proceed to Checkout</button>
-            <button data-fsc-action="Reset">Clear Entire Party</button>
+            <button data-fsc-action="Checkout">Checkout</button>
+            <button data-fsc-action="Reset">Clear All</button>
         </div>
     </div>
 
     <div id="fsc-embedded-checkout-container"></div>
-
-    <script src="script.js"></script>
+    <script src="js/script.js"></script>
 </body>
 </html>
