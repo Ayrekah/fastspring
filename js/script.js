@@ -1,5 +1,4 @@
 (function($) {
-
     "use strict";
 
     var searchPopup = function() {
@@ -29,12 +28,8 @@
     }
 
     var initProductQty = function(){
-
       $('.product-qty').each(function(){
-
         var $el_product = $(this);
-        var quantity = 0;
-
         $el_product.find('.quantity-right-plus').click(function(e){
             e.preventDefault();
             var quantity = parseInt($el_product.find('#quantity').val());
@@ -48,17 +43,14 @@
               $el_product.find('#quantity').val(quantity - 1);
             }
         });
-
       });
-
     }
 
     $(document).ready(function() {
-
       searchPopup();
       initProductQty();
 
-      var swiper = new Swiper(".main-swiper", {
+      new Swiper(".main-swiper", {
         speed: 500,
         navigation: {
           nextEl: ".swiper-arrow-prev",
@@ -66,7 +58,7 @@
         },
       });         
 
-      var swiper = new Swiper(".product-swiper", {
+      new Swiper(".product-swiper", {
         slidesPerView: 4,
         spaceBetween: 10,
         pagination: {
@@ -74,18 +66,12 @@
           clickable: true,
         },
         breakpoints: {
-          0: {
-            slidesPerView: 2,
-            spaceBetween: 20,
-          },
-          980: {
-            slidesPerView: 4,
-            spaceBetween: 20,
-          }
+          0: { slidesPerView: 2, spaceBetween: 20 },
+          980: { slidesPerView: 4, spaceBetween: 20 }
         },
-      });      
+      });         
 
-      var swiper = new Swiper(".product-watch-swiper", {
+      new Swiper(".product-watch-swiper", {
         slidesPerView: 4,
         spaceBetween: 10,
         pagination: {
@@ -93,18 +79,12 @@
           clickable: true,
         },
         breakpoints: {
-          0: {
-            slidesPerView: 2,
-            spaceBetween: 20,
-          },
-          980: {
-            slidesPerView: 4,
-            spaceBetween: 20,
-          }
+          0: { slidesPerView: 2, spaceBetween: 20 },
+          980: { slidesPerView: 4, spaceBetween: 20 }
         },
       }); 
 
-      var swiper = new Swiper(".testimonial-swiper", {
+      new Swiper(".testimonial-swiper", {
         loop: true,
         navigation: {
           nextEl: ".swiper-arrow-prev",
@@ -162,7 +142,7 @@ function showDetails(path) {
     });
 
     if (product) {
-        // Fill the modal elements (ensure these IDs exist in your index.html)
+        // Fill the modal elements
         document.getElementById('m-title').innerText = product.display;
         document.getElementById('m-img').src = product.image;
         document.getElementById('m-desc').innerHTML = product.descriptionFull || "Lore loading...";
