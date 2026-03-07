@@ -1,20 +1,30 @@
-// Wait for FastSpring to load
-document.addEventListener("DOMContentLoaded", () => {
-  const buttons = document.querySelectorAll(".buy-button");
+document.querySelectorAll('.product').forEach(productDiv => {
+  const name = productDiv.dataset.product;
+  const quantitySpan = productDiv.querySelector('.quantity');
 
-  buttons.forEach((button) => {
-    button.addEventListener("click", () => {
-      const product = button.getAttribute("data-product");
+  productDiv.querySelector('.increase').addEventListener('click', () => {
+    let qty = parseInt(quantitySpan.textContent) || 0;
+    qty++;
+    quantitySpan.textContent = qty;
 
-      // Open the embedded checkout with the selected product
-      fastspring.builder.push({
-        products: [
-          { path: product, quantity: 1 }
-        ]
-      });
+    // Update FastSpring cart
+    fastspring.builder.push({
+      items: [
+        { product: name, quantity: qty }
+      ]
+    });
+  });
 
-      // Show the checkout popup
-      fastspring.builder.showPopup();
+  productDiv.querySelector('.decrease').addEventListener('click', () => {
+    let qty = parseInt(quantitySpan.textContent) || 0;
+    if (qty > 0) qty--;
+    quantitySpan.textContent = qty;
+
+    // Update FastSpring cart
+    fastspring.builder.push({
+      items: [
+        { product: name, quantity: qty }
+      ]
     });
   });
 });
