@@ -2,6 +2,9 @@
 <html lang="en">
 <head>
     <title>Ready to Roll | FastSpring Technical Demo</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="style.css">
@@ -15,13 +18,13 @@
     </script>
 
     <style>
-        /* 3. THE FIX: Overrides SBL 'hide' commands seen in logs */
+        /* REQUIRED: Overrides SBL 'hide' commands so data stays visible */
         [data-fsc-item-path] { 
             display: block !important; 
             visibility: visible !important; 
             opacity: 1 !important; 
         }
-        .product-card { border: 1px solid #eee; padding: 25px; background: #fff; text-align: center; transition: 0.3s; }
+        .product-card { border: 1px solid #eee; padding: 25px; background: #fff; text-align: center; }
         .product-card img { max-height: 200px; border-radius: 8px; cursor: pointer; }
     </style>
 </head>
@@ -49,7 +52,9 @@
             </div>
     </div>
 
-    <div class="modal fade" id="detailsModal" tabindex="-1" aria-hidden="true">
+    <div id="fsc-embedded-checkout-container"></div>
+
+    <div class="modal fade" id="detailsModal" tabindex="-1">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-body">
