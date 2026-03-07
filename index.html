@@ -1,312 +1,116 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-
-<title>Ready to Roll</title>
-
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-
-<style>
-
-body{
-background:#fafafa;
-font-family:system-ui;
-}
-
-header{
-border-bottom:1px solid #eee;
-}
-
-.hero{
-height:420px;
-background:url("https://images.unsplash.com/photo-1511512578047-dfb367046420") center/cover no-repeat;
-display:flex;
-align-items:center;
-justify-content:center;
-color:white;
-text-align:center;
-}
-
-.hero h1{
-background:rgba(0,0,0,.65);
-padding:25px 40px;
-border-radius:10px;
-}
-
-.product-card{
-border:1px solid #eee;
-padding:25px;
-background:white;
-text-align:center;
-border-radius:10px;
-transition:.25s;
-height:100%;
-}
-
-.product-card:hover{
-transform:translateY(-4px);
-box-shadow:0 10px 25px rgba(0,0,0,.1);
-}
-
-.product-card img{
-max-height:200px;
-object-fit:cover;
-border-radius:8px;
-margin-bottom:15px;
-cursor:pointer;
-}
-
-/* prevent SmartDisplay hiding */
-[data-fsc-item-path]{
-display:block!important;
-visibility:visible!important;
-opacity:1!important;
-}
-
-#fsc-embedded-checkout-container{
-max-width:900px;
-margin:80px auto;
-}
-
-</style>
-
+<meta charset="UTF-8">
+<title>FastSpring Test Store</title>
 
 <script
 id="fsc-api"
 src="https://sbl.onfastspring.com/sbl/1.0.6/fastspring-builder.min.js"
 type="text/javascript"
 data-storefront="ericateststore.test.onfastspring.com/embedded-readytoroll"
-data-checkout-container="fsc-embedded-checkout-container"
-data-data-callback="onFscDataCallback">
+data-debug="true">
 </script>
 
 </head>
 
 <body>
 
+<h1>Ready to Roll Store Test</h1>
 
-<header class="p-3 bg-white sticky-top">
+<hr>
 
-<div class="container d-flex justify-content-between align-items-center">
+<h2>The Tavern</h2>
 
-<h4 class="m-0">READY TO ROLL</h4>
+<img data-fsc-item-path="the-tavern" data-fsc-item-image width="200">
 
-<button class="btn btn-dark" onclick="fastspring.builder.checkout()">
-Cart (<span data-fsc-order-total>$0.00</span>)
-</button>
+<p>
+<span data-fsc-item-path="the-tavern" data-fsc-item-display></span>
+</p>
 
-</div>
+<p>
+Price:
+<span data-fsc-item-path="the-tavern" data-fsc-item-price></span>
+</p>
 
-</header>
-
-
-<section class="hero">
-<h1>Create Your Character. Start Your Adventure.</h1>
-</section>
-
-
-<section class="container py-5">
-
-<div class="row g-4">
-
-
-<!-- TAVERN -->
-<div class="col-md-4">
-
-<div class="product-card">
-
-<img
-data-fsc-item-path="the-tavern"
-data-fsc-item-image
-onclick="showDetails('the-tavern')">
-
-<h4
-data-fsc-item-path="the-tavern"
-data-fsc-item-display>
-</h4>
-
-<div class="h5 text-primary mb-3"
-data-fsc-item-path="the-tavern"
-data-fsc-item-price>
-</div>
-
-<button class="btn btn-dark w-100"
-onclick="addToCart('the-tavern')">
+<button
+data-fsc-action="Add"
+data-fsc-item-path-value="the-tavern">
 Add to Cart
 </button>
 
-<button class="btn btn-link btn-sm mt-2"
-onclick="showDetails('the-tavern')">
-View Details
-</button>
-
-</div>
-
-</div>
+<hr>
 
 
-<!-- CAMPFIRE -->
-<div class="col-md-4">
+<h2>The Campfire</h2>
 
-<div class="product-card">
+<img data-fsc-item-path="the-campfire" data-fsc-item-image width="200">
 
-<img
-data-fsc-item-path="the-campfire"
-data-fsc-item-image
-onclick="showDetails('the-campfire')">
+<p>
+<span data-fsc-item-path="the-campfire" data-fsc-item-display></span>
+</p>
 
-<h4
-data-fsc-item-path="the-campfire"
-data-fsc-item-display>
-</h4>
+<p>
+Price:
+<span data-fsc-item-path="the-campfire" data-fsc-item-price></span>
+</p>
 
-<div class="h5 text-primary mb-3"
-data-fsc-item-path="the-campfire"
-data-fsc-item-price>
-</div>
-
-<button class="btn btn-dark w-100"
-onclick="addToCart('the-campfire')">
+<button
+data-fsc-action="Add"
+data-fsc-item-path-value="the-campfire">
 Add to Cart
 </button>
 
-<button class="btn btn-link btn-sm mt-2"
-onclick="showDetails('the-campfire')">
-View Details
-</button>
-
-</div>
-
-</div>
+<hr>
 
 
-<!-- GUILD HALL -->
-<div class="col-md-4">
+<h2>The Guild Hall</h2>
 
-<div class="product-card">
+<img data-fsc-item-path="the-guild-hall" data-fsc-item-image width="200">
 
-<img
-data-fsc-item-path="the-guild-hall"
-data-fsc-item-image
-onclick="showDetails('the-guild-hall')">
+<p>
+<span data-fsc-item-path="the-guild-hall" data-fsc-item-display></span>
+</p>
 
-<h4
-data-fsc-item-path="the-guild-hall"
-data-fsc-item-display>
-</h4>
+<p>
+Price:
+<span data-fsc-item-path="the-guild-hall" data-fsc-item-price></span>
+</p>
 
-<div class="h5 text-primary mb-3"
-data-fsc-item-path="the-guild-hall"
-data-fsc-item-price>
-</div>
-
-<button class="btn btn-dark w-100"
-onclick="addToCart('the-guild-hall')">
+<button
+data-fsc-action="Add"
+data-fsc-item-path-value="the-guild-hall">
 Add to Cart
 </button>
 
-<button class="btn btn-link btn-sm mt-2"
-onclick="showDetails('the-guild-hall')">
-View Details
+<hr>
+
+<h2>Cart</h2>
+
+<p>
+Subtotal:
+<span data-fsc-order-total></span>
+</p>
+
+<p>
+Tax:
+<span data-fsc-order-tax></span>
+</p>
+
+<p>
+Total:
+<span data-fsc-order-total-with-tax></span>
+</p>
+
+<br>
+
+<button data-fsc-action="ViewCart">
+View Cart
 </button>
 
-</div>
-
-</div>
-
-
-</div>
-</section>
-
-
-<div id="fsc-embedded-checkout-container"></div>
-
-
-
-<!-- PRODUCT DETAILS MODAL -->
-
-<div class="modal fade" id="detailsModal">
-
-<div class="modal-dialog modal-lg modal-dialog-centered">
-
-<div class="modal-content">
-
-<div class="modal-header">
-<h5 class="modal-title" id="modalTitle"></h5>
-<button class="btn-close" data-bs-dismiss="modal"></button>
-</div>
-
-<div class="modal-body">
-
-<div class="row">
-
-<div class="col-md-5">
-<img id="modalImage" class="img-fluid rounded">
-</div>
-
-<div class="col-md-7">
-<div id="modalDescription"></div>
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-</div>
-</div>
-
-
-
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-
-<script>
-
-let catalog=[]
-
-
-function onFscDataCallback(data){
-
-if(data && data.groups){
-
-catalog = data.groups.flatMap(group => group.items || [])
-
-}
-
-}
-
-
-
-function addToCart(path){
-
-fastspring.builder.add(path)
-fastspring.builder.checkout()
-
-}
-
-
-
-function showDetails(path){
-
-let product = catalog.find(p => p.path === path)
-
-if(!product){return}
-
-document.getElementById("modalTitle").innerText = product.display
-document.getElementById("modalImage").src = product.image
-document.getElementById("modalDescription").innerHTML = product.descriptionFull || ""
-
-let modal = new bootstrap.Modal(document.getElementById("detailsModal"))
-modal.show()
-
-}
-
-</script>
-
+<button data-fsc-action="Checkout">
+Checkout
+</button>
 
 </body>
 </html>
