@@ -34,9 +34,7 @@ Price:
 <span data-fsc-item-path="the-tavern" data-fsc-item-price></span>
 </div>
 
-<button
-data-fsc-action="Add"
-data-fsc-item-path-value="the-tavern">
+<button data-fsc-action="Add" data-fsc-item-path-value="the-tavern">
 Add to Cart
 </button>
 
@@ -58,9 +56,7 @@ Price:
 <span data-fsc-item-path="the-campfire" data-fsc-item-price></span>
 </div>
 
-<button
-data-fsc-action="Add"
-data-fsc-item-path-value="the-campfire">
+<button data-fsc-action="Add" data-fsc-item-path-value="the-campfire">
 Add to Cart
 </button>
 
@@ -82,9 +78,7 @@ Price:
 <span data-fsc-item-path="the-guild-hall" data-fsc-item-price></span>
 </div>
 
-<button
-data-fsc-action="Add"
-data-fsc-item-path-value="the-guild-hall">
+<button data-fsc-action="Add" data-fsc-item-path-value="the-guild-hall">
 Add to Cart
 </button>
 
@@ -94,7 +88,7 @@ Add to Cart
 
 <h2>Cart</h2>
 
-<!-- TAVERN CART LINE -->
+<!-- TAVERN CART -->
 <div data-fsc-item-path="the-tavern" data-fsc-item-selection-smartdisplay>
 
 <strong>
@@ -102,8 +96,17 @@ Add to Cart
 </strong>
 
 <div>
-Quantity:
+
+<button data-fsc-action="Add" data-fsc-item-path-value="the-tavern" data-fsc-item-quantity="1">
++
+</button>
+
 <span data-fsc-item-path="the-tavern" data-fsc-item-quantity></span>
+
+<button data-fsc-action="Remove" data-fsc-item-path-value="the-tavern">
+Remove
+</button>
+
 </div>
 
 <div>
@@ -111,17 +114,11 @@ Price:
 <span data-fsc-item-path="the-tavern" data-fsc-item-price></span>
 </div>
 
-<button
-data-fsc-action="Remove"
-data-fsc-item-path-value="the-tavern">
-Remove
-</button>
-
 </div>
 
 <hr>
 
-<!-- CAMPFIRE CART LINE -->
+<!-- CAMPFIRE CART -->
 <div data-fsc-item-path="the-campfire" data-fsc-item-selection-smartdisplay>
 
 <strong>
@@ -129,8 +126,17 @@ Remove
 </strong>
 
 <div>
-Quantity:
+
+<button data-fsc-action="Add" data-fsc-item-path-value="the-campfire" data-fsc-item-quantity="1">
++
+</button>
+
 <span data-fsc-item-path="the-campfire" data-fsc-item-quantity></span>
+
+<button data-fsc-action="Remove" data-fsc-item-path-value="the-campfire">
+Remove
+</button>
+
 </div>
 
 <div>
@@ -138,17 +144,11 @@ Price:
 <span data-fsc-item-path="the-campfire" data-fsc-item-price></span>
 </div>
 
-<button
-data-fsc-action="Remove"
-data-fsc-item-path-value="the-campfire">
-Remove
-</button>
-
 </div>
 
 <hr>
 
-<!-- GUILD HALL CART LINE -->
+<!-- GUILD HALL CART -->
 <div data-fsc-item-path="the-guild-hall" data-fsc-item-selection-smartdisplay>
 
 <strong>
@@ -156,20 +156,23 @@ Remove
 </strong>
 
 <div>
-Quantity:
+
+<button data-fsc-action="Add" data-fsc-item-path-value="the-guild-hall" data-fsc-item-quantity="1">
++
+</button>
+
 <span data-fsc-item-path="the-guild-hall" data-fsc-item-quantity></span>
+
+<button data-fsc-action="Remove" data-fsc-item-path-value="the-guild-hall">
+Remove
+</button>
+
 </div>
 
 <div>
 Price:
 <span data-fsc-item-path="the-guild-hall" data-fsc-item-price></span>
 </div>
-
-<button
-data-fsc-action="Remove"
-data-fsc-item-path-value="the-guild-hall">
-Remove
-</button>
 
 </div>
 
@@ -204,7 +207,6 @@ Clear Cart
 
 <hr>
 
-<!-- Embedded checkout appears here -->
 <div id="fsc-embedded-checkout-container"></div>
 
 </body>
