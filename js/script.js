@@ -1,7 +1,7 @@
 (function($) {
     "use strict";
 
-    // 1. Template Search Popup
+    // 1. Template Search Popup Logic
     var searchPopup = function() {
         $('#header-nav').on('click', '.search-button', function(e) {
             $('.search-popup').toggleClass('is-visible');
@@ -20,46 +20,28 @@
         $(document).keyup(function(b) { if (b.which === 27) $(".search-popup").removeClass("is-visible"); });
     };
 
-    // 2. Template Quantity UI
-    var initProductQty = function() {
-        $('.product-qty').each(function() {
-            var $el_product = $(this);
-            $el_product.find('.quantity-right-plus').click(function(e) {
-                e.preventDefault();
-                var quantity = parseInt($el_product.find('#quantity').val()) || 0;
-                $el_product.find('#quantity').val(quantity + 1);
-            });
-            $el_product.find('.quantity-left-minus').click(function(e) {
-                e.preventDefault();
-                var quantity = parseInt($el_product.find('#quantity').val()) || 0;
-                if (quantity > 0) $el_product.find('#quantity').val(quantity - 1);
-            });
-        });
-    };
-
-    // 3. Initialize Everything
+    // 2. Initialize Swipers
     $(document).ready(function() {
         searchPopup();
-        initProductQty();
-
         new Swiper(".main-swiper", { speed: 500, navigation: { nextEl: ".swiper-arrow-prev", prevEl: ".swiper-arrow-next" } });
-        new Swiper(".product-swiper", { slidesPerView: 4, spaceBetween: 10, pagination: { el: "#mobile-products .swiper-pagination", clickable: true }, breakpoints: { 0: { slidesPerView: 2 }, 980: { slidesPerView: 4 } } });
+        new Swiper(".product-swiper", { slidesPerView: 4, spaceBetween: 10, pagination: { el: "#mobile-products .swiper-pagination", clickable: true } });
         new Swiper(".testimonial-swiper", { loop: true, navigation: { nextEl: ".swiper-arrow-prev", prevEl: ".swiper-arrow-next" } });
     });
 
-})(jQuery); // <--- THIS CLOSES THE JQUERY BLOCK PROPERLY
+})(jQuery);
 
 /* -------------------------------------------------------------------------
-   FASTSPRING SBL GLOBAL FUNCTIONS (Must be outside the block above)
+   FASTSPRING SBL GLOBAL FUNCTIONS
    ------------------------------------------------------------------------- */
 
 var fscCatalog = [];
 
 /**
- * Syncs product data on load (Prices, Lore, etc.)
+ * THE DATA CALLBACK
+ * Syncs product prices and lore from your dashboard on load.
  */
 function onFscDataCallback(data) {
-    console.log("Ready to Roll: SBL Data Received", data);
+    console.log("Ready to Roll: SBL Data Sync", data);
     if (data && data.items) {
         fscCatalog = data.items;
     } else if (data && data.groups) {
@@ -69,26 +51,30 @@ function onFscDataCallback(data) {
     }
 }
 
-// Link to the global window object
+// Attach the callback to the FastSpring Builder object
 window.fastspring = {
     builder: { "onOrderItemsChanged": onFscDataCallback }
 };
 
 /**
- * Add + Popup View
+ * ADD TO CART & POPUP
+ * Uses documented .add() and .viewCart() methods.
  */
 function addToCartAndShow(path) {
-    console.log("Adding Character: " + path);
+    console.log("SBL: Adding character -> " + path);
     fastspring.builder.add(path);
     fastspring.builder.viewCart();
 }
 
 /**
- * Details Modal Logic
+ * SHOW DETAILS MODAL
+ * Looks up the product lore saved in fscCatalog.
  */
 function showDetails(path) {
-    var product = fscCatalog.find(function(item) { return item.path === path; });
-    
+    var product = fscCatalog.find(function(item) {
+        return item.path === path;
+    });
+
     if (product) {
         document.getElementById('m-title').innerText = product.display;
         document.getElementById('m-img').src = product.image;
@@ -97,6 +83,6 @@ function showDetails(path) {
         var myModal = new bootstrap.Modal(document.getElementById('detailsModal'));
         myModal.show();
     } else {
-        console.warn("Catalog not yet loaded for: " + path);
+        console.warn("SBL: Product data for " + path + " not found in session.");
     }
 }
