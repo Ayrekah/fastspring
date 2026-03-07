@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>FastSpring Test Store</title>
+<title>Ready to Roll Test Store</title>
 
 <script
 id="fsc-api"
@@ -16,25 +16,23 @@ data-debug="true">
 
 <body>
 
-<h1>Ready to Roll Store Test</h1>
-
-<hr>
+<h1>Ready to Roll Test Store</h1>
 
 <h2>Products</h2>
 
-<!-- Tavern -->
+<!-- TAVERN -->
 <div>
 
 <img data-fsc-item-path="the-tavern" data-fsc-item-image width="200">
 
-<p>
+<div>
 <span data-fsc-item-path="the-tavern" data-fsc-item-display></span>
-</p>
+</div>
 
-<p>
+<div>
 Price:
 <span data-fsc-item-path="the-tavern" data-fsc-item-price></span>
-</p>
+</div>
 
 <button
 data-fsc-action="Add"
@@ -46,19 +44,19 @@ Add to Cart
 
 <hr>
 
-<!-- Campfire -->
+<!-- CAMPFIRE -->
 <div>
 
 <img data-fsc-item-path="the-campfire" data-fsc-item-image width="200">
 
-<p>
+<div>
 <span data-fsc-item-path="the-campfire" data-fsc-item-display></span>
-</p>
+</div>
 
-<p>
+<div>
 Price:
 <span data-fsc-item-path="the-campfire" data-fsc-item-price></span>
-</p>
+</div>
 
 <button
 data-fsc-action="Add"
@@ -70,19 +68,19 @@ Add to Cart
 
 <hr>
 
-<!-- Guild Hall -->
+<!-- GUILD HALL -->
 <div>
 
 <img data-fsc-item-path="the-guild-hall" data-fsc-item-image width="200">
 
-<p>
+<div>
 <span data-fsc-item-path="the-guild-hall" data-fsc-item-display></span>
-</p>
+</div>
 
-<p>
+<div>
 Price:
 <span data-fsc-item-path="the-guild-hall" data-fsc-item-price></span>
-</p>
+</div>
 
 <button
 data-fsc-action="Add"
@@ -97,19 +95,21 @@ Add to Cart
 <h2>Cart</h2>
 
 <!-- TAVERN CART LINE -->
-<div
-data-fsc-item-path="the-tavern"
-data-fsc-item-selection-smartdisplay>
+<div data-fsc-item-path="the-tavern" data-fsc-item-selection-smartdisplay>
 
-<strong data-fsc-item-display></strong>
-<br>
+<strong>
+<span data-fsc-item-path="the-tavern" data-fsc-item-display></span>
+</strong>
 
-Qty:
-<span data-fsc-item-quantity></span>
+<div>
+Quantity:
+<span data-fsc-item-path="the-tavern" data-fsc-item-quantity></span>
+</div>
 
-×
-
-<span data-fsc-item-price></span>
+<div>
+Price:
+<span data-fsc-item-path="the-tavern" data-fsc-item-price></span>
+</div>
 
 <button
 data-fsc-action="Remove"
@@ -122,19 +122,21 @@ Remove
 <hr>
 
 <!-- CAMPFIRE CART LINE -->
-<div
-data-fsc-item-path="the-campfire"
-data-fsc-item-selection-smartdisplay>
+<div data-fsc-item-path="the-campfire" data-fsc-item-selection-smartdisplay>
 
-<strong data-fsc-item-display></strong>
-<br>
+<strong>
+<span data-fsc-item-path="the-campfire" data-fsc-item-display></span>
+</strong>
 
-Qty:
-<span data-fsc-item-quantity></span>
+<div>
+Quantity:
+<span data-fsc-item-path="the-campfire" data-fsc-item-quantity></span>
+</div>
 
-×
-
-<span data-fsc-item-price></span>
+<div>
+Price:
+<span data-fsc-item-path="the-campfire" data-fsc-item-price></span>
+</div>
 
 <button
 data-fsc-action="Remove"
@@ -147,19 +149,21 @@ Remove
 <hr>
 
 <!-- GUILD HALL CART LINE -->
-<div
-data-fsc-item-path="the-guild-hall"
-data-fsc-item-selection-smartdisplay>
+<div data-fsc-item-path="the-guild-hall" data-fsc-item-selection-smartdisplay>
 
-<strong data-fsc-item-display></strong>
-<br>
+<strong>
+<span data-fsc-item-path="the-guild-hall" data-fsc-item-display></span>
+</strong>
 
-Qty:
-<span data-fsc-item-quantity></span>
+<div>
+Quantity:
+<span data-fsc-item-path="the-guild-hall" data-fsc-item-quantity></span>
+</div>
 
-×
-
-<span data-fsc-item-price></span>
+<div>
+Price:
+<span data-fsc-item-path="the-guild-hall" data-fsc-item-price></span>
+</div>
 
 <button
 data-fsc-action="Remove"
@@ -173,20 +177,22 @@ Remove
 
 <h3>Order Summary</h3>
 
+<div>
 Subtotal:
-<span data-fsc-order-total></span>
+<span data-fsc-order-subtotal></span>
+</div>
 
-<br>
-
+<div>
 Tax:
 <span data-fsc-order-tax></span>
+</div>
+
+<div>
+Total:
+<span data-fsc-order-total></span>
+</div>
 
 <br>
-
-Total:
-<span data-fsc-order-total-with-tax></span>
-
-<br><br>
 
 <button data-fsc-action="Checkout">
 Checkout
@@ -195,6 +201,11 @@ Checkout
 <button data-fsc-action="Reset">
 Clear Cart
 </button>
+
+<hr>
+
+<!-- Embedded checkout appears here -->
+<div id="fsc-embedded-checkout-container"></div>
 
 </body>
 </html>
