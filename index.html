@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Ready to Roll | FastSpring Technical Demo</title>
+    <title>Ready to Roll | Character Creator</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
     <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="style.css">
 
@@ -17,15 +18,16 @@
 
     <style>
         .product-card { border: 1px solid #eee; padding: 25px; background: #fff; text-align: center; height: 100%; transition: 0.3s; }
-        .product-card:hover { border-color: #000; transform: translateY(-4px); }
-        .product-card img { max-height: 200px; border-radius: 8px; cursor: pointer; }
+        .product-card:hover { border-color: #000; transform: translateY(-4px); box-shadow: 0 8px 20px rgba(0,0,0,.1); }
+        .product-card img { max-height: 200px; object-fit: cover; border-radius: 8px; margin-bottom: 15px; cursor: pointer; }
         
-        /* REQUIRED: Overrides SBL 'hide' commands so data stays visible */
+        /* REQUIRED: Overrides SBL 'hide' commands seen in your logs */
         [data-fsc-item-path] { 
             display: block !important; 
             visibility: visible !important; 
             opacity: 1 !important; 
         }
+        [data-fsc-order-total] { display: inline-block !important; }
     </style>
 </head>
 
@@ -39,7 +41,7 @@
         </div>
     </header>
 
-    <div class="container py-5">
+    <section class="container py-5">
         <div class="row g-4">
             <div class="col-md-4">
                 <div class="product-card">
@@ -71,11 +73,11 @@
                 </div>
             </div>
         </div>
-    </div>
+    </section>
 
     <div id="fsc-embedded-checkout-container" style="display:none;"></div>
 
-    <div class="modal fade" id="detailsModal" tabindex="-1" role="dialog" aria-hidden="false">
+    <div class="modal fade" id="detailsModal">
         <div class="modal-dialog modal-lg modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
