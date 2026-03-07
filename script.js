@@ -1,12 +1,8 @@
 function orderUpdateCallback(data) {
     if (data) {
+        // This log is your best friend right now. 
+        // If 'data' is empty, the library isn't connecting to the storefront correctly.
         console.log("FastSpring Session Updated:", data);
-        
-        if (data.groups && data.groups.length > 0) {
-            console.log("Items in cart:", data.groups[0].items.length);
-        } else {
-            console.log("Cart is currently empty.");
-        }
     }
 }
 
