@@ -1,9 +1,14 @@
 (function($) {
     "use strict";
+
     $(document).ready(function() {
-        // Initialize Swiper only if the library is loaded to avoid ReferenceErrors
+        // Search logic initialization
+        if (typeof searchPopup === 'function') searchPopup();
+
+        // 1. SWIPER INITIALIZATION (Fixed ReferenceError)
         if (typeof Swiper !== 'undefined') {
             new Swiper(".main-swiper", { speed: 500, navigation: { nextEl: ".swiper-arrow-prev", prevEl: ".swiper-arrow-next" } });
+            new Swiper(".product-swiper", { slidesPerView: 4, spaceBetween: 10, pagination: { el: "#mobile-products .swiper-pagination", clickable: true } });
         }
     });
 })(jQuery);
@@ -12,8 +17,7 @@
 var fscCatalog = [];
 
 /**
- * 1. THE DATA CALLBACK
- * Fires automatically when FastSpring data is ready.
+ * 2. DATA CALLBACK: Syncs Lore from Dashboard
  */
 function onFscDataCallback(data) {
     console.log("SBL Sync:", data);
@@ -24,31 +28,29 @@ function onFscDataCallback(data) {
     }
 }
 
-// Link to the global window object
 window.fastspring = {
     builder: { "onOrderItemsChanged": onFscDataCallback }
 };
 
 /**
- * 2. ADD & SHOW POPUP
+ * 3. ADD TO CART & SHOW POPUP
  */
 function addToCartAndShow(path) {
     console.log("Adding Character: " + path);
-    fastspring.builder.add(path); // Method 1: Add to Session
+    fastspring.builder.add(path);   // Method 1: Add to Session
     fastspring.builder.viewCart(); // Method 2: Launch Popup
 }
 
 /**
- * 3. SHOW MODAL LORE
+ * 4. SHOW LORE MODAL
  */
 function showDetails(path) {
     var item = fscCatalog.find(function(p) { return p.path === path; });
     if (item) {
         document.getElementById('m-title').innerText = item.display;
         document.getElementById('m-img').src = item.image;
-        document.getElementById('m-desc').innerHTML = item.descriptionFull || "No lore found.";
+        document.getElementById('m-desc').innerHTML = item.descriptionFull || "Loading lore...";
         
-        // Use Bootstrap's global constructor
         var modalEl = document.getElementById('detailsModal');
         var modal = bootstrap.Modal.getOrCreateInstance(modalEl);
         modal.show();
