@@ -1061,3 +1061,9 @@ cursor:pointer;
     display: inline-block !important;
 }
 
+/* FORCES FastSpring directives to stay visible regardless of SmartDisplay logic */
+[data-fsc-item-path] { 
+    display: block !important; 
+    visibility: visible !important; 
+    opacity: 1 !important; 
+}
