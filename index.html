@@ -7,13 +7,28 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <h1>FastSpring Embedded Checkout Example</h1>
+  <h1>FastSpring Embedded Example</h1>
 
-  <div class="products">
-    <button class="buy-button" data-product="the-tavern">Buy The Tavern</button>
-    <button class="buy-button" data-product="the-campfire">Buy The Campfire</button>
-    <button class="buy-button" data-product="the-guild-hall">Buy The Guild Hall</button>
-  </div>
+ <div class="product" data-product="the-tavern">
+  <span class="name">The Tavern</span>
+  <button class="decrease">–</button>
+  <span class="quantity">0</span>
+  <button class="increase">+</button>
+</div>
+
+<div class="product" data-product="the-campfire">
+  <span class="name">The Campfire</span>
+  <button class="decrease">–</button>
+  <span class="quantity">0</span>
+  <button class="increase">+</button>
+</div>
+
+<div class="product" data-product="the-guild-hall">
+  <span class="name">The Guild Hall</span>
+  <button class="decrease">–</button>
+  <span class="quantity">0</span>
+  <button class="increase">+</button>
+</div>
 
   <!-- FastSpring Embedded Checkout Container -->
   <div id="fsc-embedded-checkout-container"></div>
