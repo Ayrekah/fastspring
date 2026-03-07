@@ -1,137 +1,40 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <title>Ready to Roll | FastSpring Technical Demo</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+/* --- FASTSPRING SBL GLOBAL FUNCTIONS --- */
+
+/**
+ * Adds product and then immediately launches the FastSpring Popup Cart
+ * Matches your 'Methods' documentation for .add() and .viewCart()
+ */
+function addToCartAndShow(path) {
+    console.log("Ready to Roll: Adding " + path);
+    fastspring.builder.add(path); [cite: 1]
+    fastspring.builder.viewCart(); [cite: 1]
+}
+
+/**
+ * Required callback for SBL data syncing
+ * Matches 'data-data-callback' in your documentation
+ */
+function onFscDataCallback(data) {
+    console.log("SBL Sync Success:", data); [cite: 1]
+}
+
+/**
+ * Modal Handler
+ * Uses the Public Methods Callback Function logic to ensure data is retrieved
+ */
+function showDetails(path) {
+    // Accessing the 'descriptionFull' directive data through the builder item method
+    const item = fastspring.builder.item(path); [cite: 1]
     
-    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="style.css">
-
-    <script id="fsc-api"
-    src="https://sbl.onfastspring.com/sbl/1.0.6/fastspring-builder.min.js"
-    type="text/javascript"
-    data-storefront="ericateststore.test.onfastspring.com/embedded-readytoroll"
-    data-data-callback="onFscDataCallback"
-    data-debug="true">
-</script>
-
-    <style>
-        .product-card { border: 1px solid #eee; padding: 25px; background: #fff; text-align: center; transition: 0.3s; }
-        .product-card:hover { border-color: #000; }
-        .product-card img { max-height: 200px; object-fit: cover; border-radius: 8px; margin-bottom: 15px; cursor: pointer; }
+    if (item) {
+        document.getElementById('m-title').innerText = item.display; [cite: 1]
+        document.getElementById('m-img').src = item.image; [cite: 1]
+        document.getElementById('m-desc').innerHTML = item.descriptionFull || "Lore loading..."; [cite: 1]
         
-        /* PREVENT SBL FROM HIDING YOUR CATALOG ON LOAD */
-        [data-fsc-item-path] { display: block !important; visibility: visible !important; opacity: 1 !important; }
-        
-        .modal-body img { max-height: 300px; border-radius: 12px; }
-    </style>
-</head>
-
-<body>
-    <header class="p-3 border-bottom sticky-top bg-white">
-        <div class="container d-flex justify-content-between align-items-center">
-            <strong class="h4 m-0">READY TO ROLL</strong>
-            <button class="btn btn-dark" onclick="fastspring.builder.viewCart()">
-    VIEW CART (<span data-fsc-order-total>$0.00</span>)
-</button>
-        </div>
-    </header>
-
-    <section class="container py-5">
-        <div class="row g-4">
-            
-            <div class="col-md-4">
-                <div class="product-card">
-                    <img data-fsc-item-path="the-tavern" data-fsc-item-image src="" onclick="showDetails('the-tavern')">
-                    <h4 data-fsc-item-path="the-tavern" data-fsc-item-display>The Tavern</h4>
-                    <div class="h5 text-primary mb-3" data-fsc-item-path="the-tavern" data-fsc-item-price></div>
-                    
-                    <button class="btn btn-dark w-100" onclick="addToCartAndShow('the-tavern')">Add to Cart</button>
-                    <button class="btn btn-link btn-sm text-dark mt-2" onclick="showDetails('the-tavern')">View Full Details</button>
-                </div>
-            </div>
-
-            <div class="col-md-4">
-                <div class="product-card">
-                    <img data-fsc-item-path="the-campfire" data-fsc-item-image src="" onclick="showDetails('the-campfire')">
-                    <h4 data-fsc-item-path="the-campfire" data-fsc-item-display>The Campfire</h4>
-                    <div class="h5 text-primary mb-3" data-fsc-item-path="the-campfire" data-fsc-item-price></div>
-                    <button class="btn btn-dark w-100" onclick="addToCartAndShow('the-campfire')">Add to Cart</button>
-                    <button class="btn btn-link btn-sm text-dark mt-2" onclick="showDetails('the-campfire')">View Full Details</button>
-                </div>
-            </div>
-
-            <div class="col-md-4">
-                <div class="product-card">
-                    <img data-fsc-item-path="the-guild-hall" data-fsc-item-image src="" onclick="showDetails('the-guild-hall')">
-                    <h4 data-fsc-item-path="the-guild-hall" data-fsc-item-display>The Guild Hall</h4>
-                    <div class="h5 text-primary mb-3" data-fsc-item-path="the-guild-hall" data-fsc-item-price></div>
-                    <button class="btn btn-dark w-100" onclick="addToCartAndShow('the-guild-hall')">Add to Cart</button>
-                    <button class="btn btn-link btn-sm text-dark mt-2" onclick="showDetails('the-guild-hall')">View Full Details</button>
-                </div>
-            </div>
-
-        </div>
-    </section>
-
-    <div class="modal fade" id="detailsModal" tabindex="-1">
-        <div class="modal-dialog modal-lg modal-dialog-centered">
-            <div class="modal-content" id="modal-content-area">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="m-title"></h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-                </div>
-                <div class="modal-body">
-                    <div class="row">
-                        <div class="col-md-5 text-center"><img id="m-img" src="" class="img-fluid shadow-sm"></div>
-                        <div class="col-md-7"><div id="m-desc"></div></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <script type="text/javascript">
-        /**
-         * 1. ADD AND SHOW POPUP
-         * Uses the .add() method then the .viewCart() method as requested
-         */
-        function addToCartAndShow(path) {
-            fastspring.builder.add(path);
-            fastspring.builder.viewCart();
-        }
-
-        /**
-         * 2. DATA CALLBACK
-         * Required for monitoring the session state
-         */
-        function onFscDataCallback(data) {
-            console.log("Ready to Roll: Data Sync", data);
-        }
-
-        /**
-         * 3. SHOW DETAILS LOGIC
-         * Uses the asynchronous push-style data retrieval for the modal
-         */
-        function showDetails(path) {
-            // Retrieve item data from the internal SBL cache
-            const item = fastspring.builder.item(path);
-            
-            if (item) {
-                document.getElementById('m-title').innerText = item.display;
-                document.getElementById('m-img').src = item.image;
-                document.getElementById('m-desc').innerHTML = item.descriptionFull || "Adventurer, the lore for this tier is still being written in the stars...";
-                
-                const myModal = new bootstrap.Modal(document.getElementById('detailsModal'));
-                myModal.show();
-            } else {
-                console.warn("SBL: Data for " + path + " not found in current session.");
-            }
-        }
-    </script>
-
-    <script src="js/jquery-1.11.0.min.js"></script>
-    <script type="text/javascript" src="js/bootstrap.bundle.min.js"></script>
-</body>
-</html>
+        // Launching the Bootstrap Modal
+        var myModal = new bootstrap.Modal(document.getElementById('detailsModal'));
+        myModal.show();
+    } else {
+        console.warn("SBL: Item data for " + path + " not found.");
+    }
+}
