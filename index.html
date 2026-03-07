@@ -8,6 +8,7 @@
         src="https://sbl.onfastspring.com/sbl/1.0.6/fastspring-builder.min.js"
         type="text/javascript"
         data-storefront="ericateststore.test.onfastspring.com/embedded-readytoroll"
+        data-data-callback="onFscDataCallback"
         data-debug="true">
     </script>
 
@@ -16,8 +17,8 @@
         .products { display: flex; gap: 20px; margin-bottom: 40px; }
         .product { border: 1px solid #ccc; padding: 15px; width: 220px; text-align: center; }
         .cart { border-top: 2px solid #000; padding-top: 20px; }
-        .cart-item { padding: 10px; border-bottom: 1px solid #eee; }
-        /* REQUIRED: Forces images and text to stay visible [Doc: Directives] */
+        .cart-item { padding: 10px; border-bottom: 1px solid #eee; display: flex; align-items: center; gap: 10px; }
+        /* REQUIRED: Forces SBL tags to be visible even when empty */
         [data-fsc-item-path] { display: block !important; }
     </style>
 </head>
@@ -31,7 +32,6 @@
             <h3 data-fsc-item-path="the-tavern" data-fsc-item-display></h3>
             <p data-fsc-item-path="the-tavern" data-fsc-item-price></p>
             <button data-fsc-action="Add" data-fsc-item-path-value="the-tavern">Add to Party</button>
-            
             <div class="qty-controls">
                 <button onclick="changeQty('the-tavern', -1)">-</button>
                 <span data-fsc-item-path="the-tavern" data-fsc-item-quantity>0</span>
@@ -69,10 +69,10 @@
         
         <div data-fsc-items-container>
             <div class="cart-item" data-fsc-item-path-element>
-                <img data-fsc-item-image width="50" style="vertical-align:middle;">
+                <img data-fsc-item-image width="50">
                 <strong data-fsc-item-display></strong> 
                 | Qty: <span data-fsc-item-quantity></span> 
-                | Subtotal: <span data-fsc-item-total></span>
+                | Total: <span data-fsc-item-total></span>
                 | <a href="#" data-fsc-action="Remove" style="color:red;">[Remove]</a>
             </div>
         </div>
@@ -80,7 +80,7 @@
         <div style="margin-top:20px; background:#f4f4f4; padding:15px; width:320px;">
             Subtotal: <span data-fsc-order-total></span><br>
             Tax: <span data-fsc-order-tax></span><br>
-            <strong>Total: <span data-fsc-order-totalWithTax></span></strong>
+            <strong>Grand Total: <span data-fsc-order-totalWithTax></span></strong>
             <br><br>
             <button data-fsc-action="Checkout">Checkout</button>
             <button data-fsc-action="Reset">Clear All</button>
