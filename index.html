@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Ready to Roll Test Store</title>
+<title>Ready to Roll Store</title>
 
 <script
 id="fsc-api"
@@ -16,7 +16,7 @@ data-debug="true">
 
 <body>
 
-<h1>Ready to Roll Test Store</h1>
+<h1>Ready to Roll Store</h1>
 
 <h2>Products</h2>
 
@@ -30,26 +30,31 @@ data-debug="true">
 </div>
 
 <div>
-Price:
-<span data-fsc-item-path="the-tavern" data-fsc-item-price></span>
+Price: <span data-fsc-item-path="the-tavern" data-fsc-item-price></span>
 </div>
 
-<div>
-
+<!-- ADD BUTTON -->
 <button
 data-fsc-action="Add"
 data-fsc-item-path-value="the-tavern"
-data-fsc-item-quantity-value="1">
-+
+data-fsc-item-selection-smartdisplay="false">
+Add to Cart
 </button>
 
-<span data-fsc-item-path="the-tavern" data-fsc-item-quantity></span>
+<!-- QUANTITY CONTROLS -->
+<div
+data-fsc-item-path="the-tavern"
+data-fsc-item-selection-smartdisplay>
 
-<button
-data-fsc-action="Remove"
-data-fsc-item-path-value="the-tavern">
-Remove
-</button>
+<button onclick="changeQty('the-tavern', -1)">-</button>
+
+<input
+type="number"
+min="0"
+data-fsc-item-path="the-tavern"
+data-fsc-item-quantity>
+
+<button onclick="changeQty('the-tavern', 1)">+</button>
 
 </div>
 
@@ -67,26 +72,29 @@ Remove
 </div>
 
 <div>
-Price:
-<span data-fsc-item-path="the-campfire" data-fsc-item-price></span>
+Price: <span data-fsc-item-path="the-campfire" data-fsc-item-price></span>
 </div>
-
-<div>
 
 <button
 data-fsc-action="Add"
 data-fsc-item-path-value="the-campfire"
-data-fsc-item-quantity-value="1">
-+
+data-fsc-item-selection-smartdisplay="false">
+Add to Cart
 </button>
 
-<span data-fsc-item-path="the-campfire" data-fsc-item-quantity></span>
+<div
+data-fsc-item-path="the-campfire"
+data-fsc-item-selection-smartdisplay>
 
-<button
-data-fsc-action="Remove"
-data-fsc-item-path-value="the-campfire">
-Remove
-</button>
+<button onclick="changeQty('the-campfire', -1)">-</button>
+
+<input
+type="number"
+min="0"
+data-fsc-item-path="the-campfire"
+data-fsc-item-quantity>
+
+<button onclick="changeQty('the-campfire', 1)">+</button>
 
 </div>
 
@@ -104,26 +112,29 @@ Remove
 </div>
 
 <div>
-Price:
-<span data-fsc-item-path="the-guild-hall" data-fsc-item-price></span>
+Price: <span data-fsc-item-path="the-guild-hall" data-fsc-item-price></span>
 </div>
-
-<div>
 
 <button
 data-fsc-action="Add"
 data-fsc-item-path-value="the-guild-hall"
-data-fsc-item-quantity-value="1">
-+
+data-fsc-item-selection-smartdisplay="false">
+Add to Cart
 </button>
 
-<span data-fsc-item-path="the-guild-hall" data-fsc-item-quantity></span>
+<div
+data-fsc-item-path="the-guild-hall"
+data-fsc-item-selection-smartdisplay>
 
-<button
-data-fsc-action="Remove"
-data-fsc-item-path-value="the-guild-hall">
-Remove
-</button>
+<button onclick="changeQty('the-guild-hall', -1)">-</button>
+
+<input
+type="number"
+min="0"
+data-fsc-item-path="the-guild-hall"
+data-fsc-item-quantity>
+
+<button onclick="changeQty('the-guild-hall', 1)">+</button>
 
 </div>
 
@@ -161,6 +172,28 @@ Clear Cart
 <hr>
 
 <div id="fsc-embedded-checkout-container"></div>
+
+<script>
+
+function changeQty(product, delta) {
+
+const qtyElement = document.querySelector('[data-fsc-item-path="'+product+'"][data-fsc-item-quantity]');
+let qty = parseInt(qtyElement.value || qtyElement.textContent || 0);
+
+qty += delta;
+
+if(qty < 0) qty = 0;
+
+window.fastspring.builder.push({
+products: [{
+path: product,
+quantity: qty
+}]
+});
+
+}
+
+</script>
 
 </body>
 </html>
