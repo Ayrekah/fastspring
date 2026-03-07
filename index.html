@@ -37,20 +37,19 @@
         <section class="checkout-section">
             <h2>Complete Your Order</h2>
 
-            <div class="order-summary" data-fsc-items-container>
+            <div class="order-summary">
                 <h4>Your Selection:</h4>
                 
-                <div data-fsc-item-path="the-tavern" data-fsc-item-selection-smartdisplay>
-                    <p><span data-fsc-item-display></span> (x<span data-fsc-item-quantity></span>)</p>
-                </div>
-
-                <div data-fsc-item-path="the-campfire" data-fsc-item-selection-smartdisplay>
-                    <p><span data-fsc-item-display></span> (x<span data-fsc-item-quantity></span>)</p>
-                </div>
-
-                <div data-fsc-item-path="the-guild-hall" data-fsc-item-selection-smartdisplay>
-                    <p><span data-fsc-item-display></span> (x<span data-fsc-item-quantity></span>)</p>
-                </div>
+                <ul data-fsc-items-container class="item-list">
+                    <script type="text/fsc-template">
+                        <li data-fsc-item-path="${path}">
+                            <span data-fsc-item-display></span> 
+                            (x<span data-fsc-item-quantity></span>) — 
+                            <span data-fsc-item-total></span>
+                            <button data-fsc-action="Remove" class="btn-remove">Remove</button>
+                        </li>
+                    </script>
+                </ul>
 
                 <hr>
                 <p>Subtotal: <span data-fsc-order-total></span></p>
@@ -58,7 +57,7 @@
                 <hr>
                 <p><strong>Total: <span data-fsc-order-totalWithTax></span></strong></p>
                 
-                <button data-fsc-action="Reset">Clear All</button>
+                <button data-fsc-action="Reset" class="btn-reset">Clear All</button>
             </div>
 
             <div id="fsc-embedded-checkout-container"></div>
