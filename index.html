@@ -26,7 +26,7 @@ data-debug="true">
 <img data-fsc-item-path="the-tavern" data-fsc-item-image width="200">
 
 <div>
-<span data-fsc-item-path="the-tavern" data-fsc-item-display></span>
+<strong data-fsc-item-path="the-tavern" data-fsc-item-display></strong>
 </div>
 
 <div>
@@ -34,9 +34,24 @@ Price:
 <span data-fsc-item-path="the-tavern" data-fsc-item-price></span>
 </div>
 
-<button data-fsc-action="Add" data-fsc-item-path-value="the-tavern">
-Add to Cart
+<div>
+
+<button
+data-fsc-action="Add"
+data-fsc-item-path-value="the-tavern"
+data-fsc-item-quantity-value="1">
++
 </button>
+
+<span data-fsc-item-path="the-tavern" data-fsc-item-quantity></span>
+
+<button
+data-fsc-action="Remove"
+data-fsc-item-path-value="the-tavern">
+Remove
+</button>
+
+</div>
 
 </div>
 
@@ -48,7 +63,7 @@ Add to Cart
 <img data-fsc-item-path="the-campfire" data-fsc-item-image width="200">
 
 <div>
-<span data-fsc-item-path="the-campfire" data-fsc-item-display></span>
+<strong data-fsc-item-path="the-campfire" data-fsc-item-display></strong>
 </div>
 
 <div>
@@ -56,9 +71,24 @@ Price:
 <span data-fsc-item-path="the-campfire" data-fsc-item-price></span>
 </div>
 
-<button data-fsc-action="Add" data-fsc-item-path-value="the-campfire">
-Add to Cart
+<div>
+
+<button
+data-fsc-action="Add"
+data-fsc-item-path-value="the-campfire"
+data-fsc-item-quantity-value="1">
++
 </button>
+
+<span data-fsc-item-path="the-campfire" data-fsc-item-quantity></span>
+
+<button
+data-fsc-action="Remove"
+data-fsc-item-path-value="the-campfire">
+Remove
+</button>
+
+</div>
 
 </div>
 
@@ -70,7 +100,7 @@ Add to Cart
 <img data-fsc-item-path="the-guild-hall" data-fsc-item-image width="200">
 
 <div>
-<span data-fsc-item-path="the-guild-hall" data-fsc-item-display></span>
+<strong data-fsc-item-path="the-guild-hall" data-fsc-item-display></strong>
 </div>
 
 <div>
@@ -78,107 +108,30 @@ Price:
 <span data-fsc-item-path="the-guild-hall" data-fsc-item-price></span>
 </div>
 
-<button data-fsc-action="Add" data-fsc-item-path-value="the-guild-hall">
-Add to Cart
-</button>
-
-</div>
-
-<hr>
-
-<h2>Cart</h2>
-
-<!-- TAVERN CART -->
-<div data-fsc-item-path="the-tavern" data-fsc-item-selection-smartdisplay>
-
-<strong>
-<span data-fsc-item-path="the-tavern" data-fsc-item-display></span>
-</strong>
-
 <div>
 
-<button data-fsc-action="Add" data-fsc-item-path-value="the-tavern" data-fsc-item-quantity="1">
-+
-</button>
-
-<span data-fsc-item-path="the-tavern" data-fsc-item-quantity></span>
-
-<button data-fsc-action="Remove" data-fsc-item-path-value="the-tavern">
-Remove
-</button>
-
-</div>
-
-<div>
-Price:
-<span data-fsc-item-path="the-tavern" data-fsc-item-price></span>
-</div>
-
-</div>
-
-<hr>
-
-<!-- CAMPFIRE CART -->
-<div data-fsc-item-path="the-campfire" data-fsc-item-selection-smartdisplay>
-
-<strong>
-<span data-fsc-item-path="the-campfire" data-fsc-item-display></span>
-</strong>
-
-<div>
-
-<button data-fsc-action="Add" data-fsc-item-path-value="the-campfire" data-fsc-item-quantity="1">
-+
-</button>
-
-<span data-fsc-item-path="the-campfire" data-fsc-item-quantity></span>
-
-<button data-fsc-action="Remove" data-fsc-item-path-value="the-campfire">
-Remove
-</button>
-
-</div>
-
-<div>
-Price:
-<span data-fsc-item-path="the-campfire" data-fsc-item-price></span>
-</div>
-
-</div>
-
-<hr>
-
-<!-- GUILD HALL CART -->
-<div data-fsc-item-path="the-guild-hall" data-fsc-item-selection-smartdisplay>
-
-<strong>
-<span data-fsc-item-path="the-guild-hall" data-fsc-item-display></span>
-</strong>
-
-<div>
-
-<button data-fsc-action="Add" data-fsc-item-path-value="the-guild-hall" data-fsc-item-quantity="1">
+<button
+data-fsc-action="Add"
+data-fsc-item-path-value="the-guild-hall"
+data-fsc-item-quantity-value="1">
 +
 </button>
 
 <span data-fsc-item-path="the-guild-hall" data-fsc-item-quantity></span>
 
-<button data-fsc-action="Remove" data-fsc-item-path-value="the-guild-hall">
+<button
+data-fsc-action="Remove"
+data-fsc-item-path-value="the-guild-hall">
 Remove
 </button>
 
-</div>
-
-<div>
-Price:
-<span data-fsc-item-path="the-guild-hall" data-fsc-item-price></span>
 </div>
 
 </div>
 
 <hr>
 
-<h3>Order Summary</h3>
+<h2>Cart Summary</h2>
 
 <div>
 Subtotal:
