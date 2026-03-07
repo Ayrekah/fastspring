@@ -1,123 +1,61 @@
-(function($) {
-    "use strict";
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Ready to Roll | TTRPG Character Creator</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="style.css">
 
-    var searchPopup = function() {
-        $('#header-nav').on('click', '.search-button', function(e) {
-            $('.search-popup').toggleClass('is-visible');
-        });
-        $('#header-nav').on('click', '.btn-close-search', function(e) {
-            $('.search-popup').toggleClass('is-visible');
-        });
-        $(".search-popup-trigger").on("click", function(b) {
-            b.preventDefault();
-            $(".search-popup").addClass("is-visible");
-            setTimeout(function() {
-                $(".search-popup").find("#search-popup").focus();
-            }, 350);
-        });
-        $(".search-popup").on("click", function(b) {
-            ( $(b.target).is(".search-popup-close") || $(b.target).is(".search-popup-close svg") || $(b.target).is(".search-popup-close path") || $(b.target).is(".search-popup") ) && (b.preventDefault(), $(this).removeClass("is-visible"));
-        });
-        $(document).keyup(function(b) {
-            "27" === b.which && $(".search-popup").removeClass("is-visible");
-        });
-    };
+    <script id="fsc-api"
+        src="https://sbl.onfastspring.com/sbl/1.0.6/fastspring-builder.min.js"
+        type="text/javascript"
+        data-storefront="ericateststore.test.onfastspring.com/embedded-readytoroll"
+        data-data-callback="onFscDataCallback"
+        data-debug="true">
+    </script>
 
-    var initProductQty = function() {
-        $('.product-qty').each(function() {
-            var $el_product = $(this);
-            $el_product.find('.quantity-right-plus').click(function(e) {
-                e.preventDefault();
-                var quantity = parseInt($el_product.find('#quantity').val()) || 0;
-                $el_product.find('#quantity').val(quantity + 1);
-            });
-            $el_product.find('.quantity-left-minus').click(function(e) {
-                e.preventDefault();
-                var quantity = parseInt($el_product.find('#quantity').val()) || 0;
-                if (quantity > 0) {
-                    $el_product.find('#quantity').val(quantity - 1);
-                }
-            });
-        });
-    };
+    <style>
+        .product-card { border: 1px solid #eee; padding: 25px; background: #fff; text-align: center; transition: 0.3s; }
+        .product-card:hover { border-color: #000; }
+        .product-card img { max-height: 200px; object-fit: cover; border-radius: 8px; margin-bottom: 15px; cursor: pointer; }
+        
+        /* FIX: Forces FastSpring to show data even if it tries to hide it initially */
+        [data-fsc-item-path] { display: block !important; visibility: visible !important; opacity: 1 !important; }
+        
+        .modal-body img { max-height: 300px; border-radius: 12px; }
+    </style>
+</head>
 
-    $(document).ready(function() {
-        searchPopup();
-        initProductQty();
+<body>
+    <header class="p-3 border-bottom sticky-top bg-white">
+        <div class="container d-flex justify-content-between align-items-center">
+            <strong class="h4 m-0">READY TO ROLL</strong>
+            <button class="btn btn-dark" onclick="fastspring.builder.viewCart()">
+                VIEW CART (<span data-fsc-order-total>$0.00</span>)
+            </button>
+        </div>
+    </header>
 
-        var mainSwiper = new Swiper(".main-swiper", {
-            speed: 500,
-            navigation: {
-                nextEl: ".swiper-arrow-prev",
-                prevEl: ".swiper-arrow-next",
-            },
-        });
+    <section class="container py-5">
+        <div class="row g-4">
+            
+            <div class="col-md-4">
+                <div class="product-card">
+                    <img data-fsc-item-path="the-tavern" data-fsc-item-image src="" onclick="showDetails('the-tavern')">
+                    <h4 data-fsc-item-path="the-tavern" data-fsc-item-display>The Tavern</h4>
+                    <div class="h5 text-primary mb-3" data-fsc-item-path="the-tavern" data-fsc-item-price></div>
+                    
+                    <button class="btn btn-dark w-100" onclick="addToCartAndShow('the-tavern')">Add to Cart</button>
+                    <button class="btn btn-link btn-sm text-dark mt-2" onclick="showDetails('the-tavern')">View Full Details</button>
+                </div>
+            </div>
 
-        var productSwiper = new Swiper(".product-swiper", {
-            slidesPerView: 4,
-            spaceBetween: 10,
-            pagination: { el: "#mobile-products .swiper-pagination", clickable: true },
-            breakpoints: {
-                0: { slidesPerView: 2, spaceBetween: 20 },
-                980: { slidesPerView: 4, spaceBetween: 20 }
-            },
-        });
-
-        var watchSwiper = new Swiper(".product-watch-swiper", {
-            slidesPerView: 4,
-            spaceBetween: 10,
-            pagination: { el: "#smart-watches .swiper-pagination", clickable: true },
-            breakpoints: {
-                0: { slidesPerView: 2, spaceBetween: 20 },
-                980: { slidesPerView: 4, spaceBetween: 20 }
-            },
-        });
-
-        var testimonialSwiper = new Swiper(".testimonial-swiper", {
-            loop: true,
-            navigation: {
-                nextEl: ".swiper-arrow-prev",
-                prevEl: ".swiper-arrow-next",
-            },
-        });
-    });
-
-})(jQuery);
-
-/* --- FASTSPRING SBL GLOBAL FUNCTIONS --- */
-
-/**
- * Adds product and then immediately launches the FastSpring Popup Cart 
- */
-function addToCartAndShow(path) {
-    console.log("Ready to Roll: Adding " + path);
-    fastspring.builder.add(path); [cite: 1]
-    fastspring.builder.viewCart(); [cite: 1]
-}
-
-/**
- * Required callback for SBL data syncing 
- */
-function onFscDataCallback(data) {
-    console.log("SBL Sync Success:", data); [cite: 1]
-}
-
-window.fastspring = {
-    builder: { "onOrderItemsChanged": onFscDataCallback } [cite: 1]
-};
-
-/**
- * Modal Handler pulls details from the builder item 
- */
-function showDetails(path) {
-    const item = fastspring.builder.item(path); [cite: 1]
-    if (item) {
-        document.getElementById('m-title').innerText = item.display; [cite: 1]
-        document.getElementById('m-img').src = item.image; [cite: 1]
-        document.getElementById('m-desc').innerHTML = item.descriptionFull || "Lore loading..."; [cite: 1]
-        var myModal = new bootstrap.Modal(document.getElementById('detailsModal')); [cite: 1]
-        myModal.show(); [cite: 1]
-    } else {
-        console.warn("SBL: Item data for " + path + " not found.");
-    }
-}
+            <div class="col-md-4">
+                <div class="product-card">
+                    <img data-fsc-item-path="the-campfire" data-fsc-item-image src="" onclick="showDetails('the-campfire')">
+                    <h4 data-fsc-item-path="the-campfire" data-fsc-item-display>The Campfire</h4>
+                    <div class="h5 text-primary mb-3" data-fsc-item-path="the-campfire" data-fsc-item-price></div>
+                    <button class="btn btn-dark w-100" onclick="addToCartAndShow('the-campfire')">Add to Cart</button>
+                    <button class="btn btn-link btn-sm text-dark mt-2" onclick="showDetails('the-campfire')">View Full Details</button>
