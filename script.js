@@ -1,53 +1,36 @@
-body {
-    font-family: sans-serif;
-    line-height: 1.6;
-    padding: 20px;
-    background: #f4f4f4;
+// Track current quantities for all products
+const cart = {
+  "the-tavern": 0,
+  "the-campfire": 0,
+  "the-guild-hall": 0
+};
+
+// Helper to push full cart to FastSpring
+function updateCart() {
+  const items = Object.keys(cart).map(product => ({
+    product: product,
+    quantity: cart[product]
+  })).filter(item => item.quantity > 0); // remove 0-quantity products
+
+  fastspring.builder.push({ items });
 }
 
-header {
-    text-align: center;
-    margin-bottom: 40px;
-}
+// Attach event listeners
+document.querySelectorAll('.product').forEach(productDiv => {
+  const productName = productDiv.dataset.product;
+  const quantitySpan = productDiv.querySelector('.quantity');
 
-.store-container {
-    display: flex;
-    gap: 40px;
-    max-width: 1000px;
-    margin: 0 auto;
-}
+  productDiv.querySelector('.increase').addEventListener('click', () => {
+    cart[productName]++;
+    quantitySpan.textContent = cart[productName];
+    updateCart();
+  });
 
-.products {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-}
-
-.product-card {
-    background: white;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-}
-
-.checkout-section {
-    flex: 1;
-    background: #fff;
-    padding: 20px;
-    border-radius: 8px;
-    min-height: 400px;
-}
-
-button {
-    background: #007bff;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 4px;
-    cursor: pointer;
-}
-
-button:hover {
-    background: #0056b3;
-}
+  productDiv.querySelector('.decrease').addEventListener('click', () => {
+    if (cart[productName] > 0) {
+      cart[productName]--;
+      quantitySpan.textContent = cart[productName];
+      updateCart();
+    }
+  });
+});
