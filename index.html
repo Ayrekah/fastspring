@@ -1,10 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Ready to Roll | TTRPG Character Creator</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
+    <title>Ready to Roll | FastSpring Technical Demo</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="style.css">
 
@@ -17,33 +15,28 @@
     </script>
 
     <style>
-        .product-card { border: 1px solid #eee; padding: 25px; background: #fff; text-align: center; transition: 0.3s; height: 100%; }
-        .product-card:hover { border-color: #000; transform: translateY(-4px); box-shadow: 0 8px 20px rgba(0,0,0,.1); }
-        .product-card img { max-height: 200px; object-fit: cover; border-radius: 8px; margin-bottom: 15px; cursor: pointer; }
-        
-        /* THE FIX: Overrides SBL 'hide' commands seen in logs */
+        /* 3. THE FIX: Overrides SBL 'hide' commands seen in logs */
         [data-fsc-item-path] { 
             display: block !important; 
             visibility: visible !important; 
             opacity: 1 !important; 
         }
-        
-        /* Ensure the total in the header remains visible */
-        [data-fsc-order-total] { display: inline-block !important; }
+        .product-card { border: 1px solid #eee; padding: 25px; background: #fff; text-align: center; transition: 0.3s; }
+        .product-card img { max-height: 200px; border-radius: 8px; cursor: pointer; }
     </style>
 </head>
 
 <body>
     <header class="p-3 border-bottom sticky-top bg-white">
         <div class="container d-flex justify-content-between align-items-center">
-            <strong class="h4 m-0">READY TO ROLL</strong>
+            <strong>READY TO ROLL</strong>
             <button class="btn btn-dark" onclick="fastspring.builder.viewCart()">
                 VIEW CART (<span data-fsc-order-total>$0.00</span>)
             </button>
         </div>
     </header>
 
-    <section class="container py-5">
+    <div class="container py-5">
         <div class="row g-4">
             <div class="col-md-4">
                 <div class="product-card">
@@ -51,52 +44,26 @@
                     <h4 data-fsc-item-path="the-tavern" data-fsc-item-display>The Tavern</h4>
                     <div class="h5 text-primary mb-3" data-fsc-item-path="the-tavern" data-fsc-item-price></div>
                     <button class="btn btn-dark w-100" onclick="addToCartAndShow('the-tavern')">Add to Cart</button>
-                    <button class="btn btn-link btn-sm text-dark mt-2" onclick="showDetails('the-tavern')">View Full Details</button>
                 </div>
             </div>
-
-            <div class="col-md-4">
-                <div class="product-card">
-                    <img data-fsc-item-path="the-campfire" data-fsc-item-image src="" onclick="showDetails('the-campfire')">
-                    <h4 data-fsc-item-path="the-campfire" data-fsc-item-display>The Campfire</h4>
-                    <div class="h5 text-primary mb-3" data-fsc-item-path="the-campfire" data-fsc-item-price></div>
-                    <button class="btn btn-dark w-100" onclick="addToCartAndShow('the-campfire')">Add to Cart</button>
-                    <button class="btn btn-link btn-sm text-dark mt-2" onclick="showDetails('the-campfire')">View Full Details</button>
-                </div>
             </div>
+    </div>
 
-            <div class="col-md-4">
-                <div class="product-card">
-                    <img data-fsc-item-path="the-guild-hall" data-fsc-item-image src="" onclick="showDetails('the-guild-hall')">
-                    <h4 data-fsc-item-path="the-guild-hall" data-fsc-item-display>The Guild Hall</h4>
-                    <div class="h5 text-primary mb-3" data-fsc-item-path="the-guild-hall" data-fsc-item-price></div>
-                    <button class="btn btn-dark w-100" onclick="addToCartAndShow('the-guild-hall')">Add to Cart</button>
-                    <button class="btn btn-link btn-sm text-dark mt-2" onclick="showDetails('the-guild-hall')">View Full Details</button>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <div id="fsc-embedded-checkout-container" style="display:none;"></div>
-
-    <div class="modal fade" id="detailsModal" tabindex="-1">
-        <div class="modal-dialog modal-lg modal-dialog-centered">
+    <div class="modal fade" id="detailsModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
             <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="m-title"></h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-                </div>
                 <div class="modal-body">
-                    <div class="row">
-                        <div class="col-md-5 text-center"><img id="m-img" src="" class="img-fluid rounded shadow-sm"></div>
-                        <div class="col-md-7"><div id="m-desc"></div></div>
-                    </div>
+                    <h2 id="m-title"></h2>
+                    <img id="m-img" class="img-fluid rounded mb-3">
+                    <div id="m-desc"></div>
+                    <button type="button" class="btn btn-secondary mt-3" data-bs-dismiss="modal">Close</button>
                 </div>
             </div>
         </div>
     </div>
 
     <script src="js/jquery-1.11.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script src="js/bootstrap.bundle.min.js"></script>
     <script src="js/script.js"></script>
 </body>
