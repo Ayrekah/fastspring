@@ -1,4 +1,3 @@
-
 body {
     font-family: sans-serif;
     line-height: 1.6;
@@ -38,6 +37,26 @@ header {
     padding: 20px;
     border-radius: 8px;
     min-height: 400px;
+}
+
+.order-summary {
+    background: #f9f9f9;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin-bottom: 20px;
+}
+
+.order-summary p {
+    margin: 5px 0;
+    display: flex;
+    justify-content: space-between;
+}
+
+hr {
+    border: 0;
+    border-top: 1px solid #ccc;
+    margin: 10px 0;
 }
 
 button {
