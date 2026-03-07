@@ -1,36 +1,18 @@
-// Track current quantities for all products
-const cart = {
-  "the-tavern": 0,
-  "the-campfire": 0,
-  "the-guild-hall": 0
-};
-
-// Helper to push full cart to FastSpring
-function updateCart() {
-  const items = Object.keys(cart).map(product => ({
-    product: product,
-    quantity: cart[product]
-  })).filter(item => item.quantity > 0); // remove 0-quantity products
-
-  fastspring.builder.push({ items });
+/**
+ * This function is triggered by the 'data-data-callback' attribute 
+ * in the SBL script tag whenever the session updates.
+ */
+function orderUpdateCallback(data) {
+    if (data) {
+        console.log("FastSpring Session Updated:", data);
+        
+        // Example: Check if the cart is empty
+        if (data.groups && data.groups.length > 0) {
+            console.log("Items in cart:", data.groups[0].items.length);
+        } else {
+            console.log("Cart is currently empty.");
+        }
+    }
 }
 
-// Attach event listeners
-document.querySelectorAll('.product').forEach(productDiv => {
-  const productName = productDiv.dataset.product;
-  const quantitySpan = productDiv.querySelector('.quantity');
-
-  productDiv.querySelector('.increase').addEventListener('click', () => {
-    cart[productName]++;
-    quantitySpan.textContent = cart[productName];
-    updateCart();
-  });
-
-  productDiv.querySelector('.decrease').addEventListener('click', () => {
-    if (cart[productName] > 0) {
-      cart[productName]--;
-      quantitySpan.textContent = cart[productName];
-      updateCart();
-    }
-  });
-});
+console.log("Ready To Roll Store initialized with Callbacks.");
