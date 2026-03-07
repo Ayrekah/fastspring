@@ -1048,3 +1048,16 @@ box-shadow:0 8px 20px rgba(0,0,0,.1);
 [data-fsc-item-image]{
 cursor:pointer;
 }
+
+/* Force FastSpring directives to stay visible regardless of SmartDisplay logic */
+[data-fsc-item-path] { 
+    display: block !important; 
+    visibility: visible !important; 
+    opacity: 1 !important; 
+}
+
+/* Ensure the total in the header remains visible */
+[data-fsc-order-total] {
+    display: inline-block !important;
+}
+
