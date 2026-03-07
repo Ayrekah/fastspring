@@ -16,14 +16,12 @@
     </script>
 
     <style>
-        .product-card { border: 1px solid #eee; padding: 20px; transition: 0.3s; background: #fff; text-align: center; }
-        #fsc-embedded-checkout-container { display: none; min-height: 600px; margin-top: 20px; border-top: 2px solid #000; }
+        .product-card { border: 1px solid #eee; padding: 25px; transition: 0.3s; background: #fff; text-align: center; }
+        #fsc-embedded-checkout-container { display: none; min-height: 600px; margin-top: 20px; border-top: 2px solid #000; padding-top: 20px; }
         
-        /* Cart Summary Styling */
+        /* THE CART LIST STYLING */
         #cart-summary { display: none; border: 2px solid #333; padding: 20px; margin-top: 40px; background: #fff; }
         .cart-row { display: flex; justify-content: space-between; align-items: center; padding: 10px 0; border-bottom: 1px solid #eee; }
-        
-        /* Quantity Input Styling */
         .qty-box { width: 60px; text-align: center; border: 1px solid #ccc; border-radius: 4px; }
     </style>
 </head>
@@ -44,6 +42,7 @@
                     <img data-fsc-item-path="the-tavern" data-fsc-item-image src="" class="img-fluid mb-2">
                     <h4 data-fsc-item-path="the-tavern" data-fsc-item-display>The Tavern</h4>
                     <div class="h5 text-primary" data-fsc-item-path="the-tavern" data-fsc-item-price></div>
+                    
                     <button class="btn btn-dark w-100" onclick="fastspring.builder.add('the-tavern')">Add to Cart</button>
                     <button class="btn btn-link btn-sm text-dark mt-2" data-bs-toggle="modal" data-bs-target="#modal-tavern">View Full Details</button>
                 </div>
@@ -73,7 +72,7 @@
     </section>
 
     <div id="cart-summary" class="container">
-        <h3 class="text-uppercase mb-3">Your Party Inventory</h3>
+        <h3 class="text-uppercase mb-3">Your Party</h3>
         <div data-fsc-items-container>
             <div class="cart-row">
                 <div class="d-flex align-items-center">
@@ -93,27 +92,54 @@
     </div>
 
     <div class="modal fade" id="modal-tavern" tabindex="-1">
-        <div class="modal-dialog"><div class="modal-content" data-fsc-item-path="the-tavern">
-            <div class="modal-header"><h5 data-fsc-item-display></h5><button type="button" class="btn-close" data-bs-dismiss="modal"></button></div>
-            <div class="modal-body"><img data-fsc-item-image src="" class="img-fluid mb-3"><div data-fsc-item-description-full></div></div>
-        </div></div>
+        <div class="modal-dialog">
+            <div class="modal-content" data-fsc-item-path="the-tavern">
+                <div class="modal-header">
+                    <h5 class="modal-title" data-fsc-item-display></h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <img data-fsc-item-image src="" class="img-fluid mb-3">
+                    <div data-fsc-item-description-full></div>
+                </div>
+            </div>
+        </div>
     </div>
 
     <div class="modal fade" id="modal-campfire" tabindex="-1">
-        <div class="modal-dialog"><div class="modal-content" data-fsc-item-path="the-campfire">
-            <div class="modal-header"><h5 data-fsc-item-display></h5><button type="button" class="btn-close" data-bs-dismiss="modal"></button></div>
-            <div class="modal-body"><img data-fsc-item-image src="" class="img-fluid mb-3"><div data-fsc-item-description-full></div></div>
-        </div></div>
+        <div class="modal-dialog">
+            <div class="modal-content" data-fsc-item-path="the-campfire">
+                <div class="modal-header">
+                    <h5 class="modal-title" data-fsc-item-display></h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <img data-fsc-item-image src="" class="img-fluid mb-3">
+                    <div data-fsc-item-description-full></div>
+                </div>
+            </div>
+        </div>
     </div>
 
     <div class="modal fade" id="modal-guild" tabindex="-1">
-        <div class="modal-dialog"><div class="modal-content" data-fsc-item-path="the-guild-hall">
-            <div class="modal-header"><h5 data-fsc-item-display></h5><button type="button" class="btn-close" data-bs-dismiss="modal"></button></div>
-            <div class="modal-body"><img data-fsc-item-image src="" class="img-fluid mb-3"><div data-fsc-item-description-full></div></div>
-        </div></div>
+        <div class="modal-dialog">
+            <div class="modal-content" data-fsc-item-path="the-guild-hall">
+                <div class="modal-header">
+                    <h5 class="modal-title" data-fsc-item-display></h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <img data-fsc-item-image src="" class="img-fluid mb-3">
+                    <div data-fsc-item-description-full></div>
+                </div>
+            </div>
+        </div>
     </div>
 
     <script type="text/javascript">
+        /**
+         * The SBL Handshake: Toggles the visibility of the cart list and checkout
+         */
         function onFscOrderItemsChanged(data) {
             const summary = document.getElementById('cart-summary');
             const checkout = document.getElementById('fsc-embedded-checkout-container');
