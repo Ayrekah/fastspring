@@ -1,96 +1,32 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Ready to Roll Store</title>
-
-    <script id="fsc-api"
-        src="https://sbl.onfastspring.com/sbl/1.0.6/fastspring-builder.min.js"
-        type="text/javascript"
-        data-storefront="ericateststore.test.onfastspring.com/embedded-readytoroll"
-        data-data-callback="onFscDataCallback"
-        data-debug="true">
-    </script>
-
-    <style>
-        body { font-family: sans-serif; margin: 40px; }
-        .products { display: flex; gap: 20px; margin-bottom: 40px; }
-        .product { border: 1px solid #ccc; padding: 15px; width: 220px; text-align: center; }
-        .cart { border-top: 2px solid #000; padding-top: 20px; }
-        .cart-item { padding: 10px; border-bottom: 1px solid #eee; display: flex; align-items: center; gap: 10px; }
-        
-        /* REQUIRED: Overrides SBL 'SmartDisplay' which hides directives by default */
-        [data-fsc-item-path] { display: block !important; visibility: visible !important; opacity: 1 !important; }
-        [data-fsc-item-display], [data-fsc-item-price], [data-fsc-item-quantity] { display: inline-block !important; }
-    </style>
+    <title>FastSpring Embedded Checkout</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <h1>FastSpring Embedded Checkout Demo</h1>
 
-    <h1>Ready to Roll Store</h1>
-
-    <div class="products">
-        <div class="product">
-            <img data-fsc-item-path="the-tavern" data-fsc-item-image width="150">
-            <h3 data-fsc-item-path="the-tavern" data-fsc-item-display></h3>
-            <p data-fsc-item-path="the-tavern" data-fsc-item-price></p>
-            <button data-fsc-action="Add" data-fsc-item-path-value="the-tavern">Add to Party</button>
-            <div>
-                <button onclick="changeQty('the-tavern', -1)">-</button>
-                <span data-fsc-item-path="the-tavern" data-fsc-item-quantity>0</span>
-                <button onclick="changeQty('the-tavern', 1)">+</button>
-            </div>
-        </div>
-
-        <div class="product">
-            <img data-fsc-item-path="the-campfire" data-fsc-item-image width="150">
-            <h3 data-fsc-item-path="the-campfire" data-fsc-item-display></h3>
-            <p data-fsc-item-path="the-campfire" data-fsc-item-price></p>
-            <button data-fsc-action="Add" data-fsc-item-path-value="the-campfire">Add to Party</button>
-            <div>
-                <button onclick="changeQty('the-campfire', -1)">-</button>
-                <span data-fsc-item-path="the-campfire" data-fsc-item-quantity>0</span>
-                <button onclick="changeQty('the-campfire', 1)">+</button>
-            </div>
-        </div>
-
-        <div class="product">
-            <img data-fsc-item-path="the-guild-hall" data-fsc-item-image width="150">
-            <h3 data-fsc-item-path="the-guild-hall" data-fsc-item-display></h3>
-            <p data-fsc-item-path="the-guild-hall" data-fsc-item-price></p>
-            <button data-fsc-action="Add" data-fsc-item-path-value="the-guild-hall">Add to Party</button>
-            <div>
-                <button onclick="changeQty('the-guild-hall', -1)">-</button>
-                <span data-fsc-item-path="the-guild-hall" data-fsc-item-quantity>0</span>
-                <button onclick="changeQty('the-guild-hall', 1)">+</button>
-            </div>
-        </div>
+    <!-- Buttons to add products to cart -->
+    <div class="product-buttons">
+        <button id="add-tavern">Add The Tavern</button>
+        <button id="add-campfire">Add The Campfire</button>
+        <button id="add-guild-hall">Add The Guild Hall</button>
+        <button id="checkout">Go to Checkout</button>
     </div>
 
-    <div class="cart">
-        <h2>Your Character Party (Cart)</h2>
-        
-        <div data-fsc-items-container>
-            <div class="cart-item" data-fsc-item-path-element>
-                <img data-fsc-item-image width="40">
-                <strong data-fsc-item-display></strong> 
-                | Qty: <span data-fsc-item-quantity></span> 
-                | Total: <span data-fsc-item-total></span>
-                | <button data-fsc-action="Remove" style="color:red; background:none; border:none; cursor:pointer;">[Remove]</button>
-            </div>
-        </div>
-
-        <div style="margin-top:20px; background:#f4f4f4; padding:20px; width:320px;">
-            Subtotal: <span data-fsc-order-total></span><br>
-            Tax: <span data-fsc-order-tax></span><br>
-            <strong>Grand Total: <span data-fsc-order-totalWithTax></span></strong>
-            <br><br>
-            <button data-fsc-action="Checkout">Checkout Now</button>
-            <button data-fsc-action="Reset">Clear Entire Party</button>
-        </div>
-    </div>
-
+    <!-- Container for embedded checkout -->
     <div id="fsc-embedded-checkout-container"></div>
 
+    <!-- FastSpring Embedded Checkout Script -->
+    <script
+        id="fsc-api"
+        src="https://sbl.onfastspring.com/sbl/1.0.6/fastspring-builder.min.js"
+        type="text/javascript"
+        data-storefront="ericateststore.test.onfastspring.com/embedded-readytoroll">
+    </script>
+    
     <script src="script.js"></script>
 </body>
 </html>
