@@ -35,34 +35,34 @@
         <section class="checkout-section">
             <h2>Complete Your Order</h2>
 
-            <div class="order-summary">
+            <div class="order-summary" data-fsc-items-container>
                 <h4>Your Selection:</h4>
                 
-                <div data-fsc-items-container>
-                    <div data-fsc-item-path="the-tavern" data-fsc-item-selection-smartdisplay>
-                        <p>
-                            <span data-fsc-item-display></span> 
-                            (Qty: <span data-fsc-item-quantity></span>) — 
-                            <span data-fsc-item-total></span>
-                            <button data-fsc-item-path-value="the-tavern" data-fsc-action="Remove" class="btn-remove">Remove</button>
-                        </p>
-                    </div>
-                    <div data-fsc-item-path="the-campfire" data-fsc-item-selection-smartdisplay>
-                        <p>
-                            <span data-fsc-item-display></span> 
-                            (Qty: <span data-fsc-item-quantity></span>) — 
-                            <span data-fsc-item-total></span>
-                            <button data-fsc-item-path-value="the-campfire" data-fsc-action="Remove" class="btn-remove">Remove</button>
-                        </p>
-                    </div>
-                    <div data-fsc-item-path="the-guild-hall" data-fsc-item-selection-smartdisplay>
-                        <p>
-                            <span data-fsc-item-display></span> 
-                            (Qty: <span data-fsc-item-quantity></span>) — 
-                            <span data-fsc-item-total></span>
-                            <button data-fsc-item-path-value="the-guild-hall" data-fsc-action="Remove" class="btn-remove">Remove</button>
-                        </p>
-                    </div>
+                <div data-fsc-item-path="the-tavern" data-fsc-item-selection-smartdisplay>
+                    <p>
+                        <span data-fsc-item-display></span> 
+                        <span data-fsc-item-quantity></span> 
+                        <span data-fsc-item-total></span>
+                        <button data-fsc-item-path-value="the-tavern" data-fsc-action="Remove" class="btn-remove">Remove</button>
+                    </p>
+                </div>
+
+                <div data-fsc-item-path="the-campfire" data-fsc-item-selection-smartdisplay>
+                    <p>
+                        <span data-fsc-item-display></span> 
+                        <span data-fsc-item-quantity></span> 
+                        <span data-fsc-item-total></span>
+                        <button data-fsc-item-path-value="the-campfire" data-fsc-action="Remove" class="btn-remove">Remove</button>
+                    </p>
+                </div>
+
+                <div data-fsc-item-path="the-guild-hall" data-fsc-item-selection-smartdisplay>
+                    <p>
+                        <span data-fsc-item-display></span> 
+                        <span data-fsc-item-quantity></span> 
+                        <span data-fsc-item-total></span>
+                        <button data-fsc-item-path-value="the-guild-hall" data-fsc-action="Remove" class="btn-remove">Remove</button>
+                    </p>
                 </div>
 
                 <hr>
@@ -82,8 +82,7 @@
         id="fsc-api"
         src="https://sbl.onfastspring.com/sbl/1.0.6/fastspring-builder.min.js"
         type="text/javascript"
-        data-storefront="ericateststore.test.onfastspring.com/embedded-readytoroll"
-        data-data-callback="orderUpdateCallback">
+        data-storefront="ericateststore.test.onfastspring.com/embedded-readytoroll">
     </script>
     
     <script src="script.js"></script>
