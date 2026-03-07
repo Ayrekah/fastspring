@@ -1,27 +1,27 @@
 /**
  * FastSpring Data Callback
- * Required to keep the global window scope clean
+ * Required for SBL to communicate with your page.
  */
 function onFscDataCallback(data) {
-    console.log("FastSpring SBL Data Sync:", data);
+    console.log("FastSpring Syncing Data:", data);
 }
 
 /**
  * changeQty
- * Uses the official 'fastspring.builder.update' method.
- *
+ * Uses the official Public Methods from your documentation.
  */
 function changeQty(path, delta) {
-    // 1. Pull the current quantity directly from the FastSpring Directive on screen
+    // Get the current quantity from the directive on the screen
     const qtyEl = document.querySelector(`[data-fsc-item-path="${path}"][data-fsc-item-quantity]`);
-    const currentQty = parseInt(qtyEl.textContent || 0);
     
-    // 2. Calculate the new quantity (never below 0)
-    const newQty = Math.max(0, currentQty + delta);
+    if (qtyEl) {
+        const currentQty = parseInt(qtyEl.textContent || 0);
+        const newQty = Math.max(0, currentQty + delta);
 
-    // 3. Update the FastSpring Session programmatically
-    fastspring.builder.update(path, newQty);
+        // Official FastSpring Method to update the cart session
+        fastspring.builder.update(path, newQty);
+    }
 }
 
-// Attach callback to window so SBL script can find it
+// Make callback globally accessible
 window.onFscDataCallback = onFscDataCallback;
