@@ -1,26 +1,21 @@
+/* script.js */
 (function($) {
     "use strict";
-
     $(document).ready(function() {
-        // Search logic initialization
-        if (typeof searchPopup === 'function') searchPopup();
-
-        // 1. SWIPER INITIALIZATION (Fixed ReferenceError)
-        if (typeof Swiper !== 'undefined') {
-            new Swiper(".main-swiper", { speed: 500, navigation: { nextEl: ".swiper-arrow-prev", prevEl: ".swiper-arrow-next" } });
-            new Swiper(".product-swiper", { slidesPerView: 4, spaceBetween: 10, pagination: { el: "#mobile-products .swiper-pagination", clickable: true } });
-        }
+        // Initialize template UI
+        console.log("Ready to Roll: UI Initialized");
     });
 })(jQuery);
 
-/* --- FASTSPRING GLOBAL FUNCTIONS --- */
+/* --- GLOBAL FASTSPRING LOGIC --- */
 var fscCatalog = [];
 
 /**
- * 2. DATA CALLBACK: Syncs Lore from Dashboard
+ * 1. THE DATA CALLBACK
+ * Saves dashboard lore (descriptionFull) into fscCatalog
  */
 function onFscDataCallback(data) {
-    console.log("SBL Sync:", data);
+    console.log("SBL Data Sync:", data);
     if (data && data.groups) {
         fscCatalog = data.groups.reduce(function(acc, group) {
             return acc.concat(group.items || []);
@@ -28,31 +23,38 @@ function onFscDataCallback(data) {
     }
 }
 
+// Attach to global FastSpring object
 window.fastspring = {
     builder: { "onOrderItemsChanged": onFscDataCallback }
 };
 
 /**
- * 3. ADD TO CART & SHOW POPUP
+ * 2. ADD & SHOW
+ * Uses chained methods to prevent empty-session errors
  */
 function addToCartAndShow(path) {
-    console.log("Adding Character: " + path);
-    fastspring.builder.add(path);   // Method 1: Add to Session
-    fastspring.builder.viewCart(); // Method 2: Launch Popup
+    console.log("SBL: Adding character -> " + path);
+    fastspring.builder.add(path);
+    fastspring.builder.viewCart();
 }
 
 /**
- * 4. SHOW LORE MODAL
+ * 3. SHOW MODAL
+ * Pulls stored data for the lore popup
  */
 function showDetails(path) {
-    var item = fscCatalog.find(function(p) { return p.path === path; });
-    if (item) {
-        document.getElementById('m-title').innerText = item.display;
-        document.getElementById('m-img').src = item.image;
-        document.getElementById('m-desc').innerHTML = item.descriptionFull || "Loading lore...";
+    var product = fscCatalog.find(function(item) {
+        return item.path === path;
+    });
+
+    if (product) {
+        document.getElementById('m-title').innerText = product.display;
+        document.getElementById('m-img').src = product.image;
+        document.getElementById('m-desc').innerHTML = product.descriptionFull || "Lore loading...";
         
-        var modalEl = document.getElementById('detailsModal');
-        var modal = bootstrap.Modal.getOrCreateInstance(modalEl);
+        var modal = new bootstrap.Modal(document.getElementById('detailsModal'));
         modal.show();
+    } else {
+        console.warn("SBL: Product lore not yet synced for " + path);
     }
 }
