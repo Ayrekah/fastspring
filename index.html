@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Ready to Roll Store</title>
+    <title>Ready to Roll Store | FastSpring SBL</title>
 
     <script id="fsc-api"
         src="https://sbl.onfastspring.com/sbl/1.0.6/fastspring-builder.min.js"
@@ -12,15 +12,20 @@
     </script>
 
     <style>
-        body { font-family: Arial, sans-serif; margin: 40px; line-height: 1.6; }
-        .products { display: flex; gap: 20px; flex-wrap: wrap; }
-        .product { border: 1px solid #ccc; padding: 20px; width: 220px; text-align: center; border-radius: 8px; }
-        .product img { border-radius: 4px; margin-bottom: 10px; }
-        .qty-controls { margin-top: 10px; padding: 10px; background: #f9f9f9; border-radius: 4px; }
-        .cart { margin-top: 40px; border-top: 2px solid #ddd; padding-top: 20px; }
-        .cart-item { padding: 10px; border-bottom: 1px solid #eee; }
-        .summary { background: #eee; padding: 15px; margin-top: 20px; width: 300px; border-radius: 4px; }
-        /* Forces SBL data to be visible */
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 40px; color: #333; line-height: 1.6; }
+        .products { display: flex; gap: 20px; flex-wrap: wrap; margin-bottom: 50px; }
+        .product { border: 1px solid #ddd; padding: 20px; width: 240px; text-align: center; border-radius: 10px; background: #fff; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
+        .product img { border-radius: 5px; margin-bottom: 15px; background: #f0f0f0; }
+        .qty-controls { margin-top: 15px; padding: 10px; background: #f8f9fa; border-radius: 6px; display: flex; align-items: center; justify-content: center; gap: 10px; }
+        .qty-controls button { width: 30px; height: 30px; cursor: pointer; border: 1px solid #ccc; background: #fff; border-radius: 4px; }
+        
+        .cart { margin-top: 40px; border-top: 3px solid #333; padding-top: 30px; }
+        .cart-item { padding: 15px; border-bottom: 1px solid #eee; display: flex; align-items: center; gap: 10px; }
+        .summary { background: #f4f4f4; padding: 20px; margin-top: 20px; width: 350px; border-radius: 8px; border: 1px solid #ddd; }
+        .btn-checkout { background: #333; color: #fff; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer; font-weight: bold; }
+        .btn-reset { background: #fff; color: #cc0000; border: 1px solid #cc0000; padding: 10px 20px; border-radius: 5px; cursor: pointer; margin-left: 10px; }
+        
+        /* Forces SBL data to stay visible */
         [data-fsc-item-path] { display: block; }
     </style>
 </head>
@@ -28,45 +33,46 @@
 <body>
 
     <h1>Ready to Roll Store</h1>
+    <p>Select your character tiers below:</p>
 
     <div class="products">
         
         <div class="product">
             <img data-fsc-item-path="the-tavern" data-fsc-item-image width="200">
-            <h3 data-fsc-item-path="the-tavern" data-fsc-item-display></h3>
-            <p data-fsc-item-path="the-tavern" data-fsc-item-price></p>
+            <h3 data-fsc-item-path="the-tavern" data-fsc-item-display>Loading...</h3>
+            <p>Price: <span data-fsc-item-path="the-tavern" data-fsc-item-price></span></p>
 
             <button data-fsc-action="Add" data-fsc-item-path-value="the-tavern" data-fsc-item-selection-smartdisplay-inverse>
-                Add to Cart
+                Add to Party
             </button>
 
             <div class="qty-controls" data-fsc-item-path="the-tavern" data-fsc-item-selection-smartdisplay>
                 <button onclick="changeQty('the-tavern', -1)">-</button>
-                <span data-fsc-item-path="the-tavern" data-fsc-item-quantity></span>
+                <span data-fsc-item-path="the-tavern" data-fsc-item-quantity>0</span>
                 <button onclick="changeQty('the-tavern', 1)">+</button>
             </div>
         </div>
 
         <div class="product">
             <img data-fsc-item-path="the-campfire" data-fsc-item-image width="200">
-            <h3 data-fsc-item-path="the-campfire" data-fsc-item-display></h3>
-            <p data-fsc-item-path="the-campfire" data-fsc-item-price></p>
-            <button data-fsc-action="Add" data-fsc-item-path-value="the-campfire" data-fsc-item-selection-smartdisplay-inverse>Add to Cart</button>
+            <h3 data-fsc-item-path="the-campfire" data-fsc-item-display>Loading...</h3>
+            <p>Price: <span data-fsc-item-path="the-campfire" data-fsc-item-price></span></p>
+            <button data-fsc-action="Add" data-fsc-item-path-value="the-campfire" data-fsc-item-selection-smartdisplay-inverse>Add to Party</button>
             <div class="qty-controls" data-fsc-item-path="the-campfire" data-fsc-item-selection-smartdisplay>
                 <button onclick="changeQty('the-campfire', -1)">-</button>
-                <span data-fsc-item-path="the-campfire" data-fsc-item-quantity></span>
+                <span data-fsc-item-path="the-campfire" data-fsc-item-quantity>0</span>
                 <button onclick="changeQty('the-campfire', 1)">+</button>
             </div>
         </div>
 
         <div class="product">
             <img data-fsc-item-path="the-guild-hall" data-fsc-item-image width="200">
-            <h3 data-fsc-item-path="the-guild-hall" data-fsc-item-display></h3>
-            <p data-fsc-item-path="the-guild-hall" data-fsc-item-price></p>
-            <button data-fsc-action="Add" data-fsc-item-path-value="the-guild-hall" data-fsc-item-selection-smartdisplay-inverse>Add to Cart</button>
+            <h3 data-fsc-item-path="the-guild-hall" data-fsc-item-display>Loading...</h3>
+            <p>Price: <span data-fsc-item-path="the-guild-hall" data-fsc-item-price></span></p>
+            <button data-fsc-action="Add" data-fsc-item-path-value="the-guild-hall" data-fsc-item-selection-smartdisplay-inverse>Add to Party</button>
             <div class="qty-controls" data-fsc-item-path="the-guild-hall" data-fsc-item-selection-smartdisplay>
                 <button onclick="changeQty('the-guild-hall', -1)">-</button>
-                <span data-fsc-item-path="the-guild-hall" data-fsc-item-quantity></span>
+                <span data-fsc-item-path="the-guild-hall" data-fsc-item-quantity>0</span>
                 <button onclick="changeQty('the-guild-hall', 1)">+</button>
             </div>
         </div>
@@ -77,19 +83,24 @@
         <h2>Your Character Party (Cart)</h2>
         
         <div data-fsc-items-container>
-            <div class="cart-item" data-fsc-item-path>
+            
+            <div class="cart-item" data-fsc-item-path-element>
                 <strong data-fsc-item-display></strong> 
-                | Qty: <span data-fsc-item-quantity></span> 
-                | Price: <span data-fsc-item-price></span>
-                | <a href="#" data-fsc-action="Remove" style="color:red;">Remove</a>
+                <span>&nbsp;| Qty: <span data-fsc-item-quantity></span></span>
+                <span>&nbsp;| Subtotal: <span data-fsc-item-total></span></span>
+                <span>&nbsp;| <a href="#" data-fsc-action="Remove" style="color:#cc0000; text-decoration: none; font-size: 0.9em;">[Remove]</a></span>
             </div>
+
         </div>
 
         <div class="summary">
-            <strong>Order Total: <span data-fsc-order-total></span></strong>
+            <div>Subtotal: <span data-fsc-order-total></span></div>
+            <div>Tax: <span data-fsc-order-tax></span></div>
+            <hr>
+            <strong>Total: <span data-fsc-order-totalWithTax></span></strong>
             <br><br>
-            <button data-fsc-action="Checkout">Checkout Now</button>
-            <button data-fsc-action="Reset">Clear All</button>
+            <button class="btn-checkout" data-fsc-action="Checkout">Proceed to Checkout</button>
+            <button class="btn-reset" data-fsc-action="Reset">Clear Cart</button>
         </div>
     </div>
 
@@ -97,18 +108,21 @@
 
     <script>
         /**
-         * Uses the FastSpring Methods API to update quantities.
-         * Programmatically adjusts the session without a page refresh.
+         * changeQty
+         * Uses the FastSpring Public Methods API to update quantities programmatically.
          */
-        function changeQty(path, delta) {
-            // SBL stores the quantity in the textContent of the directive span
-            let el = document.querySelector('[data-fsc-item-path="' + path + '"][data-fsc-item-quantity]');
-            let currentQty = parseInt(el.textContent || 0);
-            let newQty = currentQty + delta;
+        function changeQty(productPath, delta) {
+            // Find the directive element for this specific path to get current quantity
+            const qtyElement = document.querySelector(`[data-fsc-item-path="${productPath}"][data-fsc-item-quantity]`);
+            
+            if (qtyElement) {
+                const currentQty = parseInt(qtyElement.textContent || 0);
+                const newQty = currentQty + delta;
 
-            if (newQty >= 0) {
-                // Official Update Method from documentation
-                fastspring.builder.update(path, newQty);
+                if (newQty >= 0) {
+                    // Update the session using the official FastSpring Builder method
+                    fastspring.builder.update(productPath, newQty);
+                }
             }
         }
     </script>
