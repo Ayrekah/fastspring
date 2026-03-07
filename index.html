@@ -1,46 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Simple FastSpring Checkout</title>
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ready To Roll Store</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <h1>FastSpring Embedded Example</h1>
 
- <div class="product" data-product="the-tavern">
-  <span class="name">The Tavern</span>
-  <button class="decrease">–</button>
-  <span class="quantity">0</span>
-  <button class="increase">+</button>
-</div>
+    <header>
+        <h1>Ready To Roll</h1>
+        <p>Select your adventure location</p>
+    </header>
 
-<div class="product" data-product="the-campfire">
-  <span class="name">The Campfire</span>
-  <button class="decrease">–</button>
-  <span class="quantity">0</span>
-  <button class="increase">+</button>
-</div>
+    <main class="store-container">
+        <section class="products">
+            <div class="product-card">
+                <h3 data-fsc-item-path="the-tavern" data-fsc-item-display>The Tavern</h3>
+                <p data-fsc-item-path="the-tavern" data-fsc-item-price></p>
+                <button data-fsc-item-path-value="the-tavern" data-fsc-action="Add">
+                    Select Tavern
+                </button>
+            </div>
 
-<div class="product" data-product="the-guild-hall">
-  <span class="name">The Guild Hall</span>
-  <button class="decrease">–</button>
-  <span class="quantity">0</span>
-  <button class="increase">+</button>
-</div>
+            <div class="product-card">
+                <h3 data-fsc-item-path="the-campfire" data-fsc-item-display>The Campfire</h3>
+                <p data-fsc-item-path="the-campfire" data-fsc-item-price></p>
+                <button data-fsc-item-path-value="the-campfire" data-fsc-action="Add">
+                    Select Campfire
+                </button>
+            </div>
 
-  <!-- FastSpring Embedded Checkout Container -->
-  <div id="fsc-embedded-checkout-container"></div>
+            <div class="product-card">
+                <h3 data-fsc-item-path="the-guild-hall" data-fsc-item-display>The Guild Hall</h3>
+                <p data-fsc-item-path="the-guild-hall" data-fsc-item-price></p>
+                <button data-fsc-item-path-value="the-guild-hall" data-fsc-action="Add">
+                    Select Guild Hall
+                </button>
+            </div>
+        </section>
 
-  <!-- FastSpring Script -->
-  <script
-    id="fsc-api"
-    src="https://sbl.onfastspring.com/sbl/1.0.6/fastspring-builder.min.js"
-    type="text/javascript"
-    data-storefront="ericateststore.test.onfastspring.com/embedded-readytoroll">
-  </script>
+        <section class="checkout-section">
+            <h2>Complete Your Order</h2>
+            <div id="fsc-embedded-checkout-container">
+                </div>
+        </section>
+    </main>
 
-  <script src="script.js"></script>
+    <script
+        id="fsc-api"
+        src="https://sbl.onfastspring.com/sbl/1.0.6/fastspring-builder.min.js"
+        type="text/javascript"
+        data-storefront="ericateststore.test.onfastspring.com/embedded-readytoroll">
+    </script>
+    
+    <script src="script.js"></script>
 </body>
 </html>
