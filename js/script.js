@@ -115,3 +115,60 @@
     }); // End of a document ready
 
 })(jQuery);
+
+/* --- FASTSPRING SBL GLOBAL FUNCTIONS --- */
+
+// 1. Global variable to store product details for the modal
+var fscCatalog = [];
+
+/**
+ * 2. THE DATA CALLBACK
+ * Captures product data (Full Description, Images, etc.) on page load.
+ */
+function onFscDataCallback(data) {
+    if (data && data.groups) {
+        // Flattens the groups into a single list of items
+        fscCatalog = data.groups.reduce(function(acc, group) {
+            return acc.concat(group.items || []);
+        }, []);
+    }
+}
+
+// Attach the callback to the FastSpring Builder
+window.fastspring = {
+    builder: {
+        "onOrderItemsChanged": onFscDataCallback
+    }
+};
+
+/**
+ * 3. ADD TO CART & SHOW POPUP
+ * Used by the "Add to Cart" buttons.
+ */
+function addToCartAndShow(path) {
+    // Methods from your documentation: .add() and .viewCart()
+    fastspring.builder.add(path);
+    fastspring.builder.viewCart();
+}
+
+/**
+ * 4. SHOW DETAILS MODAL
+ * Used by the "View Full Details" buttons.
+ */
+function showDetails(path) {
+    // Find the product in our saved catalog
+    var product = fscCatalog.find(function(item) {
+        return item.path === path;
+    });
+
+    if (product) {
+        // Fill the modal elements (ensure these IDs exist in your index.html)
+        document.getElementById('m-title').innerText = product.display;
+        document.getElementById('m-img').src = product.image;
+        document.getElementById('m-desc').innerHTML = product.descriptionFull || "Lore loading...";
+        
+        // Show the Bootstrap Modal
+        var myModal = new bootstrap.Modal(document.getElementById('detailsModal'));
+        myModal.show();
+    }
+}
