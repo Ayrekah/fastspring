@@ -5,22 +5,21 @@ var fscCatalog = [];
 
 /**
  * 1. THE DATA CALLBACK
- * This is the 'data-data-callback' from your documentation.
- * It fires whenever FastSpring updates or provides session data.
+ * This is the 'data-data-callback' from your documentation. 
+ * It fires whenever FastSpring updates or provides session data. 
  */
 function onFscDataCallback(data) {
     console.log("Ready to Roll: SBL Data Received", data);
     
     // We store the items so the 'View Details' modal can use them later
     if (data && data.groups) {
-        // Flattening the groups into a single list of products
         fscCatalog = data.groups.reduce(function(acc, group) {
             return acc.concat(group.items);
         }, []);
     }
 }
 
-// Link the callback to the global FastSpring object
+// Link the callback to the global FastSpring object 
 window.fastspring = {
     builder: { 
         "onOrderItemsChanged": onFscDataCallback 
@@ -29,7 +28,7 @@ window.fastspring = {
 
 /**
  * 2. ADD TO CART & POPUP
- * Uses documented .add() and .viewCart() methods.
+ * Uses documented .add() and .viewCart() methods. 
  */
 function addToCartAndShow(path) {
     console.log("SBL: Adding product to cart -> " + path);
@@ -40,7 +39,7 @@ function addToCartAndShow(path) {
 /**
  * 3. VIEW FULL DETAILS MODAL
  * This function looks up the product in our stored catalog
- * and fills the modal using the 'descriptionFull' data.
+ * and fills the modal using the 'descriptionFull' data. 
  */
 function showDetails(path) {
     // Find the product in the catalog we saved during the callback
