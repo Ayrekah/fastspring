@@ -170,11 +170,13 @@ data-fsc-item-selection-smartdisplay>
 
 <div class="cart">
 
+<div class="cart">
+
 <h2>Your Cart</h2>
 
 <div data-fsc-items-container>
 
-<div class="cart-item" data-fsc-item>
+<div class="cart-item" data-fsc-item-path>
 
 <strong data-fsc-item-display></strong>
 
@@ -186,6 +188,33 @@ data-fsc-item-selection-smartdisplay>
 
 </div>
 
+</div>
+
+<h3>Summary</h3>
+
+<div>
+Subtotal: <span data-fsc-order-subtotal></span>
+</div>
+
+<div>
+Tax: <span data-fsc-order-tax></span>
+</div>
+
+<div>
+Total: <span data-fsc-order-total></span>
+</div>
+
+<br>
+
+<button data-fsc-action="Checkout">
+Checkout
+</button>
+
+<button data-fsc-action="Reset">
+Clear Cart
+</button>
+
+</div>
 </div>
 
 
