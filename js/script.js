@@ -1,99 +1,147 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <title>Ready to Roll | TTRPG Character Creator</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+(function($) {
+    "use strict";
+
+    // 1. Search Popup Logic
+    var searchPopup = function() {
+        $('#header-nav').on('click', '.search-button', function(e) {
+            $('.search-popup').toggleClass('is-visible');
+        });
+
+        $('#header-nav').on('click', '.btn-close-search', function(e) {
+            $('.search-popup').toggleClass('is-visible');
+        });
+        
+        $(".search-popup-trigger").on("click", function(b) {
+            b.preventDefault();
+            $(".search-popup").addClass("is-visible");
+            setTimeout(function() {
+                $(".search-popup").find("#search-popup").focus();
+            }, 350);
+        });
+
+        $(".search-popup").on("click", function(b) {
+            ( $(b.target).is(".search-popup-close") || $(b.target).is(".search-popup-close svg") || $(b.target).is(".search-popup-close path") || $(b.target).is(".search-popup") ) && (b.preventDefault(), $(this).removeClass("is-visible"));
+        });
+
+        $(document).keyup(function(b) {
+            if (b.which === 27) $(".search-popup").removeClass("is-visible");
+        });
+    };
+
+    // 2. Quantity Input Logic (Local UI only)
+    var initProductQty = function() {
+        $('.product-qty').each(function() {
+            var $el_product = $(this);
+            $el_product.find('.quantity-right-plus').click(function(e) {
+                e.preventDefault();
+                var quantity = parseInt($el_product.find('#quantity').val()) || 0;
+                $el_product.find('#quantity').val(quantity + 1);
+            });
+
+            $el_product.find('.quantity-left-minus').click(function(e) {
+                e.preventDefault();
+                var quantity = parseInt($el_product.find('#quantity').val()) || 0;
+                if (quantity > 0) {
+                    $el_product.find('#quantity').val(quantity - 1);
+                }
+            });
+        });
+    };
+
+    // 3. Initialize Template Features
+    $(document).ready(function() {
+        searchPopup();
+        initProductQty();
+
+        // Main Hero Swiper
+        new Swiper(".main-swiper", {
+            speed: 500,
+            navigation: {
+                nextEl: ".swiper-arrow-prev",
+                prevEl: ".swiper-arrow-next",
+            },
+        });
+
+        // Product Catalog Swiper
+        new Swiper(".product-swiper", {
+            slidesPerView: 4,
+            spaceBetween: 10,
+            pagination: { el: "#mobile-products .swiper-pagination", clickable: true },
+            breakpoints: {
+                0: { slidesPerView: 2, spaceBetween: 20 },
+                980: { slidesPerView: 4, spaceBetween: 20 }
+            },
+        });
+
+        // Testimonials Swiper
+        new Swiper(".testimonial-swiper", {
+            loop: true,
+            navigation: {
+                nextEl: ".swiper-arrow-prev",
+                prevEl: ".swiper-arrow-next",
+            },
+        });
+    });
+
+})(jQuery);
+
+/* -------------------------------------------------------------------------
+   FASTSPRING SBL GLOBAL FUNCTIONS
+   These MUST be outside the (function($){...}) block to be seen by the HTML.
+   ------------------------------------------------------------------------- */
+
+// Global variable to store product data from the callback
+var fscCatalog = [];
+
+/**
+ * 1. THE DATA CALLBACK
+ * This is the 'data-data-callback' from your documentation.
+ * It fires whenever FastSpring updates or provides session data.
+ */
+function onFscDataCallback(data) {
+    console.log("Ready to Roll: SBL Data Received", data);
     
-    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="style.css">
+    // We store the items so the 'View Details' modal can use them later
+    if (data && data.groups) {
+        fscCatalog = data.groups.flatMap(group => group.items);
+    }
+}
 
-    <script id="fsc-api"
-        src="https://sbl.onfastspring.com/sbl/1.0.6/fastspring-builder.min.js"
-        type="text/javascript"
-        data-storefront="ericateststore.test.onfastspring.com/embedded-readytoroll"
-        data-data-callback="onFscDataCallback"
-        data-debug="true">
-    </script>
+// Link the callback to the global FastSpring object
+window.fastspring = {
+    builder: { 
+        "onOrderItemsChanged": onFscDataCallback 
+    }
+};
 
-    <style>
-        .product-card { border: 1px solid #eee; padding: 25px; background: #fff; text-align: center; transition: 0.3s; }
-        .product-card:hover { border-color: #000; }
-        .product-card img { max-height: 200px; object-fit: cover; border-radius: 8px; margin-bottom: 15px; cursor: pointer; }
+/**
+ * 2. ADD TO CART & POPUP
+ * Uses documented .add() and .viewCart() methods.
+ */
+function addToCartAndShow(path) {
+    console.log("SBL: Adding product to cart -> " + path);
+    fastspring.builder.add(path); [cite: 1]
+    fastspring.builder.viewCart(); [cite: 1]
+}
+
+/**
+ * 3. VIEW FULL DETAILS MODAL
+ * This function looks up the product in our stored catalog
+ * and fills the modal using the 'descriptionFull' data.
+ */
+function showDetails(path) {
+    // Find the product in the catalog we saved during the callback
+    const product = fscCatalog.find(item => item.path === path);
+    
+    if (product) {
+        document.getElementById('m-title').innerText = product.display; [cite: 2]
+        document.getElementById('m-img').src = product.image; [cite: 2]
+        document.getElementById('m-desc').innerHTML = product.descriptionFull || "Lore loading..."; [cite: 2]
         
-        /*  FIX: Forces FastSpring to show data even if it tries to hide it initially */
-        [data-fsc-item-path] { display: block !important; visibility: visible !important; opacity: 1 !important; }
-        
-        .modal-body img { max-height: 300px; border-radius: 12px; }
-    </style>
-</head>
-
-<body>
-    <header class="p-3 border-bottom sticky-top bg-white">
-        <div class="container d-flex justify-content-between align-items-center">
-            <strong class="h4 m-0">READY TO ROLL</strong>
-            <button class="btn btn-dark" onclick="fastspring.builder.viewCart()">
-                VIEW CART (<span data-fsc-order-total>$0.00</span>)
-            </button>
-        </div>
-    </header>
-
-    <section class="container py-5">
-        <div class="row g-4">
-            
-            <div class="col-md-4">
-                <div class="product-card">
-                    <img data-fsc-item-path="the-tavern" data-fsc-item-image src="" onclick="showDetails('the-tavern')">
-                    <h4 data-fsc-item-path="the-tavern" data-fsc-item-display>The Tavern</h4>
-                    <div class="h5 text-primary mb-3" data-fsc-item-path="the-tavern" data-fsc-item-price></div>
-                    
-                    <button class="btn btn-dark w-100" onclick="addToCartAndShow('the-tavern')">Add to Cart</button>
-                    <button class="btn btn-link btn-sm text-dark mt-2" onclick="showDetails('the-tavern')">View Full Details</button>
-                </div>
-            </div>
-
-            <div class="col-md-4">
-                <div class="product-card">
-                    <img data-fsc-item-path="the-campfire" data-fsc-item-image src="" onclick="showDetails('the-campfire')">
-                    <h4 data-fsc-item-path="the-campfire" data-fsc-item-display>The Campfire</h4>
-                    <div class="h5 text-primary mb-3" data-fsc-item-path="the-campfire" data-fsc-item-price></div>
-                    <button class="btn btn-dark w-100" onclick="addToCartAndShow('the-campfire')">Add to Cart</button>
-                    <button class="btn btn-link btn-sm text-dark mt-2" onclick="showDetails('the-campfire')">View Full Details</button>
-                </div>
-            </div>
-
-            <div class="col-md-4">
-                <div class="product-card">
-                    <img data-fsc-item-path="the-guild-hall" data-fsc-item-image src="" onclick="showDetails('the-guild-hall')">
-                    <h4 data-fsc-item-path="the-guild-hall" data-fsc-item-display>The Guild Hall</h4>
-                    <div class="h5 text-primary mb-3" data-fsc-item-path="the-guild-hall" data-fsc-item-price></div>
-                    <button class="btn btn-dark w-100" onclick="addToCartAndShow('the-guild-hall')">Add to Cart</button>
-                    <button class="btn btn-link btn-sm text-dark mt-2" onclick="showDetails('the-guild-hall')">View Full Details</button>
-                </div>
-            </div>
-
-        </div>
-    </section>
-
-    <div class="modal fade" id="detailsModal" tabindex="-1">
-        <div class="modal-dialog modal-lg modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="m-title"></h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-                </div>
-                <div class="modal-body">
-                    <div class="row">
-                        <div class="col-md-5 text-center"><img id="m-img" src="" class="img-fluid shadow-sm"></div>
-                        <div class="col-md-7"><div id="m-desc"></div></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <script src="js/jquery-1.11.0.min.js"></script>
-    <script src="js/bootstrap.bundle.min.js"></script>
-    <script src="js/script.js"></script>
-</body>
-</html>
+        // Launch the Bootstrap Modal
+        var myModal = new bootstrap.Modal(document.getElementById('detailsModal'));
+        myModal.show();
+    } else {
+        console.warn("SBL: Could not find detailed data for " + path);
+    }
+}
