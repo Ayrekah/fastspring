@@ -1,7 +1,3 @@
-/**
- * This function is triggered by the 'data-data-callback' attribute 
- * in the SBL script tag whenever the session updates.
- */
 function orderUpdateCallback(data) {
     if (data) {
         console.log("FastSpring Session Updated:", data);
