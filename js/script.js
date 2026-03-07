@@ -1,26 +1,43 @@
-/**
- * FastSpring Data Callback
- */
-function onFscDataCallback(data) {
-    console.log("FastSpring Syncing Data...", data);
-}
+// Store current cart items
+let cartItems = [];
 
-/**
- * changeQty
- * Uses the 'fastspring.builder.update' method from your documentation.
- */
-function changeQty(path, delta) {
-    // Look for the quantity tag on the screen to get the current number
-    const qtyEl = document.querySelector(`[data-fsc-item-path="${path}"][data-fsc-item-quantity]`);
-    
-    if (qtyEl) {
-        const currentQty = parseInt(qtyEl.textContent || 0);
-        const newQty = Math.max(0, currentQty + delta);
+// Map button IDs to FastSpring product paths
+const products = {
+    'add-tavern': 'the-tavern',
+    'add-campfire': 'the-campfire',
+    'add-guild-hall': 'the-guild-hall'
+};
 
-        // Tell FastSpring to update the quantity for this specific path
-        fastspring.builder.update(path, newQty);
+// Add click listeners for product buttons
+Object.keys(products).forEach(buttonId => {
+    document.getElementById(buttonId).addEventListener('click', () => {
+        const product = products[buttonId];
+        
+        // Check if product is already in cart
+        const existing = cartItems.find(item => item.product === product);
+        if (existing) {
+            existing.quantity += 1;
+        } else {
+            cartItems.push({ product, quantity: 1 });
+        }
+        alert(`${product} added to cart!`);
+    });
+});
+
+// Checkout button
+document.getElementById('checkout').addEventListener('click', () => {
+    if (cartItems.length === 0) {
+        alert("Your cart is empty!");
+        return;
     }
-}
 
-// Make callback globally accessible
-window.onFscDataCallback = onFscDataCallback;
+    // Push session to FastSpring
+    fastspring.builder.push({
+        products: cartItems
+    });
+
+    // Embed checkout in container
+    fastspring.builder.checkout({
+        container: "#fsc-embedded-checkout-container"
+    });
+});
