@@ -1,62 +1,173 @@
+(function($) {
+
+    "use strict";
+
+    var searchPopup = function() {
+      // open search box
+      $('#header-nav').on('click', '.search-button', function(e) {
+        $('.search-popup').toggleClass('is-visible');
+      });
+
+      $('#header-nav').on('click', '.btn-close-search', function(e) {
+        $('.search-popup').toggleClass('is-visible');
+      });
+      
+      $(".search-popup-trigger").on("click", function(b) {
+          b.preventDefault();
+          $(".search-popup").addClass("is-visible"),
+          setTimeout(function() {
+              $(".search-popup").find("#search-popup").focus()
+          }, 350)
+      }),
+      $(".search-popup").on("click", function(b) {
+          ($(b.target).is(".search-popup-close") || $(b.target).is(".search-popup-close svg") || $(b.target).is(".search-popup-close path") || $(b.target).is(".search-popup")) && (b.preventDefault(),
+          $(this).removeClass("is-visible"))
+      }),
+      $(document).keyup(function(b) {
+          "27" === b.which && $(".search-popup").removeClass("is-visible")
+      })
+    }
+
+    var initProductQty = function(){
+
+      $('.product-qty').each(function(){
+
+        var $el_product = $(this);
+        var quantity = 0;
+
+        $el_product.find('.quantity-right-plus').click(function(e){
+            e.preventDefault();
+            var quantity = parseInt($el_product.find('#quantity').val());
+            $el_product.find('#quantity').val(quantity + 1);
+        });
+
+        $el_product.find('.quantity-left-minus').click(function(e){
+            e.preventDefault();
+            var quantity = parseInt($el_product.find('#quantity').val());
+            if(quantity>0){
+              $el_product.find('#quantity').val(quantity - 1);
+            }
+        });
+
+      });
+
+    }
+
+    $(document).ready(function() {
+
+      searchPopup();
+      initProductQty();
+
+      var swiper = new Swiper(".main-swiper", {
+        speed: 500,
+        navigation: {
+          nextEl: ".swiper-arrow-prev",
+          prevEl: ".swiper-arrow-next",
+        },
+      });         
+
+      var swiper = new Swiper(".product-swiper", {
+        slidesPerView: 4,
+        spaceBetween: 10,
+        pagination: {
+          el: "#mobile-products .swiper-pagination",
+          clickable: true,
+        },
+        breakpoints: {
+          0: {
+            slidesPerView: 2,
+            spaceBetween: 20,
+          },
+          980: {
+            slidesPerView: 4,
+            spaceBetween: 20,
+          }
+        },
+      });      
+
+      var swiper = new Swiper(".product-watch-swiper", {
+        slidesPerView: 4,
+        spaceBetween: 10,
+        pagination: {
+          el: "#smart-watches .swiper-pagination",
+          clickable: true,
+        },
+        breakpoints: {
+          0: {
+            slidesPerView: 2,
+            spaceBetween: 20,
+          },
+          980: {
+            slidesPerView: 4,
+            spaceBetween: 20,
+          }
+        },
+      }); 
+
+      var swiper = new Swiper(".testimonial-swiper", {
+        loop: true,
+        navigation: {
+          nextEl: ".swiper-arrow-prev",
+          prevEl: ".swiper-arrow-next",
+        },
+      }); 
+
+    }); // End of a document ready
+
+})(jQuery);
+
 /* --- FASTSPRING SBL GLOBAL FUNCTIONS --- */
 
-// Global variable to store product data from the callback
+// 1. Global variable to store product details for the modal
 var fscCatalog = [];
 
 /**
- * 1. THE DATA CALLBACK
- * This is the 'data-data-callback' from your index.html.
+ * 2. THE DATA CALLBACK
+ * This captures the product data (like Full Description) when the page loads.
  */
 function onFscDataCallback(data) {
-    console.log("Ready to Roll: SBL Data Received", data);
-    
-    // We store the items so the 'View Details' modal can use them later
-    // SBL sometimes nests items in groups or bundles; this scans everything.
-    if (data && data.items) {
-        fscCatalog = data.items;
-    } else if (data && data.groups) {
+    if (data && data.groups) {
+        // Flattens the groups into a single list of items
         fscCatalog = data.groups.reduce(function(acc, group) {
             return acc.concat(group.items || []);
         }, []);
     }
 }
 
-// Link the callback to the global FastSpring object
+// Attach the callback to the FastSpring Builder
 window.fastspring = {
-    builder: { 
-        "onOrderItemsChanged": onFscDataCallback 
+    builder: {
+        "onOrderItemsChanged": onFscDataCallback
     }
 };
 
 /**
- * 2. ADD TO CART & POPUP
+ * 3. ADD TO CART & SHOW POPUP
+ * Used by the "Add to Cart" buttons.
  */
 function addToCartAndShow(path) {
-    console.log("SBL: Adding product to cart -> " + path);
     fastspring.builder.add(path); [cite: 1]
     fastspring.builder.viewCart(); [cite: 1]
 }
 
 /**
- * 3. VIEW FULL DETAILS MODAL
- * This function looks up the product in our stored catalog.
+ * 4. SHOW DETAILS MODAL
+ * Used by the "View Full Details" buttons.
  */
 function showDetails(path) {
-    console.log("Searching catalog for: " + path);
-    
-    // We check our fscCatalog first, then try the direct SBL cache
+    // Find the product in our saved catalog
     var product = fscCatalog.find(function(item) {
         return item.path === path;
-    }) || (typeof fastspring.builder.item === 'function' ? fastspring.builder.item(path) : null);
-    
+    });
+
     if (product) {
-        document.getElementById('m-title').innerText = product.display; [cite: 2]
-        document.getElementById('m-img').src = product.image; [cite: 2]
-        document.getElementById('m-desc').innerHTML = product.descriptionFull || "Lore loading..."; [cite: 2]
+        // Fill the modal elements
+        document.getElementById('m-title').innerText = product.display;
+        document.getElementById('m-img').src = product.image;
+        document.getElementById('m-desc').innerHTML = product.descriptionFull || "Lore loading...";
         
+        // Show the Bootstrap Modal
         var myModal = new bootstrap.Modal(document.getElementById('detailsModal'));
         myModal.show();
-    } else {
-        console.warn("SBL: Could not find detailed data for " + path + ". Ensure the product is live in your dashboard.");
     }
 }
