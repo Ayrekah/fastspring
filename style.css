@@ -1,5 +1,5 @@
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: sans-serif;
     line-height: 1.6;
     padding: 20px;
     background: #f4f4f4;
@@ -13,7 +13,7 @@ header {
 .store-container {
     display: flex;
     gap: 40px;
-    max-width: 1200px;
+    max-width: 1100px;
     margin: 0 auto;
 }
 
@@ -32,61 +32,34 @@ header {
 }
 
 .checkout-section {
-    flex: 1.5;
+    flex: 1;
     background: #fff;
     padding: 20px;
     border-radius: 8px;
-    min-height: 500px;
 }
 
 .order-summary {
     background: #f9f9f9;
-    padding: 20px;
-    border: 1px solid #eee;
+    padding: 15px;
     border-radius: 4px;
     margin-bottom: 20px;
 }
 
-/* Crucial: Hide smartdisplay items by default */
+/* FastSpring Library toggles this based on cart content */
 [data-fsc-item-selection-smartdisplay] {
     display: none;
 }
 
 .order-summary p {
-    margin: 10px 0;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin: 8px 0;
 }
 
-.btn-remove {
-    background: #e74c3c;
-    padding: 5px 10px;
-    font-size: 0.8em;
-}
+.btn-remove { background: #d9534f; color: white; border: none; padding: 5px; cursor: pointer; }
+.btn-reset { background: #333; color: white; width: 100%; margin-top: 10px; border: none; padding: 10px; cursor: pointer; }
 
-.btn-reset {
-    background: #7f8c8d;
-    width: 100%;
-    margin-top: 15px;
-}
+hr { border: 0; border-top: 1px solid #ccc; margin: 10px 0; }
 
-hr {
-    border: 0;
-    border-top: 1px solid #ddd;
-    margin: 15px 0;
-}
-
-button {
-    background: #2980b9;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background 0.2s;
-}
-
-button:hover {
-    background: #3498db;
-}
+button { background: #007bff; color: white; border: none; padding: 10px 20px; border-radius: 4px; cursor: pointer; }
