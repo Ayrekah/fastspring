@@ -1,32 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>FastSpring Embedded Checkout</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Simple FastSpring Checkout</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>FastSpring Embedded Checkout Demo</h1>
+  <h1>FastSpring Embedded Checkout Example</h1>
 
-    <!-- Buttons to add products to cart -->
-    <div class="product-buttons">
-        <button id="add-tavern">Add The Tavern</button>
-        <button id="add-campfire">Add The Campfire</button>
-        <button id="add-guild-hall">Add The Guild Hall</button>
-        <button id="checkout">Go to Checkout</button>
-    </div>
+  <div class="products">
+    <button class="buy-button" data-product="the-tavern">Buy The Tavern</button>
+    <button class="buy-button" data-product="the-campfire">Buy The Campfire</button>
+    <button class="buy-button" data-product="the-guild-hall">Buy The Guild Hall</button>
+  </div>
 
-    <!-- Container for embedded checkout -->
-    <div id="fsc-embedded-checkout-container"></div>
+  <!-- FastSpring Embedded Checkout Container -->
+  <div id="fsc-embedded-checkout-container"></div>
 
-    <!-- FastSpring Embedded Checkout Script -->
-    <script
-        id="fsc-api"
-        src="https://sbl.onfastspring.com/sbl/1.0.6/fastspring-builder.min.js"
-        type="text/javascript"
-        data-storefront="ericateststore.test.onfastspring.com/embedded-readytoroll">
-    </script>
-    
-    <script src="script.js"></script>
+  <!-- FastSpring Script -->
+  <script
+    id="fsc-api"
+    src="https://sbl.onfastspring.com/sbl/1.0.6/fastspring-builder.min.js"
+    type="text/javascript"
+    data-storefront="ericateststore.test.onfastspring.com/embedded-readytoroll">
+  </script>
+
+  <script src="script.js"></script>
 </body>
 </html>
