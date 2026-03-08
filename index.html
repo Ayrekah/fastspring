@@ -2,73 +2,66 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ready To Roll Store</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <header>
-        <h1>Ready To Roll</h1>
-        <p>Select your adventure location</p>
-    </header>
+    <h1>Ready To Roll</h1>
 
-    <main class="store-container">
-        <section class="products">
-            <div class="product-card">
-                <h3 data-fsc-item-path="the-tavern" data-fsc-item-display></h3>
-                <p data-fsc-item-path="the-tavern" data-fsc-item-price></p>
-                <button data-fsc-item-path-value="the-tavern" data-fsc-action="Add">
-                    Select Tavern
-                </button>
-            </div>
+    <div class="product-card">
+        <span data-fsc-item-path="the-tavern" data-fsc-item-display></span>
+        <span data-fsc-item-path="the-tavern" data-fsc-item-price></span>
+        <button data-fsc-item-path-value="the-tavern" data-fsc-action="Add">Add</button>
+    </div>
 
-            <div class="product-card">
-                <h3 data-fsc-item-path="the-campfire" data-fsc-item-display></h3>
-                <p data-fsc-item-path="the-campfire" data-fsc-item-price></p>
-                <button data-fsc-item-path-value="the-campfire" data-fsc-action="Add">
-                    Select Campfire
-                </button>
-            </div>
+    <div class="product-card">
+        <span data-fsc-item-path="the-campfire" data-fsc-item-display></span>
+        <span data-fsc-item-path="the-campfire" data-fsc-item-price></span>
+        <button data-fsc-item-path-value="the-campfire" data-fsc-action="Add">Add</button>
+    </div>
 
-            <div class="product-card">
-                <h3 data-fsc-item-path="the-guild-hall" data-fsc-item-display></h3>
-                <p data-fsc-item-path="the-guild-hall" data-fsc-item-price></p>
-                <button data-fsc-item-path-value="the-guild-hall" data-fsc-action="Add">
-                    Select Guild Hall
-                </button>
-            </div>
-        </section>
+    <div class="product-card">
+        <span data-fsc-item-path="the-guild-hall" data-fsc-item-display></span>
+        <span data-fsc-item-path="the-guild-hall" data-fsc-item-price></span>
+        <button data-fsc-item-path-value="the-guild-hall" data-fsc-action="Add">Add</button>
+    </div>
 
-        <section class="checkout-section">
-            <h2>Complete Your Order</h2>
+    <hr />
 
-            <div class="order-summary">
-                <h4>Your Selection:</h4>
-                
-                <ul data-fsc-items-container>
-                    <script type="text/fsc-template">
-                        <li data-fsc-item-path="${path}">
-                            <span data-fsc-item-display></span> 
-                            (x<span data-fsc-item-quantity></span>) — 
-                            <span data-fsc-item-total></span>
-                            <button data-fsc-action="Remove" class="btn-remove">Remove</button>
-                        </li>
-                    </script>
-                </ul>
+    <div data-fsc-items-container>
+        <h3>Your Selection</h3>
+        
+        <div data-fsc-item-path="the-tavern">
+            <span data-fsc-item-display></span>
+            <span data-fsc-item-quantity></span>
+            <span data-fsc-item-total></span>
+            <button data-fsc-item-path-value="the-tavern" data-fsc-action="Remove">Remove</button>
+        </div>
 
-                <hr>
-                <p>Subtotal: <span data-fsc-order-total></span></p>
-                <p>Tax: <span data-fsc-order-tax></span></p>
-                <hr>
-                <p><strong>Total: <span data-fsc-order-totalWithTax></span></strong></p>
-                
-                <button data-fsc-action="Reset" class="btn-reset">Clear All</button>
-            </div>
+        <div data-fsc-item-path="the-campfire">
+            <span data-fsc-item-display></span>
+            <span data-fsc-item-quantity></span>
+            <span data-fsc-item-total></span>
+            <button data-fsc-item-path-value="the-campfire" data-fsc-action="Remove">Remove</button>
+        </div>
 
-            <div id="fsc-embedded-checkout-container"></div>
-        </section>
-    </main>
+        <div data-fsc-item-path="the-guild-hall">
+            <span data-fsc-item-display></span>
+            <span data-fsc-item-quantity></span>
+            <span data-fsc-item-total></span>
+            <button data-fsc-item-path-value="the-guild-hall" data-fsc-action="Remove">Remove</button>
+        </div>
+    </div>
+
+    <hr />
+
+    <div>
+        Total: <span data-fsc-order-totalWithTax></span>
+    </div>
+    <button data-fsc-action="Reset">Clear All</button>
+
+    <div id="fsc-embedded-checkout-container"></div>
 
     <script
         id="fsc-api"
