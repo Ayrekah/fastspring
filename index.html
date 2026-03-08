@@ -1,54 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<script
+    id="fsc-api"
+    src="https://d1f8f9xcsvx3ha.cloudfront.net/sbl/0.8.0/fastspring-builder.min.js"
+    type="text/javascript"
+    data-storefront="ericateststore.test.onfastspring.com/embedded-readytoroll">
+</script>
+    
     <meta charset="UTF-8">
-    <title>Ready To Roll Store</title>
+    <title>Ready To Roll</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <header>
-        <h1>Ready To Roll</h1>
-        <p>Select your adventure location</p>
-    </header>
-
-    <main class="store-container">
-        <section class="products">
-            <div class="product-card">
-                <h3 data-fsc-item-path="the-tavern" data-fsc-item-display></h3>
-                <p data-fsc-item-path="the-tavern" data-fsc-item-price></p>
-                <button data-fsc-item-path-value="the-tavern" data-fsc-action="Add">
-                    Select Tavern
-                </button>
-            </div>
-
-            <div class="product-card">
-                <h3 data-fsc-item-path="the-campfire" data-fsc-item-display></h3>
-                <p data-fsc-item-path="the-campfire" data-fsc-item-price></p>
-                <button data-fsc-item-path-value="the-campfire" data-fsc-action="Add">
-                    Select Campfire
-                </button>
-            </div>
-
-            <div class="product-card">
-                <h3 data-fsc-item-path="the-guild-hall" data-fsc-item-display></h3>
-                <p data-fsc-item-path="the-guild-hall" data-fsc-item-price></p>
-                <button data-fsc-item-path-value="the-guild-hall" data-fsc-action="Add">
-                    Select Guild Hall
-                </button>
-            </div>
-        </section>
-
-        <section class="checkout-section">
-            <h2>Checkout</h2>
-            
             <div id="fsc-embedded-checkout-container">
                 </div>
-
-            <br>
-            <button data-fsc-action="Reset">Clear All Items</button>
-        </section>
-    </main>
 
 <script
     id="fsc-api"
@@ -56,11 +23,7 @@
     type="text/javascript"
     data-storefront="ericateststore.test.onfastspring.com/embedded-readytoroll">
 </script>
-<!--- The following DIV element will become the container for embedded checkout.
-Place this DIV element in the page, wherever the embedded checkout is expected to be placed --->
-<div id="fsc-embedded-checkout-container">
 
-</div>
     
     <script src="script.js"></script>
 </body>
