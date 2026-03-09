@@ -199,10 +199,6 @@ body{
   margin-right:10px;
 }
 
-.fsc-skeleton,
-.fsc-loading {
-  display:none !important;
-}
 .product-full-description{
   margin-top:10px;
 }
