@@ -6,7 +6,11 @@ body{
   margin:0;
   font-family:Arial, sans-serif;
 
-  background:#2b2218;
+  background-color:#2b2218;
+
+  background-image:url("images/wood-texture.jpg");
+  background-size:600px;
+  background-repeat:repeat;
 }
 
 /* site width */
@@ -58,7 +62,7 @@ body{
 }
 
 .hero-tagline{
-  color:#f2e6c9;
+  color:#1a120c;
   font-size:22px;
   font-family:'Cinzel', serif;
 }
@@ -67,7 +71,11 @@ body{
 
 .products{
   padding:70px 0;
+
   background:#f4ead2;
+
+  border-top:4px solid #c9b27c;
+  border-bottom:4px solid #c9b27c;
 }
 
 .product-grid{
@@ -154,3 +162,5 @@ body{
 #fsc-embedded-checkout-container{
   display:none;
 }
+
+
