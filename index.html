@@ -116,33 +116,38 @@
 <section class="cart">
   <div class="container">
 
-    <h2 data-fsc-smartdisplay data-fsc-filter="selected=true">
-  Your Cart (<span data-fsc-order-item-count></span>)
-</h2>
-
+    <!-- Empty cart -->
     <div data-fsc-smartdisplay data-fsc-filter="selected=false">
-      <p></p>
+      <h2>Your Cart</h2>
+      <p>Your cart is empty.</p>
     </div>
 
-    <div
-      data-fsc-selections-smartdisplay
-      data-fsc-items-container="shopping-cart"
-      data-fsc-filter="selected=true">
+    <!-- Cart with items -->
+    <div data-fsc-smartdisplay data-fsc-filter="selected=true">
+
+      <h2>
+        Your Cart (<span data-fsc-order-item-count></span>)
+      </h2>
+
+      <div
+        data-fsc-items-container="shopping-cart"
+        data-fsc-selections-smartdisplay>
+      </div>
+
+      <p>
+        Subtotal:
+        <strong><span data-fsc-order-subtotal></span></strong>
+      </p>
+
+      <button data-fsc-action="Checkout">
+        Checkout
+      </button>
+
+      <button data-fsc-action="Reset">
+        Clear Cart
+      </button>
+
     </div>
-
-    <div class="cart-summary"> 
-
-      <div data-fsc-selections-smartdisplay data-fsc-filter="selected=true">
-
-<button data-fsc-action="Checkout">
-Checkout
-</button>
-
-<button data-fsc-action="Reset">
-Clear Cart
-</button>
-
-</div>
 
   </div>
 </section>
@@ -171,8 +176,7 @@ Clear Cart
             </div>
         </div>
     </script>
-
-    <div id="fsc-embedded-checkout-container"></div>
+<div id="fsc-embedded-checkout-container"></div>
 
     <script src="script.js"></script>
 </body>
