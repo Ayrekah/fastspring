@@ -12,6 +12,17 @@ type="text/javascript"
 data-storefront="ericateststore.test.onfastspring.com/embedded-readytoroll">
 </script>
 
+	<!-- CART TEMPLATE -->
+<script data-fsc-template-for="shopping-cart" type="text/x-handlebars-template">
+
+{{#each items}}
+
+<p>{{display}} — Qty {{quantity}} — {{total}}</p>
+
+{{/each}}
+
+</script>
+	
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600&family=Uncial+Antiqua&display=swap" rel="stylesheet">
 
 </head>
@@ -218,16 +229,7 @@ data-storefront="ericateststore.test.onfastspring.com/embedded-readytoroll">
   </div>
 </div>
 </section>
-<!-- CART TEMPLATE -->
-<script data-fsc-template-for="shopping-cart" type="text/x-handlebars-template">
 
-{{#each items}}
-
-<p>{{display}} — Qty {{quantity}} — {{total}}</p>
-
-{{/each}}
-
-</script>
   
 	<!-- CART SNIPPET -->
 <div id="fsc-embedded-checkout-container"></div>
