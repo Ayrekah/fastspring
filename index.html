@@ -54,7 +54,7 @@
             <option value="4">4</option>
             <option value="5">5</option>
           </select>
-          <button class="add-btn" data-fsc-item-path-value="the-campfire" data-fsc-action="Update">Add to Cart</button>
+          <button class="add-btn" data-fsc-item-path-value="the-campfire" data-fsc-action="add">Add to Cart</button>
         </div>
       </div>
 
@@ -80,7 +80,7 @@
             <option value="4">4</option>
             <option value="5">5</option>
           </select>
-          <button class="add-btn" data-fsc-item-path-value="the-tavern" data-fsc-action="Update">Add to Cart</button>
+          <button class="add-btn" data-fsc-item-path-value="the-tavern" data-fsc-action="add">Add to Cart</button>
         </div>
       </div>
 
@@ -106,17 +106,19 @@
             <option value="4">4</option>
             <option value="5">5</option>
           </select>
-          <button class="add-btn" data-fsc-item-path-value="the-guild-hall" data-fsc-action="Update">Add to Cart</button>
+          <button class="add-btn" data-fsc-item-path-value="the-guild-hall" data-fsc-action="add">Add to Cart</button>
         </div>
       </div>
 
     </div>
   </div>
 </section>
+
+   <!-- CART -->
 <section class="cart">
   <div class="container">
 
-    <!-- Empty cart -->
+    <!-- Empty cart message -->
     <div data-fsc-smartdisplay data-fsc-filter="selected=false">
       <h2>Your Cart</h2>
       <p>Your cart is empty.</p>
@@ -124,34 +126,32 @@
 
     <!-- Cart with items -->
     <div data-fsc-smartdisplay data-fsc-filter="selected=true">
-
       <h2>
         Your Cart (<span data-fsc-order-item-count></span>)
       </h2>
 
-      <div
-        data-fsc-items-container="shopping-cart"
-        data-fsc-selections-smartdisplay>
-      </div>
+      <!-- Items will be rendered here -->
+      <div data-fsc-items-container="shopping-cart" data-fsc-selections-smartdisplay></div>
 
+      <!-- Subtotal -->
       <p>
-        Subtotal:
-        <strong><span data-fsc-order-subtotal></span></strong>
+        Subtotal: <strong><span data-fsc-order-subtotal></span></strong>
       </p>
 
+      <!-- Checkout button -->
       <button data-fsc-action="Checkout">
         Checkout
       </button>
 
+      <!-- Clear cart button -->
       <button data-fsc-action="Reset">
         Clear Cart
       </button>
-
     </div>
 
   </div>
 </section>
-  
+   <!-- CHECKOUT TEMPLATE -->
 <script data-fsc-template-for="fastspring_shopping_cart" type="text/x-handlebars-template">
         <div class="cart-container">
             {{#each items}}
