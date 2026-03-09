@@ -145,10 +145,6 @@ body{
   background:#6f532f;
 }
 
-#fsc-embedded-checkout-container{
-  display:none;
-}
-
 .product-full-description summary{
   cursor:pointer;
   font-weight:600;
