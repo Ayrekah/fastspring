@@ -219,6 +219,7 @@ data-storefront="ericateststore.test.onfastspring.com/embedded-readytoroll">
 
 </div>
   </div>
+</div>
 </section>
 	<!--CART SCRIPT-->
 <script data-fsc-template-for="shopping-cart" type="text/x-handlebars-template">
@@ -238,9 +239,9 @@ data-storefront="ericateststore.test.onfastspring.com/embedded-readytoroll">
       Qty: {{this.quantity}}
     </span>
 
-    <span class="cart-price">
-      {{this.price}}
-    </span>
+	<span class="cart-price">
+  {{this.total}}
+</span>
 
     <button
       data-fsc-item-path-value="{{this.path}}"
