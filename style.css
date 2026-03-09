@@ -36,6 +36,11 @@ body{
   border:none;
 }
 
+.logo-area{
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
 /* title */
 
 .site-title{
