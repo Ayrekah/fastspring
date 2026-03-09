@@ -229,41 +229,14 @@ data-storefront="ericateststore.test.onfastspring.com/embedded-readytoroll">
 
   </div>
 </section>
-<script data-fsc-template-for="shopping-cart" type="text/x-handlebars-template">
-
-<ul class="cart-items">
-
-{{#each items}}
-  {{#each items}}
-
-  <li class="cart-item">
-
-    <span class="cart-name">
-      {{this.display}}
-    </span>
-
-    <span class="cart-qty">
-      Qty: {{this.quantity}}
-    </span>
-
-    <span class="cart-price">
-      {{this.total}}
-    </span>
-
-    <button
-      data-fsc-item-path-value="{{this.path}}"
-      data-fsc-action="Remove">
-      ❌
-    </button>
-
-  </li>
-
-  {{/each}}
-{{/each}}
-
-</ul>
-
-</script>
+<div data-fsc-items-container="shopping-cart" data-fsc-filter="selected=true">
+    <div data-fsc-item-path-value> 
+        <span data-fsc-item-display></span>
+        <span data-fsc-item-quantity></span>
+        <span data-fsc-item-total></span>
+        <button data-fsc-action="Remove">❌</button>
+    </div>
+</div>
 <div id="fsc-embedded-checkout-container"></div>
 
 
