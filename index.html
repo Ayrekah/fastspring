@@ -24,7 +24,39 @@ data-storefront="ericateststore.test.onfastspring.com/embedded-readytoroll">
 
   <p data-fsc-item-path="the-tavern" data-fsc-item-description-summary></p>
 
-  <div data-fsc-item-path="the-tavern" data-fsc-item-description-full></div>
+<!--
+	DEMO INFO 
+	Define a way to take an input 
+-->
+<select  data-fsc-item-path-value="the-tavern" data-fsc-item-quantity-value>
+	<option value="1">1</option>
+	<option value="2">2</option>
+	<option value="3">3</option>
+	<option value="4">4</option>
+	<option value="5">5</option>
+</select>
+<!-- Then Use fsc-action="Update" to update cart in button -->
+<button data-fsc-item-path-value="the-tavern" data-fsc-action="Update">Update</button>
+
+<!-- 
+	DEMO RESULTS
+-->
+<br /><br />
+Quantity: 
+<span data-fsc-item-path="the-tavern" data-fsc-item-quantity>
+	<!--This value will be replaced-->
+</span>
+
+<!--
+	DEMO SETUP
+		- Initialize the Store Builder Library
+-->
+<script
+	id="fsc-api"
+	src="https://sbl.onfastspring.com/sbl/1.0.2/fastspring-builder.min.js"
+	type="text/javascript"
+	data-storefront="fastspringexamples.test.onfastspring.com/popup-fastspringexamples">
+</script>
 
   <button data-fsc-item-path="the-tavern" data-fsc-item-description-action></button>
 
