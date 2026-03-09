@@ -211,8 +211,6 @@ data-storefront="ericateststore.test.onfastspring.com/embedded-readytoroll">
       data-fsc-filter="selected=true">
     </div>
 
-    <div class="cart-summary" data-fsc-selections-smartdisplay data-fsc-filter="selected=true">
-
      <div data-fsc-selections-smartdisplay data-fsc-filter="selected=true">
 
 <p>
@@ -253,9 +251,9 @@ Subtotal:
       Qty: {{this.quantity}}
     </span>
 
-   <span class="cart-price">
-  {{this.total}}
-</span>
+    <span class="cart-price">
+      {{this.total}}
+    </span>
 
     <button
       data-fsc-item-path-value="{{this.path}}"
@@ -269,6 +267,11 @@ Subtotal:
 {{/each}}
 
 </ul>
+
+<div class="cart-template-summary">
+  Subtotal:
+  <strong><span data-fsc-order-subtotal></span></strong>
+</div>
 
 </script>
 <div id="fsc-embedded-checkout-container"></div>
