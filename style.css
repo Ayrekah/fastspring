@@ -5,6 +5,8 @@
 body{
   margin:0;
   font-family:Arial, sans-serif;
+
+  background:#2b2218;
 }
 
 /* site width */
@@ -51,26 +53,22 @@ body{
 
 /* hero */
 .hero{
-  background:#f4ead2;
-  padding:20px 20px;
+  background:#1f1812;
+  padding:40px 20px;
   text-align:center;
 }
 
-.hero-logo{
-  max-width:500px;
-  width:100%;
-}
-
 .hero-tagline{
-  margin-top:20px;
-  font-size:20px;
+  color:#f2e6c9;
+  font-size:22px;
   font-family:'Cinzel', serif;
 }
 
 /* sections */
 
 .products{
-  padding:60px 0;
+  padding:70px 0;
+  background:#f4ead2;
 }
 
 .product-grid{
@@ -79,13 +77,6 @@ body{
   flex-wrap:wrap;
 }
 
-.product-box{
-  flex:1 1 300px;
-  background:#fff;
-  padding:25px;
-  border-radius:8px;
-  box-shadow:0 4px 12px rgba(0,0,0,.1);
-}
 
 .content{
   padding:40px 0;
@@ -156,17 +147,6 @@ body{
   border-radius:4px;
 }
 
-body{
-  margin:0;
-  font-family:Arial, sans-serif;
-
-  background:#2b2218;
-
-  background-image:
-    radial-gradient(rgba(255,255,255,.03) 1px, transparent 1px);
-
-  background-size:8px 8px;
-}
 
 .add-btn:hover{
   background:#6f532f;
