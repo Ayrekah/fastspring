@@ -117,38 +117,36 @@
 <section class="cart">
   <div class="container">
 
-    <!-- Empty cart message -->
-    <div data-fsc-selections-smartdisplay data-fsc-filter="selected=false">
-      <p>Your cart is empty.</p>
-    </div>
+    <h2>Your Cart</h2>
 
-    <!-- Cart content -->
-    <div data-fsc-selections-smartdisplay data-fsc-filter="selected=true">
-
-      <h2>Your Cart</h2>
-
-      <div
-        data-fsc-selections-smartdisplay
-        data-fsc-items-container="shopping-cart"
-        data-fsc-filter="selected=true">
-      </div>
-
+    <div
+      data-fsc-selections-smartdisplay
+      data-fsc-items-container="shopping-cart"
+      data-fsc-filter="selected=true">
     </div>
 
   </div>
 </section>
    <!-- CHECKOUT TEMPLATE -->
 <script data-fsc-template-for="shopping-cart" type="text/x-handlebars-template">
-<ul>
+
+<ul class="cart-items">
+
 {{#each items}}
   {{#each items}}
-    <li>{{this.display}} — Qty: {{this.quantity}} — {{this.price}}</li>
+
+    <li class="cart-item">
+      <span class="cart-name">{{this.display}}</span>
+      <span class="cart-qty">Qty: {{this.quantity}}</span>
+      <span class="cart-price">{{this.price}}</span>
+    </li>
+
   {{/each}}
 {{/each}}
+
 </ul>
+
 </script>
 <div id="fsc-embedded-checkout-container"></div>
-
-    <script src="script.js"></script>
 </body>
 </html>
