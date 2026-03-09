@@ -117,6 +117,7 @@
 <!-- Cart Section -->
 <section class="cart">
   <div class="container">
+
     <!-- Empty cart -->
     <div data-fsc-smartdisplay data-fsc-filter="selected=false">
       <h2>Your Cart</h2>
@@ -126,18 +127,21 @@
     <!-- Cart with items -->
     <div data-fsc-smartdisplay data-fsc-filter="selected=true">
       <h2>Your Cart (<span data-fsc-order-item-count></span>)</h2>
+
+      <div data-fsc-items-container="shopping-cart"></div>
+
       <p>
-        Subtotal: <strong><span data-fsc-order-subtotal></span></strong>
+        Subtotal:
+        <strong><span data-fsc-order-subtotal></span></strong>
       </p>
+
       <button data-fsc-action="Checkout">Checkout</button>
       <button data-fsc-action="Reset">Clear Cart</button>
     </div>
+
   </div>
 </section>
-<!-- FastSpring Embedded Checkout -->
-<div id="fsc-embedded-checkout-container"></div>
 
-<!-- Cart Template -->
 <script data-fsc-template-for="shopping-cart" type="text/x-handlebars-template">
 <ul class="cart-items">
 {{#each items}}
@@ -146,13 +150,11 @@
     <span class="cart-name">{{this.display}}</span>
     <span class="cart-qty">Qty: {{this.quantity}}</span>
     <span class="cart-price">{{this.total}}</span>
-    <button data-fsc-item-path-value="{{this.path}}" data-fsc-action="Remove">❌</button>
+    <button
+      data-fsc-item-path-value="{{this.path}}"
+      data-fsc-action="Remove">❌</button>
   </li>
   {{/each}}
 {{/each}}
 </ul>
 </script>
-
-<script src="script.js"></script>
-</body>
-</html>
