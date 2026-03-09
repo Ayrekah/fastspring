@@ -221,7 +221,7 @@ data-storefront="ericateststore.test.onfastspring.com/embedded-readytoroll">
   </div>
 </div>
 </section>
-	<!--CART SCRIPT-->
+
 <script data-fsc-template-for="shopping-cart" type="text/x-handlebars-template">
 
 <ul class="cart-items">
@@ -232,19 +232,19 @@ data-storefront="ericateststore.test.onfastspring.com/embedded-readytoroll">
   <li class="cart-item">
 
     <span class="cart-name">
-      {{this.display}}
+      {{display}}
     </span>
 
     <span class="cart-qty">
-      Qty: {{this.quantity}}
+      Qty: {{quantity}}
     </span>
 
-	<span class="cart-price">
-  {{this.total}}
-</span>
+    <span class="cart-price">
+      {{total}}
+    </span>
 
     <button
-      data-fsc-item-path-value="{{this.path}}"
+      data-fsc-item-path-value="{{path}}"
       data-fsc-action="Remove">
       ❌
     </button>
@@ -257,7 +257,6 @@ data-storefront="ericateststore.test.onfastspring.com/embedded-readytoroll">
 </ul>
 
 </script>
-
 	<!-- CART SNIPPET -->
 <div id="fsc-embedded-checkout-container"></div>
 
