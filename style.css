@@ -164,3 +164,37 @@ body{
   margin-top:6px;
   line-height:1.5;
 }
+
+.cart-items{
+  list-style:none;
+  padding:0;
+}
+
+.cart-item{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:8px 0;
+  border-bottom:1px solid #ddd;
+}
+
+.cart-name{
+  flex:2;
+}
+
+.cart-qty{
+  flex:1;
+}
+
+.cart-price{
+  flex:1;
+  font-weight:bold;
+}
+
+.cart-summary{
+  margin-top:15px;
+}
+
+.cart-summary button{
+  margin-right:10px;
+}
