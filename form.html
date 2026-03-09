@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Enter Your Email</title>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 20px; background: #f4ead2; text-align: center; }
+    form { display: inline-block; margin-top: 50px; background: #fff; padding: 20px; border-radius: 8px; }
+    input[type="email"] { padding: 8px; width: 250px; margin-bottom: 10px; }
+    button { padding: 8px 12px; border: none; background: #8b5e3c; color: white; border-radius: 4px; cursor: pointer; }
+    button:hover { background: #a97452; }
+  </style>
+</head>
+<body>
+  <h1>Enter Your Email</h1>
+  <form id="heroForm" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+    <input type="hidden" name="Hero" id="heroInput">
+    <input type="email" name="email" placeholder="Your email" required>
+    <br>
+    <button type="submit">Submit</button>
+  </form>
+
+  <script>
+    // Get hero from query param and set hidden input
+    const params = new URLSearchParams(window.location.search);
+    const hero = params.get('hero') || 'Unknown';
+    document.getElementById('heroInput').value = hero;
+
+    // Redirect to confirmation after submit
+    const form = document.getElementById('heroForm');
+    form.addEventListener('submit', function(e) {
+      // For Formspree, allow default submission but then redirect
+      setTimeout(() => {
+        window.location.href = 'confirmation.html';
+      }, 500); // slight delay to allow Formspree to send
+    });
+  </script>
+</body>
+</html>
