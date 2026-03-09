@@ -49,6 +49,23 @@ body{
   margin:0;
 }
 
+/* hero */
+.hero{
+  background:#f4ead2;
+  padding:80px 20px;
+  text-align:center;
+}
+
+.hero-logo{
+  max-width:500px;
+  width:100%;
+}
+
+.hero-tagline{
+  margin-top:20px;
+  font-size:20px;
+  font-family:'Cinzel', serif;
+}
 
 /* sections */
 
