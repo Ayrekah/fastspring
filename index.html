@@ -119,9 +119,14 @@
   <div class="container">
 
     <!-- Empty cart message -->
-    <div data-fsc-smartdisplay data-fsc-filter="selected=false">
-      <h2>Your Cart</h2>
-      <p>Your cart is empty.</p>
+  <div
+    data-fsc-selections-smartdisplay
+    data-fsc-items-container="shopping-cart"
+    data-fsc-filter="selected=true">
+  </div>
+
+</div>
+      <p></p>
     </div>
 
     <!-- Cart with items -->
@@ -152,7 +157,7 @@
   </div>
 </section>
    <!-- CHECKOUT TEMPLATE -->
-<script data-fsc-template-for="fastspring_shopping_cart" type="text/x-handlebars-template">
+<script data-fsc-template-for="shopping_cart" type="text/x-handlebars-template">
         <div class="cart-container">
             {{#each items}}
                 {{#each items}}
