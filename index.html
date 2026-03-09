@@ -118,12 +118,12 @@
   <div class="container">
 
     <!-- Empty cart message -->
-    <div data-fsc-smartdisplay data-fsc-filter="selected=false">
+    <div data-fsc-selections-smartdisplay data-fsc-filter="selected=false">
       <p>Your cart is empty.</p>
     </div>
 
     <!-- Cart content -->
-    <div data-fsc-smartdisplay data-fsc-filter="selected=true">
+    <div data-fsc-selections-smartdisplay data-fsc-filter="selected=true">
 
       <h2>Your Cart</h2>
 
@@ -138,30 +138,15 @@
   </div>
 </section>
    <!-- CHECKOUT TEMPLATE -->
-<script data-fsc-template-for="shopping_cart" type="text/x-handlebars-template">
-        <div class="cart-container">
-            {{#each items}}
-                {{#each items}}
-                <div class="cart-item" data-fsc-item-path="{{path}}">
-                    <div class="item-info">
-                        <strong>{{display}}</strong>
-                        <span>{{unitPrice}}</span>
-                    </div>
-                    <div class="item-controls">
-                        <input type="text" value="{{quantity}}" data-fsc-item-quantity-value data-fsc-action="Update" data-fsc-item-path-value="{{path}}">
-                        <span>Total: {{total}}</span>
-                        <a href="#" data-fsc-action="Remove" data-fsc-item-path-value="{{path}}">&times; Remove</a>
-                    </div>
-                </div>
-                {{/each}}
-            {{/each}}
-
-            <div class="cart-footer">
-                <p>Total: <span data-fsc-order-total></span></p>
-                <button data-fsc-action="Checkout">Checkout Now</button>
-            </div>
-        </div>
-    </script>
+<script data-fsc-template-for="shopping-cart" type="text/x-handlebars-template">
+<ul>
+{{#each items}}
+  {{#each items}}
+    <li>{{this.display}} — Qty: {{this.quantity}} — {{this.price}}</li>
+  {{/each}}
+{{/each}}
+</ul>
+</script>
 <div id="fsc-embedded-checkout-container"></div>
 
     <script src="script.js"></script>
