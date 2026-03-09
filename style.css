@@ -171,3 +171,7 @@ body{
 .add-btn:hover{
   background:#6f532f;
 }
+
+#fsc-embedded-checkout-container{
+  display:none;
+}
