@@ -125,27 +125,22 @@
       data-fsc-filter="selected=true">
     </div>
 
+    <button data-fsc-action="Checkout">Checkout</button>
+    <button data-fsc-action="Reset">Clear Cart</button>
+
   </div>
 </section>
    <!-- CHECKOUT TEMPLATE -->
 <script data-fsc-template-for="shopping-cart" type="text/x-handlebars-template">
-
-<ul class="cart-items">
-
+<ul>
 {{#each items}}
   {{#each items}}
-
-    <li class="cart-item">
-      <span class="cart-name">{{this.display}}</span>
-      <span class="cart-qty">Qty: {{this.quantity}}</span>
-      <span class="cart-price">{{this.price}}</span>
+    <li>
+      {{this.display}} — Qty: {{this.quantity}} — {{this.price}}
     </li>
-
   {{/each}}
 {{/each}}
-
 </ul>
-
 </script>
 <div id="fsc-embedded-checkout-container"></div>
 </body>
