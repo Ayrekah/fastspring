@@ -194,75 +194,25 @@ data-storefront="ericateststore.test.onfastspring.com/embedded-readytoroll">
   </div>
 </section>
 
-<section class="cart">
-  <div class="container">
+<div data-fsc-smartdisplay data-fsc-filter="selected=true">
 
-    <!-- Empty cart -->
-    <div data-fsc-smartdisplay data-fsc-filter="selected=false">
-      <h2>Your Cart</h2>
-      <p>Your cart is empty.</p>
-    </div>
+  <h2>Your Cart</h2>
 
-    <!-- Cart with items -->
-    <div data-fsc-smartdisplay data-fsc-filter="selected=true">
-
-      <h2>
-        Your Cart (<span data-fsc-order-item-count></span>)
-      </h2>
-
-      <div data-fsc-items-container="shopping-cart"></div>
-
-      <p>
-        Subtotal:
-        <strong><span data-fsc-order-subtotal></span></strong>
-      </p>
-
-      <button data-fsc-action="Checkout">
-        Checkout
-      </button>
-
-      <button data-fsc-action="Reset">
-        Clear Cart
-      </button>
-
-    </div>
-
+  <div
+    data-fsc-selections-smartdisplay
+    data-fsc-items-container="shopping-cart"
+    data-fsc-filter="selected=true">
   </div>
-</section>
+
+</div>
 <script data-fsc-template-for="shopping-cart" type="text/x-handlebars-template">
-
-<ul class="cart-items">
-
+<ul>
 {{#each items}}
   {{#each items}}
-
-  <li class="cart-item">
-
-    <span class="cart-name">
-      {{this.display}}
-    </span>
-
-    <span class="cart-qty">
-      Qty: {{this.quantity}}
-    </span>
-
-    <span class="cart-price">
-      {{this.total}}
-    </span>
-
-    <button
-      data-fsc-item-path-value="{{this.path}}"
-      data-fsc-action="Remove">
-      ❌
-    </button>
-
-  </li>
-
+    <li>{{this.display}} — Qty: {{this.quantity}} — {{this.price}}</li>
   {{/each}}
 {{/each}}
-
 </ul>
-
 </script>
 <div id="fsc-embedded-checkout-container"></div>
 
