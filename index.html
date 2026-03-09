@@ -208,27 +208,29 @@ data-storefront="ericateststore.test.onfastspring.com/embedded-readytoroll">
 <section class="cart">
   <div class="container">
 
-    <!-- Empty message -->
     <div data-fsc-selections-smartdisplay data-fsc-filter="selected=false">
-      <p></p>
+      <p>Your bag of holding is empty.</p>
     </div>
 
-    <!-- Cart items -->
-<div data-fsc-selections-smartdisplay data-fsc-filter="selected=true">
+    <div data-fsc-selections-smartdisplay data-fsc-filter="selected=true">
+      <h2>Your Cart</h2>
 
-  <h2>Your Cart</h2>
+      <div data-fsc-items-container="shopping-cart"></div>
 
-  <div data-fsc-items-container="shopping-cart"></div>
+      <p>
+        Subtotal: <strong><span data-fsc-order-subtotal></span></strong>
+      </p>
 
-  <p>
-    Subtotal: <strong><span data-fsc-order-subtotal></span></strong>
-  </p>
+      <button data-fsc-action="Checkout">Checkout</button>
+      <button data-fsc-action="Reset">Clear Cart</button>
+    </div>
 
-  <button data-fsc-action="Checkout">Checkout</button>
-  <button data-fsc-action="Reset">Clear Cart</button>
-  </div>
+  </div> </section>
+
+<div class="container">
+  <div id="fsc-embedded-checkout-container" data-fsc-order-selection-smartdisplay>
+    </div>
 </div>
-</section>
 
   
 	<!-- CART SNIPPET -->
