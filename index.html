@@ -232,9 +232,21 @@ data-storefront="ericateststore.test.onfastspring.com/embedded-readytoroll">
 
   
 	<!-- CART SNIPPET -->
-<div id="fsc-embedded-checkout-container"></div>
+	<script data-fsc-template-for="shopping-cart" type="text/x-handlebars-template">
+  <div class="cart-table-wrapper">
+    {{#each items}}
+    <div class="cart-row" style="display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid #c9b27c;">
+      <span class="cart-name" style="flex: 2;"><strong>{{display}}</strong></span>
+      <span class="cart-qty" style="flex: 1; text-align: center;">x {{quantity}}</span>
+      <span class="cart-price" style="flex: 1; text-align: right;">{{total}}</span>
+    </div>
+    {{/each}}
+  </div>
+</script>
 
-
+<div data-fsc-items-container="shopping-cart"></div>
+	
+<div id="fsc-embedded-checkout-container" data-fsc-order-selection-smartdisplay></div>
 <script src="script.js"></script>
 
 </body>
