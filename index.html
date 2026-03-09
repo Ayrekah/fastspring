@@ -193,6 +193,8 @@ data-storefront="ericateststore.test.onfastspring.com/embedded-readytoroll">
 
   </div>
 </section>
+
+	<!-- CART -->
 <section class="cart">
   <div class="container">
 
@@ -203,9 +205,17 @@ data-storefront="ericateststore.test.onfastspring.com/embedded-readytoroll">
 
     <!-- Cart items -->
 <div data-fsc-selections-smartdisplay data-fsc-filter="selected=true">
+
   <h2>Your Cart</h2>
 
   <div data-fsc-items-container="shopping-cart"></div>
+
+  <p>
+    Subtotal: <strong><span data-fsc-order-subtotal></span></strong>
+  </p>
+
+  <button data-fsc-action="Checkout">Checkout</button>
+  <button data-fsc-action="Reset">Clear Cart</button>
 
 </div>
 
