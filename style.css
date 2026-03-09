@@ -4,9 +4,10 @@
 
 body{
   margin:0;
+  font-family:Arial, sans-serif;
 }
 
-/* standard site width */
+/* site width */
 
 .container{
   max-width:1200px;
@@ -22,9 +23,25 @@ body{
 
 .site-header .container{
   display:flex;
-  justify-content:space-between;
   align-items:center;
   padding:14px 0;
+}
+
+/* logo */
+
+.logo{
+  width:40px;
+  height:40px;
+  margin-right:10px;
+  border:none;
+}
+
+/* title */
+
+.site-title{
+  font-family:'Cinzel', serif;
+  color:#f2e6c9;
+  margin:0;
 }
 
 /* hero */
@@ -33,4 +50,10 @@ body{
   width:100%;
   height:auto;
   display:block;
+}
+
+/* sections */
+
+.content{
+  padding:40px 0;
 }
