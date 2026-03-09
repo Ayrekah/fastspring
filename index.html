@@ -202,6 +202,22 @@ data-storefront="ericateststore.test.onfastspring.com/embedded-readytoroll">
 </script>
 
 <div id="fsc-embedded-checkout-container"></div>
+	<h2>Your Cart</h2>
+
+<div
+  data-fsc-selections-smartdisplay
+  data-fsc-items-container="shopping-cart"
+  data-fsc-filter="selected=true">
+</div>
+	<script data-fsc-template-for="shopping-cart" type="text/x-handlebars-template">
+<ul>
+{{#each items}}
+  {{#each items}}
+    <li>{{this.display}} — Qty: {{this.quantity}} — {{this.price}}</li>
+  {{/each}}
+{{/each}}
+</ul>
+</script>
 
 <script src="script.js"></script>
 
