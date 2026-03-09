@@ -199,15 +199,31 @@ data-storefront="ericateststore.test.onfastspring.com/embedded-readytoroll">
   id="fsc-api"
   src="https://sbl.onfastspring.com/sbl/1.0.2/fastspring-builder.min.js"
   type="text/javascript"
-  data-storefront="fastspringexamples.test.onfastspring.com/popup-fastspringexamples">
+  data-storefront="ericateststore.test.onfastspring.com/embedded-readytoroll">
 </script>
-	<h2>Your Cart</h2>
+<section class="cart">
+  <div class="container">
 
-<div
-  data-fsc-selections-smartdisplay
-  data-fsc-items-container="shopping-cart"
-  data-fsc-filter="selected=true">
-</div>
+    <!-- Empty cart message -->
+    <div data-fsc-smartdisplay data-fsc-filter="selected=false">
+      <p>Your cart is empty.</p>
+    </div>
+
+    <!-- Cart content -->
+    <div data-fsc-smartdisplay data-fsc-filter="selected=true">
+
+      <h2>Your Cart</h2>
+
+      <div
+        data-fsc-selections-smartdisplay
+        data-fsc-items-container="shopping-cart"
+        data-fsc-filter="selected=true">
+      </div>
+
+    </div>
+
+  </div>
+</section>
 	<script data-fsc-template-for="shopping-cart" type="text/x-handlebars-template">
 <ul>
 {{#each items}}
