@@ -160,12 +160,12 @@ body{
   margin:0;
   font-family:Arial, sans-serif;
 
-  background-color:#f4ead2;
+  background:#2b2218;
 
   background-image:
-    radial-gradient(rgba(0,0,0,.03) 1px, transparent 1px);
+    radial-gradient(rgba(255,255,255,.03) 1px, transparent 1px);
 
-  background-size:6px 6px;
+  background-size:8px 8px;
 }
 
 .add-btn:hover{
