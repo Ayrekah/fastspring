@@ -52,6 +52,24 @@ body{
 
 /* sections */
 
+.products{
+  padding:60px 0;
+}
+
+.product-grid{
+  display:flex;
+  gap:30px;
+  flex-wrap:wrap;
+}
+
+.product-box{
+  flex:1 1 300px;
+  background:#fff;
+  padding:25px;
+  border-radius:8px;
+  box-shadow:0 4px 12px rgba(0,0,0,.1);
+}
+
 .content{
   padding:40px 0;
 }
