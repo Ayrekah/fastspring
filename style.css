@@ -198,3 +198,8 @@ body{
 .cart-summary button{
   margin-right:10px;
 }
+
+.fsc-skeleton,
+.fsc-loading {
+  display:none !important;
+}
