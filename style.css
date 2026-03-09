@@ -149,4 +149,18 @@ body{
   display:none;
 }
 
+.product-full-description summary{
+  cursor:pointer;
+  font-weight:600;
+  color:#5a3e2b;
+  margin-top:8px;
+}
 
+.product-full-description summary:hover{
+  text-decoration:underline;
+}
+
+.description-content{
+  margin-top:6px;
+  line-height:1.5;
+}
