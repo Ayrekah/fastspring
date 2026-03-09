@@ -229,3 +229,10 @@ body{
     url("images/parchment-texture.jpg");
   background-size:cover;
 }
+.cart{
+  margin-top:50px;
+  background:#fdf7e6;
+  border:2px solid #c9b27c;
+  border-radius:8px;
+  padding:25px;
+}
