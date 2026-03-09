@@ -224,11 +224,12 @@ data-storefront="ericateststore.test.onfastspring.com/embedded-readytoroll">
 <ul class="cart-items">
 {{#each items}}
   {{#each items}}
-    <li class="cart-item">
-      <span class="cart-name">{{display}}</span>
-      <span class="cart-qty">Qty: {{quantity}}</span>
-      <span class="cart-price">{{total}}</span>
-    </li>
+  <li class="cart-item">
+    <span class="cart-name">{{display}}</span>
+    <span class="cart-qty">Qty: {{quantity}}</span>
+    <span class="cart-price">{{total}}</span>
+    <button data-fsc-item-path-value="{{path}}" data-fsc-action="Remove">Remove</button>
+  </li>
   {{/each}}
 {{/each}}
 </ul>
