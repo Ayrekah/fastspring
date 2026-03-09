@@ -147,46 +147,33 @@ Clear Cart
   </div>
 </section>
   
-<script data-fsc-template-for="shopping-cart" type="text/x-handlebars-template">
+<script data-fsc-template-for="fastspring_shopping_cart" type="text/x-handlebars-template">
+        <div class="cart-container">
+            {{#each items}}
+                {{#each items}}
+                <div class="cart-item" data-fsc-item-path="{{path}}">
+                    <div class="item-info">
+                        <strong>{{display}}</strong>
+                        <span>{{unitPrice}}</span>
+                    </div>
+                    <div class="item-controls">
+                        <input type="text" value="{{quantity}}" data-fsc-item-quantity-value data-fsc-action="Update" data-fsc-item-path-value="{{path}}">
+                        <span>Total: {{total}}</span>
+                        <a href="#" data-fsc-action="Remove" data-fsc-item-path-value="{{path}}">&times; Remove</a>
+                    </div>
+                </div>
+                {{/each}}
+            {{/each}}
 
-<ul class="cart-items">
+            <div class="cart-footer">
+                <p>Total: <span data-fsc-order-total></span></p>
+                <button data-fsc-action="Checkout">Checkout Now</button>
+            </div>
+        </div>
+    </script>
 
-{{#each items}}
-  {{#each items}}
+    <div id="fsc-embedded-checkout-container"></div>
 
-  <li class="cart-item">
-
-    <span class="cart-name">
-      {{this.display}}
-    </span>
-
-    <span class="cart-qty">
-      Qty: {{this.quantity}}
-    </span>
-
-    <span class="cart-price">
-      {{this.total}}
-    </span>
-
-    <button
-      data-fsc-item-path-value="{{this.path}}"
-      data-fsc-action="Remove">
-      ❌
-    </button>
-
-  </li>
-
-  {{/each}}
-{{/each}}
-
-</ul>
-
-<div class="cart-template-summary">
-  Subtotal:
-  <strong><span data-fsc-order-subtotal></span></strong>
-</div>
-
-</script>
-
-  <div id="fsc-embedded-checkout-container">
-<script src="script.js"></script> </body> </html>
+    <script src="script.js"></script>
+</body>
+</html>
