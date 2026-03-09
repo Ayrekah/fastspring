@@ -53,18 +53,6 @@ body{
   margin:0;
 }
 
-/* hero */
-.hero{
-  padding:40px 20px;
-  text-align:center;
-}
-
-.hero-tagline{
-  color:#1a120c;
-  font-size:22px;
-  font-family:'Cinzel', serif;
-}
-
 /* sections */
 
 .products{
