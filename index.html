@@ -113,7 +113,6 @@
     </div>
   </div>
 </section>
-
 <section class="cart">
   <div class="container">
 
@@ -131,13 +130,16 @@
       data-fsc-filter="selected=true">
     </div>
 
-    <div class="cart-summary" data-fsc-selections-smartdisplay data-fsc-filter="selected=true">
+    <div class="cart-summary"> <div data-fsc-selections-smartdisplay data-fsc-filter="selected=true">
 
-      <p>
-        Subtotal:
-        <strong><span data-fsc-order-subtotal></span></strong>
-      </p>
+<p>
+Subtotal:
+<strong>
+<span data-fsc-order-subtotal></span>
+</strong>
+</p>
 
+</div>
       <button data-fsc-action="Checkout">
         Checkout
       </button>
@@ -150,7 +152,7 @@
 
   </div>
 </section>
-
+  
 <script data-fsc-template-for="shopping-cart" type="text/x-handlebars-template">
 
 <ul class="cart-items">
@@ -158,11 +160,27 @@
 {{#each items}}
   {{#each items}}
 
-    <li class="cart-item">
-      <span class="cart-name">{{this.display}}</span>
-      <span class="cart-qty">Qty: {{this.quantity}}</span>
-      <span class="cart-price">{{this.price}}</span>
-    </li>
+  <li class="cart-item">
+
+    <span class="cart-name">
+      {{this.display}}
+    </span>
+
+    <span class="cart-qty">
+      Qty: {{this.quantity}}
+    </span>
+
+    <span class="cart-price">
+      {{this.price}}
+    </span>
+
+    <button
+      data-fsc-item-path-value="{{this.path}}"
+      data-fsc-action="Remove">
+      ❌
+    </button>
+
+  </li>
 
   {{/each}}
 {{/each}}
