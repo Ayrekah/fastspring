@@ -7,27 +7,19 @@
 
 <link rel="stylesheet" href="style.css">
 
-<!-- Handlebars -->
-<script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js"></script>
-
 <!-- FastSpring -->
 <script
 id="fsc-api"
 src="https://sbl.onfastspring.com/sbl/1.0.6/fastspring-builder.min.js"
 type="text/javascript"
-data-storefront="ericateststore.test.onfastspring.com/embedded-readytoroll"
-data-markup-helpers-callback="markupHelpersCallback"
-data-data-callback="dataCallback"
-data-error-callback="errorCallback">
+data-storefront="ericateststore.test.onfastspring.com/embedded-readytoroll">
 </script>
 
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600&family=Uncial+Antiqua&display=swap" rel="stylesheet">
 
 </head>
 
-
 <body>
-
 
 <header class="site-header">
   <div class="container">
@@ -79,7 +71,8 @@ data-error-callback="errorCallback">
 
         <div class="product-controls">
 
-          <button class="add-btn"
+          <button
+            class="add-btn"
             data-fsc-item-path-value="the-campfire"
             data-fsc-action="Add">
             Add to Cart
@@ -121,7 +114,8 @@ data-error-callback="errorCallback">
 
         <div class="product-controls">
 
-          <button class="add-btn"
+          <button
+            class="add-btn"
             data-fsc-item-path-value="the-tavern"
             data-fsc-action="Add">
             Add to Cart
@@ -163,7 +157,8 @@ data-error-callback="errorCallback">
 
         <div class="product-controls">
 
-          <button class="add-btn"
+          <button
+            class="add-btn"
             data-fsc-item-path-value="the-guild-hall"
             data-fsc-action="Add">
             Add to Cart
@@ -173,6 +168,55 @@ data-error-callback="errorCallback">
 
       </div>
 
+    </div>
+
+  </div>
+</section>
+
+
+
+<!-- BAG OF HOLDING (CART) -->
+<section class="cart">
+  <div class="container">
+
+    <!-- EMPTY -->
+    <div data-fsc-selections-smartdisplay data-fsc-filter="selected=false">
+      <p>Your bag of holding is empty.</p>
+    </div>
+
+
+    <!-- CART -->
+    <div data-fsc-selections-smartdisplay data-fsc-filter="selected=true">
+
+      <h2>Bag of Holding</h2>
+
+      <div data-fsc-items-container>
+
+        <div class="cart-item" data-fsc-item>
+
+          <span data-fsc-item-display></span>
+
+          <button data-fsc-item-quantity-decrement>-</button>
+
+          <input data-fsc-item-quantity>
+
+          <button data-fsc-item-quantity-increment>+</button>
+
+          <span data-fsc-item-price-total></span>
+
+          <button data-fsc-item-remove>Remove</button>
+
+        </div>
+
+      </div>
+
+      <div class="cart-total">
+        Total: <span data-fsc-order-total></span>
+      </div>
+
+      <button class="checkout-btn" data-fsc-action="Checkout">
+        Embark on Adventure
+      </button>
 
     </div>
 
@@ -181,107 +225,9 @@ data-error-callback="errorCallback">
 
 
 
-<!-- CART -->
-<div id="fsb-cart"></div>
-
-
-
-<!-- CART TEMPLATE -->
-<script id="fsb-cart-template" type="text/x-handlebars-template">
-
-<div class="cart-wrapper">
-
-{{#if groups}}
-
-<h2>Your Cart</h2>
-
-<div class="cart-items">
-
-{{#each groups}}
-{{#each items}}
-
-{{#if selected}}
-
-<div class="cart-item">
-
-<div class="cart-name">
-{{display}}
-</div>
-
-<div class="cart-qty">
-
-<button onclick="fastspring.builder.update('{{path}}', {{quantity}} - 1)">−</button>
-
-<input
-type="number"
-value="{{quantity}}"
-min="0"
-onchange="fastspring.builder.update('{{path}}', this.value)">
-
-<button onclick="fastspring.builder.update('{{path}}', {{quantity}} + 1)">+</button>
-
-</div>
-
-<div class="cart-price">
-{{priceTotal}}
-</div>
-
-<div class="cart-remove">
-<button onclick="fastspring.builder.update('{{path}}', 0)">
-Remove
-</button>
-</div>
-
-</div>
-
-{{/if}}
-{{/each}}
-{{/each}}
-
-</div>
-
-
-<div class="cart-summary">
-
-<div class="cart-total">
-Total: {{total}}
-</div>
-
-<div class="cart-coupon">
-<input id="couponcode" placeholder="Promo code">
-<button onclick="applycoupon()">Apply</button>
-</div>
-
-<div class="cart-checkout">
-<button onclick="showCheckout()">
-Checkout
-</button>
-</div>
-
-
-</div>
-
-{{else}}
-
-<p>Your bag of holding is empty.</p>
-
-{{/if}}
-
-</div>
-
-</script>
-
-
-
 <!-- EMBEDDED CHECKOUT -->
-<div id="checkout-area" style="display:none;">
-  <div id="fsc-embedded-checkout-container"></div>
-</div>
+<div id="fsc-embedded-checkout-container"></div>
 
-
-
-<!-- YOUR JS -->
-<script src="script.js"></script>
 
 
 </body>
