@@ -1,3 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Ready To Roll</title>
+<link rel="stylesheet" href="style.css">
+
+<script
+id="fsc-api"
+src="https://sbl.onfastspring.com/sbl/1.0.6/fastspring-builder.min.js"
+type="text/javascript"
+data-storefront="ericateststore.test.onfastspring.com/embedded-readytoroll">
+</script>
+
+	
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600&family=Uncial+Antiqua&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+
+<header class="site-header">
+  <div class="container">
+
+    <div class="logo-area">
+      <img src="images/d20.png" class="logo">
+      <h1 class="site-title">Ready To Roll</h1>
+    </div>
+
+  </div>
+</header>
+
+	
+	<!-- Fast Spring Products -->
+
+	<section class="products">
+  <div class="container">
+
+    <div class="product-grid">
+
+      <!-- CAMPFIRE -->
+      <div class="product-box">
+
+        <img class="product-image"
+             data-fsc-item-path="the-campfire"
+             data-fsc-item-image
+             alt="The Campfire">
+
+ <h2 class="product-title"
+            data-fsc-item-path="the-campfire"
+            data-fsc-item-display></h2>
+  <p class="product-price">
+   <span data-fsc-item-path="the-campfire" data-fsc-item-price></span>
+  </p>
+		  <details class="product-full-description">
+  <summary>Full Description</summary>
+
+  <div class="description-content">
+    <span data-fsc-item-path="the-campfire"
+          data-fsc-item-description-full></span>
+  </div>
+</details>
+
+         <p class="product-description"
+   data-fsc-item-path="the-campfire"
+   data-fsc-item-description-summary></p>
+
+<div class="product-controls">
+
+  <button class="add-btn"
+    data-fsc-item-path-value="the-campfire"
+    data-fsc-action="Add">
+    Add to Cart
+  </button>
+
+		
+
+
+        </div>
+
+      </div>
+
+
+      <!-- TAVERN -->
+      <div class="product-box">
+
+        <img class="product-image"
+             data-fsc-item-path="the-tavern"
+             data-fsc-item-image
+             alt="The Tavern">
+
+        <h2 class="product-title"
+            data-fsc-item-path="the-tavern"
+            data-fsc-item-display></h2>
+		    <p class="product-price">
+   <span data-fsc-item-path="the-tavern" data-fsc-item-price></span>
+  </p>
+		  <details class="product-full-description">
+  <summary>Full Description</summary>
+
+  <div class="description-content">
+    <span data-fsc-item-path="the-tavern"
+          data-fsc-item-description-full></span>
+  </div>
+</details>
+
+      <p class="product-description"
+   data-fsc-item-path="the-tavern"
+   data-fsc-item-description-summary></p>
+
+<div class="product-controls">
+
+  <button class="add-btn"
+    data-fsc-item-path-value="the-tavern"
+    data-fsc-action="Add">
+    Add to Cart
+  </button>
+
+			
+
+
+        </div>
+
+      </div>
+
+
+      <!-- GUILD HALL -->
+      <div class="product-box">
+
+        <img class="product-image"
+             data-fsc-item-path="the-guild-hall"
+             data-fsc-item-image
+             alt="The Guild Hall">
+
+        <h2 class="product-title"
+            data-fsc-item-path="the-guild-hall"
+            data-fsc-item-display></h2>
+		    <p class="product-price">
+   <span data-fsc-item-path="the-guild-hall" data-fsc-item-price></span>
+  </p>
+		
+	<details class="product-full-description">
+  <summary>Full Description</summary>
+
+  <div class="description-content">
+    <span data-fsc-item-path="the-guild-hall"
+          data-fsc-item-description-full></span>
+  </div>
+</details>
+      <p class="product-description"
+   data-fsc-item-path="the-guild-hall"
+   data-fsc-item-description-summary></p>
+
+<div class="product-controls">
+
+  <button class="add-btn"
+    data-fsc-item-path-value="the-guild-hall"
+    data-fsc-action="Add">
+    Add to Cart
+  </button>
+
+</div>
+    </div>
+
+</section>
+<div id="fsb-cart"></div>
+
 <script id="fsb-cart-template" type="text/x-handlebars-template">
 
 <div class="cart-wrapper">
@@ -78,3 +245,8 @@ Checkout
 </div>
 
 </script>
+
+<!-- EMBEDDED CHECKOUT -->
+<div id="fsc-embedded-checkout-container"></div>
+</body>
+</html>
