@@ -56,24 +56,24 @@ data-storefront="ericateststore.test.onfastspring.com/embedded-readytoroll">
              data-fsc-item-image
              alt="The Campfire">
 
-        <h2 class="product-title"
+ <h2 class="product-title"
             data-fsc-item-path="the-campfire"
             data-fsc-item-display></h2>
-		  	<details class="product-full-description">
+  <p class="product-price">
+   <span data-fsc-item-path="the-campfire" data-fsc-item-price></span>
+  </p>
+		  <details class="product-full-description">
   <summary>Full Description</summary>
 
   <div class="description-content">
-    <span data-fsc-item-path="the-campfire"
+    <span data-fsc-item-path="the-tavern"
           data-fsc-item-description-full></span>
   </div>
 </details>
 
-     <p class="product-description"
-   data-fsc-item-path="the-campfire"
-		 <p class="product-price">
- <span data-fsc-item-path="the-campfire" data-fsc-item-price></span>
-  </p>
-   data-fsc-item-description-summary></p>
+      <p class="product-description"
+           data-fsc-item-path="the-campfire"
+           data-fsc-item-description-summary></p>
 
         <div class="product-controls">
 
@@ -212,7 +212,6 @@ data-storefront="ericateststore.test.onfastspring.com/embedded-readytoroll">
     <div class="container">
 
       <div data-fsc-selections-smartdisplay data-fsc-filter="selected=false">
-        <p>Your bag of holding is empty.</p>
       </div>
 
       <div data-fsc-selections-smartdisplay data-fsc-filter="selected=true">
@@ -232,16 +231,5 @@ data-storefront="ericateststore.test.onfastspring.com/embedded-readytoroll">
     <div id="fsc-embedded-checkout-container" data-fsc-order-selection-smartdisplay></div>
   </div>
 
-  <script data-fsc-template-for="shopping-cart" type="text/x-handlebars-template">
-    <div class="cart-table-wrapper">
-      {{#each items}}
-      <div class="cart-row" style="display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid #c9b27c;">
-        <span class="cart-name" style="flex: 2;"><strong>{{display}}</strong></span>
-        <span class="cart-qty" style="flex: 1; text-align: center;">x {{quantity}}</span>
-        <span class="cart-price" style="flex: 1; text-align: right;">{{total}}</span>
-      </div>
-      {{/each}}
-    </div>
-  </script>
 </body>
 </html>
