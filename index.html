@@ -242,35 +242,36 @@ data-storefront="ericateststore.test.onfastspring.com/embedded-readytoroll">
 <ul class="cart-items">
 
 {{#each items}}
+  {{#each items}}
 
   <li class="cart-item">
 
     <span class="cart-name">
-      {{display}}
+      {{this.display}}
     </span>
 
     <span class="cart-qty">
-      Qty: {{quantity}}
+      Qty: {{this.quantity}}
     </span>
 
     <span class="cart-price">
-      {{total}}
+      {{this.total}}
     </span>
 
     <button
-      data-fsc-item-path-value="{{path}}"
+      data-fsc-item-path-value="{{this.path}}"
       data-fsc-action="Remove">
       ❌
     </button>
 
   </li>
 
+  {{/each}}
 {{/each}}
 
 </ul>
 
 </script>
-
 
 <!-- EMBEDDED CHECKOUT -->
 <div id="fsc-embedded-checkout-container"></div>
