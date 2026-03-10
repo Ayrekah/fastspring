@@ -1,4 +1,4 @@
-/* GLOBAL RESET */
+
 *{
   box-sizing:border-box;
 }
@@ -205,7 +205,7 @@ body {
   font-family: Arial, sans-serif;
   background: url('https://images.unsplash.com/photo-1600585154340-be6161f2d59d?auto=format&fit=crop&w=1950&q=80') no-repeat center center fixed;
   background-size: cover;
-  color: #fff;
+  color: black;
 }
 
 /* Header styling */
