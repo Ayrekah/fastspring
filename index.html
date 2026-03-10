@@ -165,57 +165,56 @@ data-storefront="ericateststore.test.onfastspring.com/embedded-readytoroll">
 </section>
 
 
-<!-- CART SECTION -->
-<!-- CART SECTION -->
+<!-- CART TEMPLATE -->
+<script data-fsc-template-for="shopping-cart" type="text/x-handlebars-template">
+  {{#each items}}
+  <li class="cart-item" data-fsc-item-path="{{path}}" style="display:flex; justify-content:space-between; padding:10px 0; border-bottom:1px solid #c9b27c;">
+    <span style="flex:2;">
+      <strong>{{display}}</strong>
+      <a href="#" data-fsc-item-path-value="{{path}}" data-fsc-action="Remove" style="color:#a33; font-size:0.8rem; margin-left:10px;">[Drop Item]</a>
+    </span>
+    <span style="flex:1; text-align:center;">
+      x <span data-fsc-item-quantity></span>
+    </span>
+    <span style="flex:1; text-align:right;">
+      <span data-fsc-item-total></span>
+    </span>
+  </li>
+  {{/each}}
+</script>
+
+<!-- CART CONTAINER -->
 <section class="cart">
   <div class="container">
 
-    <!-- Empty cart message -->
+    <!-- Empty Cart Message -->
     <div data-fsc-selections-smartdisplay data-fsc-filter="selected=false">
       <p>Your bag of holding is empty.</p>
     </div>
 
-    <!-- Cart content -->
+    <!-- Filled Cart -->
     <div data-fsc-selections-smartdisplay data-fsc-filter="selected=true">
       <h2>Your Cart</h2>
 
-      <div data-fsc-items-container>
-        <div class="cart-row"
-             data-fsc-item
-             style="display:flex; justify-content:space-between; padding:10px 0; border-bottom:1px solid #c9b27c;">
-
-          <span style="flex:2;">
-            <strong data-fsc-item-display></strong>
-            <a href="#" data-fsc-action="Remove" style="color:#a33; font-size:0.8rem; margin-left:10px;">[Drop Item]</a>
-          </span>
-
-          <span style="flex:1; text-align:center;">
-            x <span data-fsc-item-quantity></span>
-          </span>
-
-          <span style="flex:1; text-align:right;">
-            <span data-fsc-item-total></span>
-          </span>
-
-        </div>
-      </div>
+      <!-- Cart Items -->
+      <ul data-fsc-items-container="shopping-cart"></ul>
 
       <!-- Subtotal -->
       <p style="margin-top:20px;">
         Subtotal: <strong><span data-fsc-order-subtotal></span></strong>
       </p>
 
-      <!-- Cart actions -->
+      <!-- Cart Actions -->
       <div style="margin-top:10px;">
         <button data-fsc-action="Checkout">Checkout</button>
         <button data-fsc-action="Reset">Clear Cart</button>
       </div>
-
     </div>
+
   </div>
 </section>
 
-<!-- Embedded Checkout -->
+<!-- EMBEDDED CHECKOUT -->
 <div id="fsc-embedded-checkout-container"></div>
 </body>
 </html>
