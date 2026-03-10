@@ -1,23 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
 <meta charset="UTF-8">
 <title>Ready To Roll</title>
+
 <link rel="stylesheet" href="style.css">
 
+<!-- Handlebars -->
+<script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js"></script>
+
+<!-- FastSpring -->
 <script
 id="fsc-api"
 src="https://sbl.onfastspring.com/sbl/1.0.6/fastspring-builder.min.js"
 type="text/javascript"
-data-storefront="ericateststore.test.onfastspring.com/embedded-readytoroll">
+data-storefront="ericateststore.test.onfastspring.com/embedded-readytoroll"
+data-markup-helpers-callback="markupHelpersCallback"
+data-data-callback="dataCallback"
+data-error-callback="errorCallback">
 </script>
 
-	
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600&family=Uncial+Antiqua&display=swap" rel="stylesheet">
 
 </head>
 
+
 <body>
+
 
 <header class="site-header">
   <div class="container">
@@ -30,13 +40,14 @@ data-storefront="ericateststore.test.onfastspring.com/embedded-readytoroll">
   </div>
 </header>
 
-	
-	<!-- Fast Spring Products -->
 
-	<section class="products">
+
+<!-- PRODUCTS -->
+<section class="products">
   <div class="container">
 
     <div class="product-grid">
+
 
       <!-- CAMPFIRE -->
       <div class="product-box">
@@ -46,39 +57,38 @@ data-storefront="ericateststore.test.onfastspring.com/embedded-readytoroll">
              data-fsc-item-image
              alt="The Campfire">
 
- <h2 class="product-title"
+        <h2 class="product-title"
             data-fsc-item-path="the-campfire"
             data-fsc-item-display></h2>
-  <p class="product-price">
-   <span data-fsc-item-path="the-campfire" data-fsc-item-price></span>
-  </p>
-		  <details class="product-full-description">
-  <summary>Full Description</summary>
 
-  <div class="description-content">
-    <span data-fsc-item-path="the-campfire"
-          data-fsc-item-description-full></span>
-  </div>
-</details>
+        <p class="product-price">
+          <span data-fsc-item-path="the-campfire" data-fsc-item-price></span>
+        </p>
 
-         <p class="product-description"
-   data-fsc-item-path="the-campfire"
-   data-fsc-item-description-summary></p>
+        <details class="product-full-description">
+          <summary>Full Description</summary>
+          <div class="description-content">
+            <span data-fsc-item-path="the-campfire"
+                  data-fsc-item-description-full></span>
+          </div>
+        </details>
 
-<div class="product-controls">
+        <p class="product-description"
+           data-fsc-item-path="the-campfire"
+           data-fsc-item-description-summary></p>
 
-  <button class="add-btn"
-    data-fsc-item-path-value="the-campfire"
-    data-fsc-action="Add">
-    Add to Cart
-  </button>
+        <div class="product-controls">
 
-		
-
+          <button class="add-btn"
+            data-fsc-item-path-value="the-campfire"
+            data-fsc-action="Add">
+            Add to Cart
+          </button>
 
         </div>
 
       </div>
+
 
 
       <!-- TAVERN -->
@@ -92,36 +102,35 @@ data-storefront="ericateststore.test.onfastspring.com/embedded-readytoroll">
         <h2 class="product-title"
             data-fsc-item-path="the-tavern"
             data-fsc-item-display></h2>
-		    <p class="product-price">
-   <span data-fsc-item-path="the-tavern" data-fsc-item-price></span>
-  </p>
-		  <details class="product-full-description">
-  <summary>Full Description</summary>
 
-  <div class="description-content">
-    <span data-fsc-item-path="the-tavern"
-          data-fsc-item-description-full></span>
-  </div>
-</details>
+        <p class="product-price">
+          <span data-fsc-item-path="the-tavern" data-fsc-item-price></span>
+        </p>
 
-      <p class="product-description"
-   data-fsc-item-path="the-tavern"
-   data-fsc-item-description-summary></p>
+        <details class="product-full-description">
+          <summary>Full Description</summary>
+          <div class="description-content">
+            <span data-fsc-item-path="the-tavern"
+                  data-fsc-item-description-full></span>
+          </div>
+        </details>
 
-<div class="product-controls">
+        <p class="product-description"
+           data-fsc-item-path="the-tavern"
+           data-fsc-item-description-summary></p>
 
-  <button class="add-btn"
-    data-fsc-item-path-value="the-tavern"
-    data-fsc-action="Add">
-    Add to Cart
-  </button>
+        <div class="product-controls">
 
-			
-
+          <button class="add-btn"
+            data-fsc-item-path-value="the-tavern"
+            data-fsc-action="Add">
+            Add to Cart
+          </button>
 
         </div>
 
       </div>
+
 
 
       <!-- GUILD HALL -->
@@ -135,86 +144,142 @@ data-storefront="ericateststore.test.onfastspring.com/embedded-readytoroll">
         <h2 class="product-title"
             data-fsc-item-path="the-guild-hall"
             data-fsc-item-display></h2>
-		    <p class="product-price">
-   <span data-fsc-item-path="the-guild-hall" data-fsc-item-price></span>
-  </p>
-		
-	<details class="product-full-description">
-  <summary>Full Description</summary>
 
-  <div class="description-content">
-    <span data-fsc-item-path="the-guild-hall"
-          data-fsc-item-description-full></span>
-  </div>
-</details>
-      <p class="product-description"
-   data-fsc-item-path="the-guild-hall"
-   data-fsc-item-description-summary></p>
+        <p class="product-price">
+          <span data-fsc-item-path="the-guild-hall" data-fsc-item-price></span>
+        </p>
 
-<div class="product-controls">
+        <details class="product-full-description">
+          <summary>Full Description</summary>
+          <div class="description-content">
+            <span data-fsc-item-path="the-guild-hall"
+                  data-fsc-item-description-full></span>
+          </div>
+        </details>
 
-  <button class="add-btn"
-    data-fsc-item-path-value="the-guild-hall"
-    data-fsc-action="Add">
-    Add to Cart
-  </button>
+        <p class="product-description"
+           data-fsc-item-path="the-guild-hall"
+           data-fsc-item-description-summary></p>
 
-</div>
+        <div class="product-controls">
+
+          <button class="add-btn"
+            data-fsc-item-path-value="the-guild-hall"
+            data-fsc-action="Add">
+            Add to Cart
+          </button>
+
+        </div>
+
+      </div>
+
+
     </div>
 
+  </div>
 </section>
+
+
+
+<!-- CART -->
+<div id="fsb-cart"></div>
+
 
 
 <!-- CART TEMPLATE -->
-<script data-fsc-template-for="shopping-cart" type="text/x-handlebars-template">
-  {{#each items}}
-  <li class="cart-item" data-fsc-item-path="{{path}}" style="display:flex; justify-content:space-between; padding:10px 0; border-bottom:1px solid #c9b27c;">
-    <span style="flex:2;">
-      <strong>{{display}}</strong>
-      <a href="#" data-fsc-item-path-value="{{path}}" data-fsc-action="Remove" style="color:#a33; font-size:0.8rem; margin-left:10px;">[Drop Item]</a>
-    </span>
-    <span style="flex:1; text-align:center;">
-      x <span data-fsc-item-quantity></span>
-    </span>
-    <span style="flex:1; text-align:right;">
-      <span data-fsc-item-total></span>
-    </span>
-  </li>
-  {{/each}}
+<script id="fsb-cart-template" type="text/x-handlebars-template">
+
+<div class="cart-wrapper">
+
+{{#if groups}}
+
+<h2>Your Cart</h2>
+
+<div class="cart-items">
+
+{{#each groups}}
+{{#each items}}
+
+{{#if selected}}
+
+<div class="cart-item">
+
+<div class="cart-name">
+{{display}}
+</div>
+
+<div class="cart-qty">
+
+<button onclick="fastspring.builder.update('{{path}}', {{quantity}} - 1)">−</button>
+
+<input
+type="number"
+value="{{quantity}}"
+min="0"
+onchange="fastspring.builder.update('{{path}}', this.value)">
+
+<button onclick="fastspring.builder.update('{{path}}', {{quantity}} + 1)">+</button>
+
+</div>
+
+<div class="cart-price">
+{{priceTotal}}
+</div>
+
+<div class="cart-remove">
+<button onclick="fastspring.builder.update('{{path}}', 0)">
+Remove
+</button>
+</div>
+
+</div>
+
+{{/if}}
+{{/each}}
+{{/each}}
+
+</div>
+
+
+<div class="cart-summary">
+
+<div class="cart-total">
+Total: {{total}}
+</div>
+
+<div class="cart-coupon">
+<input id="couponcode" placeholder="Promo code">
+<button onclick="applycoupon()">Apply</button>
+</div>
+
+<div class="cart-checkout">
+<button data-fsc-action="Checkout">
+Checkout
+</button>
+</div>
+
+</div>
+
+{{else}}
+
+<p>Your bag of holding is empty.</p>
+
+{{/if}}
+
+</div>
+
 </script>
 
-<!-- CART CONTAINER -->
-<section class="cart">
-  <div class="container">
 
-    <!-- Empty Cart Message -->
-    <div data-fsc-selections-smartdisplay data-fsc-filter="selected=false">
-      <p></p>
-    </div>
-
-    <!-- Filled Cart -->
-    <div data-fsc-selections-smartdisplay data-fsc-filter="selected=true">
-      <h2>Your Cart</h2>
-
-      <!-- Cart Items -->
-      <ul data-fsc-items-container="shopping-cart"></ul>
-
-      <!-- Subtotal -->
-      <p style="margin-top:20px;">
-        Subtotal: <strong><span data-fsc-order-subtotal></span></strong>
-      </p>
-
-      <!-- Cart Actions -->
-      <div style="margin-top:10px;">
-       <!-- <button data-fsc-action="Checkout">Checkout</button> -->
-        <button data-fsc-action="Reset">Clear Cart</button>
-      </div>
-    </div>
-
-  </div>
-</section>
 
 <!-- EMBEDDED CHECKOUT -->
 <div id="fsc-embedded-checkout-container"></div>
+
+
+
+<!-- YOUR JS -->
+<script src="script.js"></script>
+
+
 </body>
 </html>
