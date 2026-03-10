@@ -166,30 +166,56 @@ data-storefront="ericateststore.test.onfastspring.com/embedded-readytoroll">
 
 
 <!-- CART SECTION -->
-<div data-fsc-items-container>
+<!-- CART SECTION -->
+<section class="cart">
+  <div class="container">
 
-  <div class="cart-row"
-       data-fsc-item
-       style="display:flex; justify-content:space-between; padding:10px 0; border-bottom:1px solid #c9b27c;">
+    <!-- Empty cart message -->
+    <div data-fsc-selections-smartdisplay data-fsc-filter="selected=false">
+      <p>Your bag of holding is empty.</p>
+    </div>
 
-    <span style="flex:2;">
-      <strong data-fsc-item-display></strong>
-      <a href="#" data-fsc-action="Remove" style="color:#a33; font-size:0.8rem; margin-left:10px;">[Drop Item]</a>
-    </span>
+    <!-- Cart content -->
+    <div data-fsc-selections-smartdisplay data-fsc-filter="selected=true">
+      <h2>Your Cart</h2>
 
-    <span style="flex:1; text-align:center;">
-      x <span data-fsc-item-quantity></span>
-    </span>
+      <div data-fsc-items-container>
+        <div class="cart-row"
+             data-fsc-item
+             style="display:flex; justify-content:space-between; padding:10px 0; border-bottom:1px solid #c9b27c;">
 
-    <span style="flex:1; text-align:right;">
-      <span data-fsc-item-total></span>
-    </span>
+          <span style="flex:2;">
+            <strong data-fsc-item-display></strong>
+            <a href="#" data-fsc-action="Remove" style="color:#a33; font-size:0.8rem; margin-left:10px;">[Drop Item]</a>
+          </span>
 
+          <span style="flex:1; text-align:center;">
+            x <span data-fsc-item-quantity></span>
+          </span>
+
+          <span style="flex:1; text-align:right;">
+            <span data-fsc-item-total></span>
+          </span>
+
+        </div>
+      </div>
+
+      <!-- Subtotal -->
+      <p style="margin-top:20px;">
+        Subtotal: <strong><span data-fsc-order-subtotal></span></strong>
+      </p>
+
+      <!-- Cart actions -->
+      <div style="margin-top:10px;">
+        <button data-fsc-action="Checkout">Checkout</button>
+        <button data-fsc-action="Reset">Clear Cart</button>
+      </div>
+
+    </div>
   </div>
+</section>
 
-</div>
-
-<!-- EMBEDDED CHECKOUT -->
+<!-- Embedded Checkout -->
 <div id="fsc-embedded-checkout-container"></div>
 </body>
 </html>
