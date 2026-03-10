@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
 <meta charset="UTF-8">
 <title>Ready To Roll</title>
 
@@ -9,54 +8,42 @@
 
 <!-- FastSpring -->
 <script
-id="fsc-api"
-src="https://sbl.onfastspring.com/sbl/1.0.6/fastspring-builder.min.js"
-type="text/javascript"
-data-storefront="ericateststore.test.onfastspring.com/embedded-readytoroll">
+    id="fsc-api"
+    src="https://sbl.onfastspring.com/sbl/1.0.6/fastspring-builder.min.js"
+    type="text/javascript"
+    data-storefront="ericateststore.test.onfastspring.com/embedded-readytoroll">
 </script>
 
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600&family=Uncial+Antiqua&display=swap" rel="stylesheet">
 
 </head>
-
 <body>
 
 <header class="site-header">
   <div class="container">
-
     <div class="logo-area">
       <img src="images/d20.png" class="logo">
       <h1 class="site-title">Ready To Roll</h1>
     </div>
-
   </div>
 </header>
-
-
 
 <!-- PRODUCTS -->
 <section class="products">
   <div class="container">
-
     <div class="product-grid">
-
-
-      <!-- CAMPFIRE -->
+      <!-- Example Product -->
       <div class="product-box">
-
         <img class="product-image"
              data-fsc-item-path="the-campfire"
              data-fsc-item-image
              alt="The Campfire">
-
         <h2 class="product-title"
             data-fsc-item-path="the-campfire"
             data-fsc-item-display></h2>
-
         <p class="product-price">
           <span data-fsc-item-path="the-campfire" data-fsc-item-price></span>
         </p>
-
         <details class="product-full-description">
           <summary>Full Description</summary>
           <div class="description-content">
@@ -64,173 +51,59 @@ data-storefront="ericateststore.test.onfastspring.com/embedded-readytoroll">
                   data-fsc-item-description-full></span>
           </div>
         </details>
-
         <p class="product-description"
            data-fsc-item-path="the-campfire"
            data-fsc-item-description-summary></p>
-
         <div class="product-controls">
-
           <button
             class="add-btn"
             data-fsc-item-path-value="the-campfire"
             data-fsc-action="Add">
             Add to Cart
           </button>
-
         </div>
-
       </div>
-
-
-
-      <!-- TAVERN -->
-      <div class="product-box">
-
-        <img class="product-image"
-             data-fsc-item-path="the-tavern"
-             data-fsc-item-image
-             alt="The Tavern">
-
-        <h2 class="product-title"
-            data-fsc-item-path="the-tavern"
-            data-fsc-item-display></h2>
-
-        <p class="product-price">
-          <span data-fsc-item-path="the-tavern" data-fsc-item-price></span>
-        </p>
-
-        <details class="product-full-description">
-          <summary>Full Description</summary>
-          <div class="description-content">
-            <span data-fsc-item-path="the-tavern"
-                  data-fsc-item-description-full></span>
-          </div>
-        </details>
-
-        <p class="product-description"
-           data-fsc-item-path="the-tavern"
-           data-fsc-item-description-summary></p>
-
-        <div class="product-controls">
-
-          <button
-            class="add-btn"
-            data-fsc-item-path-value="the-tavern"
-            data-fsc-action="Add">
-            Add to Cart
-          </button>
-
-        </div>
-
-      </div>
-
-
-
-      <!-- GUILD HALL -->
-      <div class="product-box">
-
-        <img class="product-image"
-             data-fsc-item-path="the-guild-hall"
-             data-fsc-item-image
-             alt="The Guild Hall">
-
-        <h2 class="product-title"
-            data-fsc-item-path="the-guild-hall"
-            data-fsc-item-display></h2>
-
-        <p class="product-price">
-          <span data-fsc-item-path="the-guild-hall" data-fsc-item-price></span>
-        </p>
-
-        <details class="product-full-description">
-          <summary>Full Description</summary>
-          <div class="description-content">
-            <span data-fsc-item-path="the-guild-hall"
-                  data-fsc-item-description-full></span>
-          </div>
-        </details>
-
-        <p class="product-description"
-           data-fsc-item-path="the-guild-hall"
-           data-fsc-item-description-summary></p>
-
-        <div class="product-controls">
-
-          <button
-            class="add-btn"
-            data-fsc-item-path-value="the-guild-hall"
-            data-fsc-action="Add">
-            Add to Cart
-          </button>
-
-        </div>
-
-      </div>
-
+      <!-- Add other products here as before -->
     </div>
-
   </div>
 </section>
-
-
 
 <!-- BAG OF HOLDING (CART) -->
 <section class="cart">
   <div class="container">
-
-    <!-- EMPTY -->
+    <!-- Empty -->
     <div data-fsc-selections-smartdisplay data-fsc-filter="selected=false">
       <p>Your bag of holding is empty.</p>
     </div>
 
-
-    <!-- CART -->
+    <!-- Cart -->
     <div data-fsc-selections-smartdisplay data-fsc-filter="selected=true">
-
       <h2>Bag of Holding</h2>
-
       <div data-fsc-items-container>
-
         <div class="cart-item" data-fsc-item>
-
           <span data-fsc-item-display></span>
-
           <button data-fsc-item-quantity-decrement>-</button>
-
           <input data-fsc-item-quantity>
-
           <button data-fsc-item-quantity-increment>+</button>
-
           <span data-fsc-item-price-total></span>
-
           <button data-fsc-item-remove>Remove</button>
-
         </div>
-
       </div>
-
       <div class="cart-total">
         Total: <span data-fsc-order-total></span>
       </div>
-
-    <button onclick="launchCheckout()">
-Checkout
-</button>
-
+      <button type="button" id="checkout-button">
+        Checkout
+      </button>
     </div>
-
   </div>
 </section>
 
+<!-- Embedded Checkout (hidden by default) -->
+<div id="fsc-embedded-checkout-container" style="display:none;"></div>
 
-
-<!-- EMBEDDED CHECKOUT -->
-<div id="checkout-area" style="display:none;">
-  <div id="fsc-embedded-checkout-container"></div>
-</div>
-
-
+<!-- Your JS -->
+<script src="script.js"></script>
 
 </body>
 </html>
