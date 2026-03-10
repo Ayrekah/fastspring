@@ -1,9 +1,23 @@
-function launchCheckout(){
+// Wait for FastSpring to be ready
+document.addEventListener("DOMContentLoaded", function () {
+  const checkoutButton = document.getElementById("checkout-button");
 
-  document.getElementById("checkout-area").style.display = "block";
+  if (checkoutButton) {
+    checkoutButton.addEventListener("click", function () {
+      // Show the embedded checkout container
+      const checkoutContainer = document.getElementById("fsc-embedded-checkout-container");
+      checkoutContainer.style.display = "block";
 
-  fastspring.builder.checkout();
+      // Launch FastSpring embedded checkout overlay
+      fastspring.builder.checkout();
+    });
+  }
+});
 
+// Optional: coupon handling
+function applycoupon() {
+  const code = document.getElementById("couponcode").value;
+  fastspring.builder.applyCoupon(code);
 }
 
 /* function applycoupon() {
