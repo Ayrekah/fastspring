@@ -253,10 +253,11 @@ Total: {{total}}
 </div>
 
 <div class="cart-checkout">
-<button data-fsc-action="Checkout">
+<button onclick="showCheckout()">
 Checkout
 </button>
 </div>
+
 
 </div>
 
@@ -273,7 +274,9 @@ Checkout
 
 
 <!-- EMBEDDED CHECKOUT -->
-<div id="fsc-embedded-checkout-container"></div>
+<div id="checkout-area" style="display:none;">
+  <div id="fsc-embedded-checkout-container"></div>
+</div>
 
 
 
