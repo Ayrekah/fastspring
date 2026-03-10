@@ -20,3 +20,10 @@ function dataCallback(data){
 function errorCallback(code,message){
   console.log("FastSpring error:",code,message);
 }
+function showCheckout(){
+
+  document.getElementById("checkout-area").style.display = "block";
+
+  fastspring.builder.checkout();
+
+}
