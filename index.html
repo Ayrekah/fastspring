@@ -167,12 +167,22 @@ data-storefront="ericateststore.test.onfastspring.com/embedded-readytoroll">
 <script data-fsc-template-for="shopping-cart" type="text/x-handlebars-template">
 
 <ul class="cart-items">
+
 {{#each items}}
 
 <li class="cart-item">
-  <span class="cart-name">{{display}}</span>
-  <span class="cart-qty">Qty: {{quantity}}</span>
-  <span class="cart-price">{{total}}</span>
+
+  <span class="cart-name">
+    {{display}}
+  </span>
+
+  <span class="cart-qty">
+    Qty: {{quantity}}
+  </span>
+
+  <span class="cart-price">
+    {{total}}
+  </span>
 
   <button
     data-fsc-item-path-value="{{path}}"
@@ -183,6 +193,7 @@ data-storefront="ericateststore.test.onfastspring.com/embedded-readytoroll">
 </li>
 
 {{/each}}
+
 </ul>
 
 </script>
@@ -199,31 +210,36 @@ data-storefront="ericateststore.test.onfastspring.com/embedded-readytoroll">
       <h2>Your Cart</h2>
 
       <div data-fsc-items-container="shopping-cart">
-        <div class="cart-row" 
-             data-fsc-item-path-attr="data-fsc-item-path" 
-             style="display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid #c9b27c;">
-          
-          <span style="flex: 2;">
-            <strong data-fsc-item-display></strong> 
-            <a href="#" data-fsc-action="Remove" style="color: #a33; font-size: 0.8rem; margin-left: 10px;">[Drop Item]</a>
+
+        <div class="cart-row"
+             data-fsc-item
+             data-fsc-item-path-attr="data-fsc-item-path"
+             style="display:flex; justify-content:space-between; padding:10px 0; border-bottom:1px solid #c9b27c;">
+
+          <span style="flex:2;">
+            <strong data-fsc-item-display></strong>
+            <a href="#" data-fsc-action="Remove" style="color:#a33; font-size:0.8rem; margin-left:10px;">[Drop Item]</a>
           </span>
 
-          <span style="flex: 1; text-align: center;">
+          <span style="flex:1; text-align:center;">
             x <span data-fsc-item-quantity></span>
           </span>
 
-          <span style="flex: 1; text-align: right;">
+          <span style="flex:1; text-align:right;">
             <span data-fsc-item-total></span>
           </span>
+
         </div>
+
       </div>
 
-      <p style="margin-top: 20px;">
+      <p style="margin-top:20px;">
         Subtotal: <strong><span data-fsc-order-subtotal></span></strong>
       </p>
 
       <button data-fsc-action="Checkout">Checkout</button>
       <button data-fsc-action="Reset">Clear Cart</button>
+
     </div>
   </div>
 </section>
