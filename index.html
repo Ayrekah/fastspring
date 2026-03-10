@@ -209,24 +209,19 @@ data-storefront="ericateststore.test.onfastspring.com/embedded-readytoroll">
 <section class="cart">
   <div class="container">
 
-    <!-- Empty Cart -->
     <div data-fsc-selections-smartdisplay data-fsc-filter="selected=false">
       <p>Your bag of holding is empty.</p>
     </div>
 
-    <!-- Cart with Items -->
     <div data-fsc-selections-smartdisplay data-fsc-filter="selected=true">
       <h2>Your Cart</h2>
 
-      <!-- Cart Items Container -->
       <div data-fsc-items-container="shopping-cart"></div>
 
-      <!-- Subtotal -->
       <p style="margin-top:20px;">
         Subtotal: <strong><span data-fsc-order-subtotal></span></strong>
       </p>
 
-      <!-- Action Buttons -->
       <button data-fsc-action="Checkout">Checkout</button>
       <button data-fsc-action="Reset">Clear Cart</button>
     </div>
@@ -234,7 +229,7 @@ data-storefront="ericateststore.test.onfastspring.com/embedded-readytoroll">
   </div>
 </section>
 
-<!-- OPTIONAL: Custom Cart Template -->
+<!-- WORKING CART TEMPLATE -->
 <script data-fsc-template-for="shopping-cart" type="text/x-handlebars-template">
 {{#each items}}
   {{#each items}}
@@ -244,14 +239,16 @@ data-storefront="ericateststore.test.onfastspring.com/embedded-readytoroll">
         <strong>{{display}}</strong>
       </span>
 
+      <!-- Editable quantity -->
       <span style="flex:1; text-align:center;">
-        x {{quantity}}
+        <input type="number" value="{{quantity}}" min="1" data-fsc-item-quantity-value data-fsc-item-path-value="{{path}}" data-fsc-action="Update" style="width:50px; text-align:center;">
       </span>
 
       <span style="flex:1; text-align:right;">
         {{total}}
       </span>
 
+      <!-- Remove button -->
       <a data-fsc-action="Remove" data-fsc-item-path-value="{{path}}" style="margin-left:10px; cursor:pointer;">✕</a>
 
     </div>
