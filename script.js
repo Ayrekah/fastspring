@@ -6,7 +6,7 @@ function applycoupon() {
 }
 
 
-/* HANDLEBARS HELPERS */
+/* HANDLEBARS HELPER */
 
 function markupHelpersCallback() {
 
@@ -39,48 +39,15 @@ function markupHelpersCallback() {
 }
 
 
-/* FASTSPRING CART RENDER */
+/* CART RENDERING */
 
-function afterMarkupCallbackFunction(data) {
+function dataCallback(data) {
 
   var template = Handlebars.compile(
     document.getElementById("fsb-cart-template").innerHTML
   );
 
   document.getElementById("fsb-cart").innerHTML = template(data);
-
-}
-
-
-/* CART DATA UPDATES */
-
-function dataCallback(data) {
-
-  var minicart = document.getElementById("minicart-count");
-
-  if(minicart){
-
-    let inCart = 0;
-
-    if (data && data.groups) {
-
-      data.groups.forEach(group => {
-
-        group.items.forEach(item => {
-
-          if (item.selected) {
-            inCart += item.quantity;
-          }
-
-        });
-
-      });
-
-    }
-
-    minicart.innerHTML = inCart;
-
-  }
 
 }
 
