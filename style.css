@@ -4467,3 +4467,32 @@ fieldset[disabled] a.fastspring_btn
 	margin-top: 0;
 	color: inherit;
 }
+
+.cart-wrapper{
+border:1px solid #ccc;
+padding:20px;
+margin-top:40px;
+background:white;
+}
+
+.cart-item{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:10px 0;
+border-bottom:1px solid #eee;
+}
+
+.cart-qty button{
+width:30px;
+height:30px;
+}
+
+.cart-summary{
+margin-top:20px;
+}
+
+.cart-checkout button{
+padding:10px 20px;
+font-size:16px;
+}
