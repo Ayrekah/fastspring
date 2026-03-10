@@ -162,3 +162,12 @@ function decreaseValue(clicker, quantityAmount) {
 	quantityAmount.value = value;
 	fastspring.builder.update(product, value);
 }
+function afterMarkupCallbackFunction(data) {
+
+  var template = Handlebars.compile(
+    document.getElementById("fsb-cart-template").innerHTML
+  );
+
+  document.getElementById("fsb-cart").innerHTML = template(data);
+
+}
