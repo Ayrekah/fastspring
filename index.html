@@ -171,37 +171,47 @@ data-storefront="ericateststore.test.onfastspring.com/embedded-readytoroll">
           data-fsc-item-description-full></span>
   </div>
 </details>
-        <p class="product-description"
-           data-fsc-item-path="the-guild-hall"
-           data-fsc-item-description-summary></p>
+      <p class="product-description"
+   data-fsc-item-path="the-guild-hall"
+   data-fsc-item-description-summary></p>
 
-        <div class="product-controls">
+<div class="product-controls">
 
-        <!--  <select class="qty-select"
-            data-fsc-item-path-value="the-guild-hall"
-            data-fsc-item-quantity-value>
+  <button class="add-btn"
+    data-fsc-item-path-value="the-guild-hall"
+    data-fsc-action="Add">
+    Add to Cart
+  </button>
 
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-
-          </select> -->
-
-          <button class="add-btn"
-            data-fsc-item-path-value="the-guild-hall"
-            data-fsc-action="add">
-            Addddddddddddd to Cart
-          </button>
-
-      </div>
-
+</div>
     </div>
 
 </section>
+<!-- CART TEMPLATE FIRST -->
+<script data-fsc-template-for="shopping-cart" type="text/x-handlebars-template">
 
-	<!-- CART -->
+<ul class="cart-items">
+{{#each items}}
+
+<li class="cart-item">
+  <span class="cart-name">{{display}}</span>
+  <span class="cart-qty">Qty: {{quantity}}</span>
+  <span class="cart-price">{{total}}</span>
+
+  <button
+    data-fsc-item-path-value="{{path}}"
+    data-fsc-action="Remove">
+    ❌
+  </button>
+
+</li>
+
+{{/each}}
+</ul>
+
+</script>
+
+<!-- CART SECTION -->
 <section class="cart">
   <div class="container">
 
