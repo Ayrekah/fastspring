@@ -214,9 +214,9 @@ data-storefront="ericateststore.test.onfastspring.com/embedded-readytoroll">
         Total: <span data-fsc-order-total></span>
       </div>
 
-      <button class="checkout-btn" data-fsc-action="Checkout">
-        Embark on Adventure
-      </button>
+    <button onclick="launchCheckout()">
+Checkout
+</button>
 
     </div>
 
@@ -226,7 +226,9 @@ data-storefront="ericateststore.test.onfastspring.com/embedded-readytoroll">
 
 
 <!-- EMBEDDED CHECKOUT -->
-<div id="fsc-embedded-checkout-container"></div>
+<div id="checkout-area" style="display:none;">
+  <div id="fsc-embedded-checkout-container"></div>
+</div>
 
 
 
