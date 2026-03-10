@@ -1,4 +1,4 @@
-// Wait for FastSpring to be ready
+/*// Wait for FastSpring to be ready
 document.addEventListener("DOMContentLoaded", function () {
   const checkoutButton = document.getElementById("checkout-button");
 
@@ -18,9 +18,9 @@ document.addEventListener("DOMContentLoaded", function () {
 function applycoupon() {
   const code = document.getElementById("couponcode").value;
   fastspring.builder.applyCoupon(code);
-}
+} */
 
-/* function applycoupon() {
+function applycoupon() {
   var couponid = document.getElementById('couponcode').value;
   fastspring.builder.promo(couponid);
 }
@@ -48,4 +48,4 @@ function showCheckout(){
 
   fastspring.builder.checkout();
 
-} */
+} 
