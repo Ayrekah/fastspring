@@ -233,3 +233,10 @@ body{
   margin:10px 0;
 }
 
+.product-price {
+  font-family: 'Cinzel', serif;
+  font-size: 1.2rem;
+  color: #8b6b3f; /* Your theme's gold/brown color */
+  font-weight: bold;
+  margin: 10px 0;
+}
