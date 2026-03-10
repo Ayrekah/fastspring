@@ -81,7 +81,7 @@ data-storefront="ericateststore.test.onfastspring.com/embedded-readytoroll">
 
           <button class="add-btn"
             data-fsc-item-path-value="the-campfire"
-            data-fsc-action="Update">
+            data-fsc-action="add">
             Add to Cart
           </button>
 
@@ -136,7 +136,7 @@ data-storefront="ericateststore.test.onfastspring.com/embedded-readytoroll">
 
           <button class="add-btn"
             data-fsc-item-path-value="the-tavern"
-            data-fsc-action="Update">
+            data-fsc-action="add">
             Add to Cart
           </button>
 
@@ -191,8 +191,8 @@ data-storefront="ericateststore.test.onfastspring.com/embedded-readytoroll">
 
           <button class="add-btn"
             data-fsc-item-path-value="the-guild-hall"
-            data-fsc-action="Update">
-            Add to Cart
+            data-fsc-action="add">
+            Addddddddddddd to Cart
           </button>
 
 
@@ -208,70 +208,42 @@ data-storefront="ericateststore.test.onfastspring.com/embedded-readytoroll">
 <section class="cart">
   <div class="container">
 
-    <!-- CART CONTENT (only shows when items exist) -->
-    <div data-fsc-selections-smartdisplay data-fsc-filter="selected=true">
-
-      <h2>Your Cart</h2>
-
-      <!-- CART ITEMS -->
-      <div data-fsc-items-container="shopping-cart"></div>
-
-      <!-- SUBTOTAL -->
-      <p class="cart-summary">
-        Subtotal:
-        <strong>
-          <span data-fsc-order-subtotal></span>
-        </strong>
-      </p>
-
-      <!-- CART BUTTONS -->
-      <div class="cart-actions">
-        <button data-fsc-action="Checkout">Checkout</button>
-        <button data-fsc-action="Reset">Clear Cart</button>
-      </div>
-
+    <div data-fsc-selections-smartdisplay data-fsc-filter="selected=false">
+      <p>Your bag of holding is empty.</p>
     </div>
 
+    <div data-fsc-selections-smartdisplay data-fsc-filter="selected=true">
+      <h2>Your Cart</h2>
+
+      <div data-fsc-items-container="shopping-cart">
+        <div class="cart-row" 
+             data-fsc-item-path-attr="data-fsc-item-path" 
+             style="display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid #c9b27c;">
+          
+          <span style="flex: 2;">
+            <strong data-fsc-item-display></strong> 
+            <a href="#" data-fsc-action="Remove" style="color: #a33; font-size: 0.8rem; margin-left: 10px;">[Drop Item]</a>
+          </span>
+
+          <span style="flex: 1; text-align: center;">
+            x <span data-fsc-item-quantity></span>
+          </span>
+
+          <span style="flex: 1; text-align: right;">
+            <span data-fsc-item-total></span>
+          </span>
+        </div>
+      </div>
+
+      <p style="margin-top: 20px;">
+        Subtotal: <strong><span data-fsc-order-subtotal></span></strong>
+      </p>
+
+      <button data-fsc-action="Checkout">Checkout</button>
+      <button data-fsc-action="Reset">Clear Cart</button>
+    </div>
   </div>
 </section>
-
-
-<!-- CART TEMPLATE -->
-<script data-fsc-template-for="shopping-cart" type="text/x-handlebars-template">
-
-<ul class="cart-items">
-
-{{#each items}}
-  {{#each items}}
-
-  <li class="cart-item">
-
-    <span class="cart-name">
-      {{this.display}}
-    </span>
-
-    <span class="cart-qty">
-      Qty: {{this.quantity}}
-    </span>
-
-    <span class="cart-price">
-      {{this.total}}
-    </span>
-
-    <button
-      data-fsc-item-path-value="{{this.path}}"
-      data-fsc-action="Remove">
-      ❌
-    </button>
-
-  </li>
-
-  {{/each}}
-{{/each}}
-
-</ul>
-
-</script>
 
 <!-- EMBEDDED CHECKOUT -->
 <div id="fsc-embedded-checkout-container"></div>
