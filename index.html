@@ -67,7 +67,7 @@ data-storefront="ericateststore.test.onfastspring.com/embedded-readytoroll">
 
         <div class="product-controls">
 
-          <select class="qty-select"
+         <!-- <select class="qty-select"
             data-fsc-item-path-value="the-campfire"
             data-fsc-item-quantity-value>
 
@@ -77,7 +77,7 @@ data-storefront="ericateststore.test.onfastspring.com/embedded-readytoroll">
             <option value="4">4</option>
             <option value="5">5</option>
 
-          </select>
+          </select> -->
 
           <button class="add-btn"
             data-fsc-item-path-value="the-campfire"
@@ -104,6 +104,9 @@ data-storefront="ericateststore.test.onfastspring.com/embedded-readytoroll">
         <h2 class="product-title"
             data-fsc-item-path="the-tavern"
             data-fsc-item-display></h2>
+		    <p class="product-price">
+   <span data-fsc-item-path="the-tavern" data-fsc-item-price></span>
+  </p>
 		  <details class="product-full-description">
   <summary>Full Description</summary>
 
@@ -119,7 +122,7 @@ data-storefront="ericateststore.test.onfastspring.com/embedded-readytoroll">
 
         <div class="product-controls">
 
-          <select class="qty-select"
+         <!-- <select class="qty-select"
             data-fsc-item-path-value="the-tavern"
             data-fsc-item-quantity-value>
 
@@ -129,7 +132,7 @@ data-storefront="ericateststore.test.onfastspring.com/embedded-readytoroll">
             <option value="4">4</option>
             <option value="5">5</option>
 
-          </select>
+          </select> -->
 
           <button class="add-btn"
             data-fsc-item-path-value="the-tavern"
@@ -156,6 +159,10 @@ data-storefront="ericateststore.test.onfastspring.com/embedded-readytoroll">
         <h2 class="product-title"
             data-fsc-item-path="the-guild-hall"
             data-fsc-item-display></h2>
+		    <p class="product-price">
+   <span data-fsc-item-path="the-guild-hall" data-fsc-item-price></span>
+  </p>
+		
 	<details class="product-full-description">
   <summary>Full Description</summary>
 
@@ -170,7 +177,7 @@ data-storefront="ericateststore.test.onfastspring.com/embedded-readytoroll">
 
         <div class="product-controls">
 
-          <select class="qty-select"
+        <!--  <select class="qty-select"
             data-fsc-item-path-value="the-guild-hall"
             data-fsc-item-quantity-value>
 
@@ -180,7 +187,7 @@ data-storefront="ericateststore.test.onfastspring.com/embedded-readytoroll">
             <option value="4">4</option>
             <option value="5">5</option>
 
-          </select>
+          </select> -->
 
           <button class="add-btn"
             data-fsc-item-path-value="the-guild-hall"
@@ -198,37 +205,61 @@ data-storefront="ericateststore.test.onfastspring.com/embedded-readytoroll">
 </section>
 
 	<!-- CART -->
+<!-- CART SECTION -->
 <section class="cart">
   <div class="container">
 
+    <!-- Empty Cart -->
     <div data-fsc-selections-smartdisplay data-fsc-filter="selected=false">
       <p>Your bag of holding is empty.</p>
     </div>
 
+    <!-- Cart with Items -->
     <div data-fsc-selections-smartdisplay data-fsc-filter="selected=true">
       <h2>Your Cart</h2>
 
-      <div data-fsc-items-container="shopping-cart">
-        <div class="cart-row" style="display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid #c9b27c;">
-          <span style="flex: 2;">
-            <strong data-fsc-item-display></strong> </span>
-          <span style="flex: 1; text-align: center;">
-            x <span data-fsc-item-quantity></span> </span>
-          <span style="flex: 1; text-align: right;">
-            <span data-fsc-item-total></span> </span>
-        </div>
-      </div>
+      <!-- Cart Items Container -->
+      <div data-fsc-items-container="shopping-cart"></div>
 
-      <p style="margin-top: 20px;">
+      <!-- Subtotal -->
+      <p style="margin-top:20px;">
         Subtotal: <strong><span data-fsc-order-subtotal></span></strong>
       </p>
 
+      <!-- Action Buttons -->
       <button data-fsc-action="Checkout">Checkout</button>
       <button data-fsc-action="Reset">Clear Cart</button>
     </div>
+
   </div>
 </section>
 
+<!-- OPTIONAL: Custom Cart Template -->
+<script data-fsc-template-for="shopping-cart" type="text/x-handlebars-template">
+{{#each items}}
+  {{#each items}}
+    <div class="cart-row" style="display:flex; justify-content:space-between; padding:10px 0; border-bottom:1px solid #c9b27c;">
+
+      <span style="flex:2;">
+        <strong>{{display}}</strong>
+      </span>
+
+      <span style="flex:1; text-align:center;">
+        x {{quantity}}
+      </span>
+
+      <span style="flex:1; text-align:right;">
+        {{total}}
+      </span>
+
+      <a data-fsc-action="Remove" data-fsc-item-path-value="{{path}}" style="margin-left:10px; cursor:pointer;">✕</a>
+
+    </div>
+  {{/each}}
+{{/each}}
+</script>
+
+<!-- EMBEDDED CHECKOUT CONTAINER -->
 <div class="container">
   <div id="fsc-embedded-checkout-container" data-fsc-order-selection-smartdisplay></div>
 </div>
