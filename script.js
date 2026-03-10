@@ -1,28 +1,34 @@
+/* PROMO CODE */
+
 function applycoupon() {
   var couponid = document.getElementById('couponcode').value;
   fastspring.builder.promo(couponid);
 }
 
-/* REGISTER HANDLEBARS HELPERS */
+
+/* HANDLEBARS HELPERS */
+
 function markupHelpersCallback() {
 
-  Handlebars.registerHelper('iff', function(lvalue, operator, rvalue, options) {
+  Handlebars.registerHelper('iff', function (lvalue, operator, rvalue, options) {
 
-    var functions = {
-      '==':  function(l,r) { return l == r; },
-      '===': function(l,r) { return l === r; },
-      '!=':  function(l,r) { return l != r; },
-      '<':   function(l,r) { return l < r; },
-      '>':   function(l,r) { return l > r; },
-      '<=':  function(l,r) { return l <= r; },
-      '>=':  function(l,r) { return l >= r; }
+    var operators = {
+      '==': function(l,r){ return l == r; },
+      '===': function(l,r){ return l === r; },
+      '!=': function(l,r){ return l != r; },
+      '<': function(l,r){ return l < r; },
+      '>': function(l,r){ return l > r; },
+      '<=': function(l,r){ return l <= r; },
+      '>=': function(l,r){ return l >= r; }
     };
 
-    if (!functions[operator]) {
+    if (!operators[operator]) {
       return options.inverse(this);
     }
 
-    if (functions[operator](lvalue, rvalue)) {
+    var result = operators[operator](lvalue,rvalue);
+
+    if(result){
       return options.fn(this);
     } else {
       return options.inverse(this);
@@ -32,13 +38,9 @@ function markupHelpersCallback() {
 
 }
 
-/* SHOW SPINNER BEFORE API CALL */
-function beforeRequestsCallbackFunction() {
-  var spinner = document.getElementById("fastspring_spinner");
-  if(spinner) spinner.style.display = "block";
-}
 
-/* RENDER CART AFTER FASTSPRING BUILDS DATA */
+/* FASTSPRING CART RENDER */
+
 function afterMarkupCallbackFunction(data) {
 
   var template = Handlebars.compile(
@@ -49,20 +51,44 @@ function afterMarkupCallbackFunction(data) {
 
 }
 
-/* ERROR HANDLING */
-function errorCallback(code, string) {
-  console.error("FastSpring Error:", code, string);
-}
 
 /* CART DATA UPDATES */
+
 function dataCallback(data) {
 
-  if(!data) return;
+  var minicart = document.getElementById("minicart-count");
 
-  var template = Handlebars.compile(
-    document.getElementById("fsb-cart-template").innerHTML
-  );
+  if(minicart){
 
-  document.getElementById("fsb-cart").innerHTML = template(data);
+    let inCart = 0;
+
+    if (data && data.groups) {
+
+      data.groups.forEach(group => {
+
+        group.items.forEach(item => {
+
+          if (item.selected) {
+            inCart += item.quantity;
+          }
+
+        });
+
+      });
+
+    }
+
+    minicart.innerHTML = inCart;
+
+  }
+
+}
+
+
+/* BASIC ERROR HANDLING */
+
+function errorCallback(code, message) {
+
+  console.error("FastSpring Error:", code, message);
 
 }
