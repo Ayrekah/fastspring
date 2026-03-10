@@ -1,4 +1,12 @@
-function applycoupon() {
+function launchCheckout(){
+
+  document.getElementById("checkout-area").style.display = "block";
+
+  fastspring.builder.checkout();
+
+}
+
+/* function applycoupon() {
   var couponid = document.getElementById('couponcode').value;
   fastspring.builder.promo(couponid);
 }
@@ -26,4 +34,4 @@ function showCheckout(){
 
   fastspring.builder.checkout();
 
-}
+} */
