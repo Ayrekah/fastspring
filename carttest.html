@@ -1,20 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
 <meta charset="UTF-8">
 <title>Ready To Roll</title>
 
 <link rel="stylesheet" href="style.css">
 
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600&family=Uncial+Antiqua&display=swap" rel="stylesheet">
+<!-- Handlebars -->
+<script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js"></script>
 
-<!-- HANDLEBARS -->
-<script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.min.js"></script>
-
-<!-- YOUR JS -->
-<script src="script.js"></script>
-
-<!-- FASTSPRING -->
+<!-- FastSpring -->
 <script
 id="fsc-api"
 src="https://sbl.onfastspring.com/sbl/1.0.6/fastspring-builder.min.js"
@@ -23,163 +19,175 @@ data-storefront="ericateststore.test.onfastspring.com/embedded-readytoroll"
 data-markup-helpers-callback="markupHelpersCallback"
 data-data-callback="dataCallback"
 data-error-callback="errorCallback"
-data-after-markup-callback="afterMarkupCallbackFunction"
-data-before-requests-callback="beforeRequestsCallbackFunction">
+data-after-markup-callback="afterMarkupCallbackFunction">
 </script>
+
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600&family=Uncial+Antiqua&display=swap" rel="stylesheet">
 
 </head>
 
+
 <body>
 
+
 <header class="site-header">
-<div class="container">
+  <div class="container">
 
-<div class="logo-area">
-<img src="images/d20.png" class="logo">
-<h1 class="site-title">Ready To Roll</h1>
-</div>
+    <div class="logo-area">
+      <img src="images/d20.png" class="logo">
+      <h1 class="site-title">Ready To Roll</h1>
+    </div>
 
-</div>
+  </div>
 </header>
 
-<!-- FastSpring Products -->
 
+
+<!-- PRODUCTS -->
 <section class="products">
-<div class="container">
+  <div class="container">
 
-<div class="product-grid">
-
-<!-- CAMPFIRE -->
-<div class="product-box">
-
-<img class="product-image"
-data-fsc-item-path="the-campfire"
-data-fsc-item-image
-alt="The Campfire">
-
-<h2 class="product-title"
-data-fsc-item-path="the-campfire"
-data-fsc-item-display></h2>
-
-<p class="product-price">
-<span data-fsc-item-path="the-campfire" data-fsc-item-price></span>
-</p>
-
-<details class="product-full-description">
-<summary>Full Description</summary>
-
-<div class="description-content">
-<span data-fsc-item-path="the-campfire"
-data-fsc-item-description-full></span>
-</div>
-</details>
-
-<p class="product-description"
-data-fsc-item-path="the-campfire"
-data-fsc-item-description-summary></p>
-
-<div class="product-controls">
-
-<button class="add-btn"
-data-fsc-item-path-value="the-campfire"
-data-fsc-action="Add">
-Add to Cart
-</button>
-
-</div>
-</div>
+    <div class="product-grid">
 
 
-<!-- TAVERN -->
-<div class="product-box">
+      <!-- CAMPFIRE -->
+      <div class="product-box">
 
-<img class="product-image"
-data-fsc-item-path="the-tavern"
-data-fsc-item-image
-alt="The Tavern">
+        <img class="product-image"
+             data-fsc-item-path="the-campfire"
+             data-fsc-item-image
+             alt="The Campfire">
 
-<h2 class="product-title"
-data-fsc-item-path="the-tavern"
-data-fsc-item-display></h2>
+        <h2 class="product-title"
+            data-fsc-item-path="the-campfire"
+            data-fsc-item-display></h2>
 
-<p class="product-price">
-<span data-fsc-item-path="the-tavern" data-fsc-item-price></span>
-</p>
+        <p class="product-price">
+          <span data-fsc-item-path="the-campfire" data-fsc-item-price></span>
+        </p>
 
-<details class="product-full-description">
-<summary>Full Description</summary>
+        <details class="product-full-description">
+          <summary>Full Description</summary>
+          <div class="description-content">
+            <span data-fsc-item-path="the-campfire"
+                  data-fsc-item-description-full></span>
+          </div>
+        </details>
 
-<div class="description-content">
-<span data-fsc-item-path="the-tavern"
-data-fsc-item-description-full></span>
-</div>
-</details>
+        <p class="product-description"
+           data-fsc-item-path="the-campfire"
+           data-fsc-item-description-summary></p>
 
-<p class="product-description"
-data-fsc-item-path="the-tavern"
-data-fsc-item-description-summary></p>
+        <div class="product-controls">
 
-<div class="product-controls">
+          <button class="add-btn"
+            data-fsc-item-path-value="the-campfire"
+            data-fsc-action="Add">
+            Add to Cart
+          </button>
 
-<button class="add-btn"
-data-fsc-item-path-value="the-tavern"
-data-fsc-action="Add">
-Add to Cart
-</button>
+        </div>
 
-</div>
-</div>
+      </div>
 
 
-<!-- GUILD HALL -->
-<div class="product-box">
 
-<img class="product-image"
-data-fsc-item-path="the-guild-hall"
-data-fsc-item-image
-alt="The Guild Hall">
+      <!-- TAVERN -->
+      <div class="product-box">
 
-<h2 class="product-title"
-data-fsc-item-path="the-guild-hall"
-data-fsc-item-display></h2>
+        <img class="product-image"
+             data-fsc-item-path="the-tavern"
+             data-fsc-item-image
+             alt="The Tavern">
 
-<p class="product-price">
-<span data-fsc-item-path="the-guild-hall" data-fsc-item-price></span>
-</p>
+        <h2 class="product-title"
+            data-fsc-item-path="the-tavern"
+            data-fsc-item-display></h2>
 
-<details class="product-full-description">
-<summary>Full Description</summary>
+        <p class="product-price">
+          <span data-fsc-item-path="the-tavern" data-fsc-item-price></span>
+        </p>
 
-<div class="description-content">
-<span data-fsc-item-path="the-guild-hall"
-data-fsc-item-description-full></span>
-</div>
-</details>
+        <details class="product-full-description">
+          <summary>Full Description</summary>
+          <div class="description-content">
+            <span data-fsc-item-path="the-tavern"
+                  data-fsc-item-description-full></span>
+          </div>
+        </details>
 
-<p class="product-description"
-data-fsc-item-path="the-guild-hall"
-data-fsc-item-description-summary></p>
+        <p class="product-description"
+           data-fsc-item-path="the-tavern"
+           data-fsc-item-description-summary></p>
 
-<div class="product-controls">
+        <div class="product-controls">
 
-<button class="add-btn"
-data-fsc-item-path-value="the-guild-hall"
-data-fsc-action="Add">
-Add to Cart
-</button>
+          <button class="add-btn"
+            data-fsc-item-path-value="the-tavern"
+            data-fsc-action="Add">
+            Add to Cart
+          </button>
 
-</div>
-</div>
+        </div>
 
-</div>
-</div>
+      </div>
+
+
+
+      <!-- GUILD HALL -->
+      <div class="product-box">
+
+        <img class="product-image"
+             data-fsc-item-path="the-guild-hall"
+             data-fsc-item-image
+             alt="The Guild Hall">
+
+        <h2 class="product-title"
+            data-fsc-item-path="the-guild-hall"
+            data-fsc-item-display></h2>
+
+        <p class="product-price">
+          <span data-fsc-item-path="the-guild-hall" data-fsc-item-price></span>
+        </p>
+
+        <details class="product-full-description">
+          <summary>Full Description</summary>
+          <div class="description-content">
+            <span data-fsc-item-path="the-guild-hall"
+                  data-fsc-item-description-full></span>
+          </div>
+        </details>
+
+        <p class="product-description"
+           data-fsc-item-path="the-guild-hall"
+           data-fsc-item-description-summary></p>
+
+        <div class="product-controls">
+
+          <button class="add-btn"
+            data-fsc-item-path-value="the-guild-hall"
+            data-fsc-action="Add">
+            Add to Cart
+          </button>
+
+        </div>
+
+      </div>
+
+
+    </div>
+
+  </div>
 </section>
 
 
-<!-- CART CONTAINER -->
+
+<!-- CART -->
 <div id="fsb-cart"></div>
 
 
+
+<!-- CART TEMPLATE -->
 <script id="fsb-cart-template" type="text/x-handlebars-template">
 
 <div class="cart-wrapper">
@@ -188,6 +196,8 @@ Add to Cart
 
 <h2>Your Cart</h2>
 
+<div class="cart-items">
+
 {{#each groups}}
 {{#each items}}
 
@@ -195,23 +205,33 @@ Add to Cart
 
 <div class="cart-item">
 
-<div>{{display}}</div>
+<div class="cart-name">
+{{display}}
+</div>
 
-<div>
-<button onclick="fastspring.builder.update('{{path}}', {{quantity}} - 1)">-</button>
+<div class="cart-qty">
 
-<input type="number"
+<button onclick="fastspring.builder.update('{{path}}', {{quantity}} - 1)">−</button>
+
+<input
+type="number"
 value="{{quantity}}"
+min="0"
 onchange="fastspring.builder.update('{{path}}', this.value)">
 
 <button onclick="fastspring.builder.update('{{path}}', {{quantity}} + 1)">+</button>
+
 </div>
 
-<div>{{priceTotal}}</div>
+<div class="cart-price">
+{{priceTotal}}
+</div>
 
-<button onclick="fastspring.builder.update('{{path}}',0)">
+<div class="cart-remove">
+<button onclick="fastspring.builder.update('{{path}}', 0)">
 Remove
 </button>
+</div>
 
 </div>
 
@@ -219,14 +239,27 @@ Remove
 {{/each}}
 {{/each}}
 
+</div>
+
+
+<div class="cart-summary">
+
 <div class="cart-total">
 Total: {{total}}
 </div>
 
+<div class="cart-coupon">
 <input id="couponcode" placeholder="Promo code">
 <button onclick="applycoupon()">Apply</button>
+</div>
 
-<button data-fsc-action="Checkout">Checkout</button>
+<div class="cart-checkout">
+<button data-fsc-action="Checkout">
+Checkout
+</button>
+</div>
+
+</div>
 
 {{else}}
 
@@ -238,7 +271,16 @@ Total: {{total}}
 
 </script>
 
+
+
+<!-- EMBEDDED CHECKOUT -->
 <div id="fsc-embedded-checkout-container"></div>
+
+
+
+<!-- YOUR JS -->
+<script src="script.js"></script>
+
 
 </body>
 </html>
