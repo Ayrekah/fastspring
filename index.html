@@ -209,10 +209,14 @@ data-storefront="ericateststore.test.onfastspring.com/embedded-readytoroll">
 <section class="cart">
   <div class="container">
 
+    <!-- Empty Cart -->
     <div data-fsc-selections-smartdisplay data-fsc-filter="selected=false">
+      <p>Your bag of holding is empty.</p>
     </div>
 
+    <!-- Cart With Items -->
     <div data-fsc-selections-smartdisplay data-fsc-filter="selected=true">
+
       <h2>Your Cart</h2>
 
       <div data-fsc-items-container></div>
@@ -223,6 +227,7 @@ data-storefront="ericateststore.test.onfastspring.com/embedded-readytoroll">
 
       <button data-fsc-action="Checkout">Checkout</button>
       <button data-fsc-action="Reset">Clear Cart</button>
+
     </div>
 
   </div>
@@ -231,7 +236,7 @@ data-storefront="ericateststore.test.onfastspring.com/embedded-readytoroll">
 
 <!-- Embedded Checkout -->
 <div class="container">
-  <div id="fsc-embedded-checkout-container" data-fsc-order-selection-smartdisplay></div>
+  <div id="fsc-embedded-checkout-container"></div>
 </div>
 
 </body>
