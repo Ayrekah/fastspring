@@ -1,43 +1,51 @@
-// Store current cart items
-let cartItems = [];
+/*// Wait for FastSpring to be ready
+document.addEventListener("DOMContentLoaded", function () {
+  const checkoutButton = document.getElementById("checkout-button");
 
-// Map button IDs to FastSpring product paths
-const products = {
-    'add-tavern': 'the-tavern',
-    'add-campfire': 'the-campfire',
-    'add-guild-hall': 'the-guild-hall'
-};
+  if (checkoutButton) {
+    checkoutButton.addEventListener("click", function () {
+      // Show the embedded checkout container
+      const checkoutContainer = document.getElementById("fsc-embedded-checkout-container");
+      checkoutContainer.style.display = "block";
 
-// Add click listeners for product buttons
-Object.keys(products).forEach(buttonId => {
-    document.getElementById(buttonId).addEventListener('click', () => {
-        const product = products[buttonId];
-        
-        // Check if product is already in cart
-        const existing = cartItems.find(item => item.product === product);
-        if (existing) {
-            existing.quantity += 1;
-        } else {
-            cartItems.push({ product, quantity: 1 });
-        }
-        alert(`${product} added to cart!`);
+      // Launch FastSpring embedded checkout overlay
+      fastspring.builder.checkout();
     });
+  }
 });
 
-// Checkout button
-document.getElementById('checkout').addEventListener('click', () => {
-    if (cartItems.length === 0) {
-        alert("Your cart is empty!");
-        return;
-    }
+// Optional: coupon handling
+function applycoupon() {
+  const code = document.getElementById("couponcode").value;
+  fastspring.builder.applyCoupon(code);
+} */
 
-    // Push session to FastSpring
-    fastspring.builder.push({
-        products: cartItems
-    });
+function applycoupon() {
+  var couponid = document.getElementById('couponcode').value;
+  fastspring.builder.promo(couponid);
+}
 
-    // Embed checkout in container
-    fastspring.builder.checkout({
-        container: "#fsc-embedded-checkout-container"
-    });
-});
+function markupHelpersCallback(){}
+
+function dataCallback(data){
+
+  console.log("FastSpring cart data:", data);
+
+  var template = Handlebars.compile(
+    document.getElementById("fsb-cart-template").innerHTML
+  );
+
+  document.getElementById("fsb-cart").innerHTML = template(data);
+
+}
+
+function errorCallback(code,message){
+  console.log("FastSpring error:",code,message);
+}
+function showCheckout(){
+
+  document.getElementById("checkout-area").style.display = "block";
+
+  fastspring.builder.checkout();
+
+} 
